@@ -1,0 +1,53 @@
+     CREATE TABLE                                                       
+       BMGVZP.BAN_SOF_T                                                 
+        (                                                               
+        CUSTOMER_ACCT_NUM   VARCHAR(50) NOT NULL WITH DEFAULT           
+                                                          
+       ,BACKEND_SYSTEM   VARCHAR(10) NOT NULL WITH DEFAULT              
+                                                          
+       ,SERVICE_TYPE   VARCHAR(20) NOT NULL WITH DEFAULT                
+                                                          
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                          
+       ,VRD_FLAG   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                          
+       ,CLE_ID   VARCHAR(30) NOT NULL WITH DEFAULT                      
+                                                          
+       ,CLE_NAME   VARCHAR(100) NOT NULL WITH DEFAULT                   
+                                                          
+       ,TOP_CLE_ID   VARCHAR(30) NOT NULL WITH DEFAULT                  
+                                                          
+       ,TOP_CLE_NAME   VARCHAR(100) NOT NULL WITH DEFAULT               
+                                                          
+       ,SERVICE_TIER   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,SUBNASP_ID   CHAR(10) NOT NULL WITH DEFAULT                     
+                                                          
+       ,SUBNASP_NAME   VARCHAR(100) NOT NULL WITH DEFAULT               
+                                                          
+       ,PARENT_NASP_ID   CHAR(10) NOT NULL WITH DEFAULT                 
+                                                          
+       ,PARENT_NASP_NAME   VARCHAR(100) NOT NULL WITH DEFAULT           
+                                                          
+       ,SALES_SEGMENT_CODE   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,SALES_SEGMENT_NAME   VARCHAR(50) NOT NULL WITH DEFAULT          
+                                                          
+       ,CREATED_TIMESTAMP   TIMESTAMP NOT NULL WITH DEFAULT             
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                          
+       ,GROUP_ACCT   CHAR(13) NOT NULL WITH DEFAULT                     
+                                                          
+        )                                                                
+     ;                                                                  
+     CREATE                                                             
+        INDEX BMGVZP.BANSOFX1                                           
+       ON BMGVZP.BAN_SOF_T                                              
+        (                                                               
+         CUSTOMER_ACCT_NUM ASC                                          
+        ,BACKEND_SYSTEM ASC                                             
+        ,SERVICE_TYPE ASC                                               
+        ,ORIG_SYSTEM_ID ASC                                             
+        )                                                    
+     ;                                                                  
+

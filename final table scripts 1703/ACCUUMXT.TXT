@@ -1,0 +1,231 @@
+     CREATE TABLE                                                       
+       BMGVZP.ACCT_SUM_T                                                
+        (                                                               
+        MAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                         
+       ,MAN_BILL_DATE   DATE NOT NULL WITH DEFAULT                      
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                         
+       ,BILL_DATE   DATE NOT NULL WITH DEFAULT                          
+       ,ABAN   CHAR(13) NOT NULL WITH DEFAULT                           
+                                                         
+       ,STATE_CODE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                         
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                         
+       ,VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,DEPT_CD   CHAR(13) NOT NULL WITH DEFAULT                        
+                                                         
+       ,PAY_BY_DATE   CHAR(10) NOT NULL WITH DEFAULT                    
+                                                         
+       ,TOT_BILL_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,PREV_BILL_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT            
+       ,TOT_PAYS   DECIMAL(11, 2) NOT NULL WITH DEFAULT                 
+       ,TOT_ADJS   DECIMAL(11, 2) NOT NULL WITH DEFAULT                 
+       ,TRNSFR_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT               
+       ,CURR_CHGS_MAN   DECIMAL(11, 2) NOT NULL WITH DEFAULT            
+       ,TOT_BILL_CHGS_BANS   DECIMAL(11, 2) NOT NULL WITH DEFAULT       
+       ,NET_PAST_DUE   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,LATE_PAY_CHGS   DECIMAL(11, 2) NOT NULL WITH DEFAULT            
+       ,TOT_CURR_CHGS   DECIMAL(11, 2) NOT NULL WITH DEFAULT            
+       ,PMTS_THRU_DATE   CHAR(10) NOT NULL WITH DEFAULT                 
+                                                         
+       ,SUMM_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ACCT_STATUS_IND   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                         
+       ,CLS_OF_SVC_TYPE   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                         
+       ,HOLD_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ARREARS_IND   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                         
+       ,LATE_PAY_CHG_RATE   DECIMAL(5, 4) NOT NULL WITH DEFAULT         
+       ,TAX_STATUS_IND_FD   CHAR(1) NOT NULL WITH DEFAULT               
+                                                         
+       ,TAX_STATUS_IND_ST   CHAR(1) NOT NULL WITH DEFAULT               
+                                                         
+       ,TAX_STATUS_E911   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                         
+       ,TAX_STATUS_SCHG   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                         
+       ,TAX_STATUS_IND_LOC   CHAR(1) NOT NULL WITH DEFAULT              
+                                                         
+       ,TAR_CD_INFO   CHAR(8) NOT NULL WITH DEFAULT                     
+                                                         
+       ,GEO_CD   CHAR(12) NOT NULL WITH DEFAULT                         
+                                                         
+       ,ACCT_TYPE_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                         
+       ,RESALE_DISC_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT          
+       ,PACKAGE_DISC_AMT   DECIMAL(9, 2) NOT NULL WITH DEFAULT          
+       ,ACCSUMXT_DAN   CHAR(13) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ACCT_NAME   CHAR(30) NOT NULL WITH DEFAULT                      
+                                                         
+       ,ADDR_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                    
+       ,TAR_CD_INFO_ID   INTEGER                                        
+       ,TXFER_TYPE   CHAR(1) NOT NULL WITH DEFAULT                      
+                                                         
+       ,TEXT_IND   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                         
+       ,BILL_PAGE_NUMBER   INTEGER NOT NULL WITH DEFAULT                
+       ,ITEM_NUMBER   SMALLINT NOT NULL WITH DEFAULT                    
+       ,CUST_ID_CD   CHAR(13) NOT NULL WITH DEFAULT                     
+                                                         
+       ,CUST_ID_DEPT_CD   CHAR(15) NOT NULL WITH DEFAULT                
+                                                         
+       ,TOT_CARR_CHGS   DECIMAL(13, 2) NOT NULL WITH DEFAULT            
+       ,COLL_REFER_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT           
+       ,BILL_BASIS_CD   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,AMT_PEND_LEGAL   DECIMAL(13, 2) NOT NULL WITH DEFAULT           
+       ,FUTURE_LPAY_RATE   DECIMAL(6, 5) NOT NULL WITH DEFAULT          
+       ,AMT_SUBJ_LPAY   DECIMAL(13, 2) NOT NULL WITH DEFAULT            
+       ,PAYM_OPT_CD   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                         
+       ,PEND_LPAY_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT            
+       ,TOLL_CAP_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT             
+       ,CUSTOMER_PIN   CHAR(96) NOT NULL WITH DEFAULT                   
+                                                         
+       ,TRANSFER_PAST_CHGS   DECIMAL(13, 2) NOT NULL WITH DEFAULT       
+       ,RAO   CHAR(3) NOT NULL WITH DEFAULT                             
+                                                         
+       ,CLASSIFICATION_CD   CHAR(1) NOT NULL WITH DEFAULT               
+                                                         
+       ,NBBE_CODE   CHAR(1) NOT NULL WITH DEFAULT                       
+                                                         
+       ,COMPANY_CODE   CHAR(4) NOT NULL WITH DEFAULT                    
+                                                         
+       ,END_VZ450_SEQ_NBR   INTEGER                                     
+       ,CUST_ID_CD_ID   INTEGER                                         
+       ,CUST_ID_DEPT_CD_ID   INTEGER                                    
+       ,PAYMADDT_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                
+       ,TEXT1_SEQ_NBR   INTEGER                                         
+       ,TEXT2_SEQ_NBR   INTEGER                                         
+       ,ADDL_TEXT_IND   CHAR(1)                                         
+                                                         
+       ,FIBER_ACCT_CD   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,SUB_CIC   CHAR(5) NOT NULL WITH DEFAULT                         
+                                                         
+       ,COMP_SVC_TYPE   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ISRT_CD   CHAR(8) NOT NULL WITH DEFAULT                         
+                                                         
+       ,ISRT_STATION   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                         
+       ,ISRT_WEIGHT   DECIMAL(5, 4) NOT NULL WITH DEFAULT               
+       ,CHK_DIGIT_NBR   CHAR(2) NOT NULL WITH DEFAULT                   
+                                                         
+       ,CHK_ACCEPT_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                         
+       ,BILL_LINE_ID   CHAR(5) NOT NULL WITH DEFAULT                    
+                                                         
+       ,ACCT_ASSOC_CD   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ACCT_SYSTEM_ID   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                         
+       ,CLSSVC_USOC   CHAR(5) NOT NULL WITH DEFAULT                     
+                                                         
+       ,REV_BOOK_CD   CHAR(2) NOT NULL WITH DEFAULT                     
+                                                         
+       ,MERGE_FMT_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,SPEC_REC_ORIG_CD   CHAR(1) NOT NULL WITH DEFAULT                
+                                                         
+       ,ENTITY_CD   CHAR(5) NOT NULL WITH DEFAULT                       
+                                                         
+       ,CHANNEL_CD   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                         
+       ,NATL_ACCT_ID   CHAR(13) NOT NULL WITH DEFAULT                   
+                                                         
+       ,LEGACY_ACCT_ID   CHAR(13) NOT NULL WITH DEFAULT                 
+                                                         
+       ,INV_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                         
+       ,INVOICE_NBR   CHAR(25) NOT NULL WITH DEFAULT                    
+                                                         
+       ,TEXT_KEY_NBR1   INTEGER NOT NULL WITH DEFAULT                   
+       ,TEXT_KEY_NBR2   INTEGER NOT NULL WITH DEFAULT                   
+       ,TEXT_KEY_NBR3   INTEGER NOT NULL WITH DEFAULT                   
+       ,IMMEDIATE_MAN   CHAR(13) NOT NULL WITH DEFAULT                  
+                                                         
+       ,RECORD_LEVEL   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                         
+       ,REMIT_ACCT_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                         
+       ,LDEP_IND   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                         
+       ,ORG_LEVEL1_CD   CHAR(3) NOT NULL WITH DEFAULT                   
+                                                         
+       ,ORG_LEVEL2_CD   CHAR(3) NOT NULL WITH DEFAULT                   
+                                                         
+       ,FREQUENCY   CHAR(1) NOT NULL WITH DEFAULT                       
+                                                         
+       ,BILL_CURR   CHAR(3) NOT NULL WITH DEFAULT                       
+                                                         
+       ,CONV_CURR   CHAR(3) NOT NULL WITH DEFAULT                       
+                                                         
+       ,REGION_CD   CHAR(3) NOT NULL WITH DEFAULT                       
+                                                         
+       ,INVOICE_SERIES_NBR   CHAR(3) NOT NULL WITH DEFAULT              
+                                                         
+       ,COST_CNTR_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                         
+       ,WIRELESS_DAN   CHAR(16) NOT NULL WITH DEFAULT                   
+                                                         
+       ,MASTER_CHANNEL_CD   CHAR(2) NOT NULL WITH DEFAULT               
+                                                         
+       ,MODULE_084   CHAR(17) NOT NULL WITH DEFAULT                     
+                                                         
+       ,OPCO   CHAR(5) NOT NULL WITH DEFAULT                            
+                                                         
+       ,MODULE_087   VARCHAR(210) NOT NULL WITH DEFAULT                 
+                                                         
+       ,SPEC_PROC_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                         
+       ,WCAS_TAX_CAT   CHAR(2) NOT NULL WITH DEFAULT                    
+                                                         
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+       ,MODULE_302   CHAR(4) NOT NULL WITH DEFAULT                      
+                                                         
+        )                                                                                                              
+     ;                                                                  
+     CREATE                                                             
+        INDEX BMGVZP.ACCUDMX3                                           
+       ON BMGVZP.ACCT_SUM_T                                             
+        (                                                               
+         ORIG_SYSTEM_ID ASC                                             
+        ,MAN ASC                                                        
+        ,BAN ASC                                                        
+        ,BILL_DATE ASC                                                  
+        )                                                               
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.ACCUUMX1                                           
+       ON BMGVZP.ACCT_SUM_T                                             
+        (                                                               
+         MAN ASC                                                        
+        ,MAN_BILL_DATE ASC                                              
+        ,BAN ASC                                                        
+        ,ABAN ASC                                                       
+        ,BILL_DATE ASC                                                  
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,VZ450_SEQ_NBR ASC                                              
+        )                                                                                                                   
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.ACCUUMX2                                           
+       ON BMGVZP.ACCT_SUM_T                                             
+        (                                                               
+         BAN ASC                                                        
+        ,BILL_DATE ASC                                                  
+        ,MAN ASC                                                        
+        ,MAN_BILL_DATE ASC                                              
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,ABAN ASC                                                       
+        ,VZ450_SEQ_NBR ASC                                              
+        )                                                                     
+     ;                                                                  
+

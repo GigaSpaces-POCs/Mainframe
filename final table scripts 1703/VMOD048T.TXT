@@ -1,0 +1,363 @@
+     CREATE TABLE                                                       
+       BMGVZP.VZ450_MOD_048_T                                           
+        (                                                               
+        MAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                          
+       ,MAN_BILL_DATE   DATE NOT NULL WITH DEFAULT                      
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                          
+       ,VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,DUP_NUM   SMALLINT NOT NULL WITH DEFAULT                        
+       ,VZ450_REC_NBR   CHAR(2) NOT NULL WITH DEFAULT                   
+                                                          
+       ,VZ450_SUB_REC_NBR   CHAR(2) NOT NULL WITH DEFAULT               
+                                                          
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                          
+       ,ABAN   CHAR(13) NOT NULL WITH DEFAULT                           
+                                                          
+       ,BILL_DATE   DATE NOT NULL WITH DEFAULT                          
+       ,TAX_TYPE_CDE   CHAR(3) NOT NULL WITH DEFAULT                    
+                                                          
+       ,TAX_PERCENT   DECIMAL(5, 5) NOT NULL WITH DEFAULT               
+       ,TAX_AMT   DECIMAL(15, 4) NOT NULL WITH DEFAULT                  
+       ,TAX_BASE_AMT   DECIMAL(15, 4) NOT NULL WITH DEFAULT             
+       ,PHRASE_CODE   CHAR(8) NOT NULL WITH DEFAULT                     
+                                                          
+       ,TAX_CAT_CODE   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,GEO_CODE   CHAR(16) NOT NULL WITH DEFAULT                       
+                                                          
+       ,M48_TAX_CODE   CHAR(2) NOT NULL WITH DEFAULT                    
+                                                          
+       ,CODE_DESC_KEY   INTEGER NOT NULL WITH DEFAULT                   
+       ,ORIG_VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT              
+       ,FEATURE_INSTANCE_ID   CHAR(15) NOT NULL WITH DEFAULT            
+                                                          
+       ,NORMALIZED_EVENT_ID   CHAR(12) NOT NULL WITH DEFAULT            
+                                                          
+       ,CHG_TYPE_CD   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                          
+       ,CHARGE_BEGIN_DATE   CHAR(10) NOT NULL WITH DEFAULT              
+                                                          
+       ,CHARGE_END_DATE   CHAR(10) NOT NULL WITH DEFAULT                
+                                                          
+       ,CHARGE_CODE   CHAR(4) NOT NULL WITH DEFAULT                     
+                                                          
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+        )                                                              
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.VMD048UI                                           
+       ON BMGVZP.VZ450_MOD_048_T                                        
+        (                                                               
+         MAN ASC                                                        
+        ,MAN_BILL_DATE ASC                                              
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,VZ450_SEQ_NBR ASC                                              
+        ,DUP_NUM ASC                                                    
+        )                                                               
+         CLUSTER                                                        
+        PARTITION BY RANGE (                                            
+         PARTITION 1                                                    
+           ENDING AT ('00101130CG   ')                                             
+         ,                                                              
+         PARTITION 2                                                    
+           ENDING AT ('00101310CG   ')                                             
+         ,                                                              
+         PARTITION 3                                                    
+           ENDING AT ('00101357CG   ')                                             
+         ,                                                              
+         PARTITION 4                                                    
+           ENDING AT ('00101385CG   ')                                             
+         ,                                                              
+         PARTITION 5                                                    
+           ENDING AT ('00101492CG   ')                                             
+         ,                                                              
+         PARTITION 6                                                    
+           ENDING AT ('00101525CG   ')                                             
+         ,                                                              
+         PARTITION 7                                                    
+           ENDING AT ('00101598CG   ')                                             
+         ,                                                              
+         PARTITION 8                                                    
+           ENDING AT ('00101700CG   ')                                             
+         ,                                                              
+         PARTITION 9                                                    
+           ENDING AT ('00103033CG   ')                                             
+         ,                                                              
+         PARTITION 10                                                   
+           ENDING AT ('00103044CG   ')                                             
+         ,                                                              
+         PARTITION 11                                                   
+           ENDING AT ('00103065CG   ')                                             
+         ,                                                              
+         PARTITION 12                                                   
+           ENDING AT ('00103068CG   ')                                             
+         ,                                                              
+         PARTITION 13                                                   
+           ENDING AT ('00103070CG   ')                                             
+         ,                                                              
+         PARTITION 14                                                   
+           ENDING AT ('00103083CG   ')                                             
+         ,                                                              
+         PARTITION 15                                                   
+           ENDING AT ('00103087CG   ')                                             
+         ,                                                              
+         PARTITION 16                                                   
+           ENDING AT ('00103117CG   ')                                             
+         ,                                                              
+         PARTITION 17                                                   
+           ENDING AT ('00103171CG   ')                                             
+         ,                                                              
+         PARTITION 18                                                   
+           ENDING AT ('00103261CG   ')                                             
+         ,                                                              
+         PARTITION 19                                                   
+           ENDING AT ('00103283CG   ')                                             
+         ,                                                              
+         PARTITION 20                                                   
+           ENDING AT ('00103912CG   ')                                             
+         ,                                                              
+         PARTITION 21                                                   
+           ENDING AT ('00104326CG   ')                                             
+         ,                                                              
+         PARTITION 22                                                   
+           ENDING AT ('00104440CG   ')                                             
+         ,                                                              
+         PARTITION 23                                                   
+           ENDING AT ('00104541CG   ')                                             
+         ,                                                              
+         PARTITION 24                                                   
+           ENDING AT ('00104633CG   ')                                             
+         ,                                                              
+         PARTITION 25                                                   
+           ENDING AT ('00104934CG   ')                                             
+         ,                                                              
+         PARTITION 26                                                   
+           ENDING AT ('00105273CG   ')                                             
+         ,                                                              
+         PARTITION 27                                                   
+           ENDING AT ('00105503CG   ')                                             
+         ,                                                              
+         PARTITION 28                                                   
+           ENDING AT ('00105875CG   ')                                             
+         ,                                                              
+         PARTITION 29                                                   
+           ENDING AT ('00105947CG   ')                                             
+         ,                                                              
+         PARTITION 30                                                   
+           ENDING AT ('00106230CG   ')                                             
+         ,                                                              
+         PARTITION 31                                                   
+           ENDING AT ('00106416CG   ')                                             
+         ,                                                              
+         PARTITION 32                                                   
+           ENDING AT ('00106573CG   ')                                             
+         ,                                                              
+         PARTITION 33                                                   
+           ENDING AT ('00106613CG   ')                                             
+         ,                                                              
+         PARTITION 34                                                   
+           ENDING AT ('00106704CG   ')                                             
+         ,                                                              
+         PARTITION 35                                                   
+           ENDING AT ('00106768CG   ')                                             
+         ,                                                              
+         PARTITION 36                                                   
+           ENDING AT ('00107280CG   ')                                             
+         ,                                                              
+         PARTITION 37                                                   
+           ENDING AT ('00107320CG   ')                                             
+         ,                                                              
+         PARTITION 38                                                   
+           ENDING AT ('00107357CG   ')                                             
+         ,                                                              
+         PARTITION 39                                                   
+           ENDING AT ('00107496CG   ')                                             
+         ,                                                              
+         PARTITION 40                                                   
+           ENDING AT ('00107891CG   ')                                             
+         ,                                                              
+         PARTITION 41                                                   
+           ENDING AT ('00108060CG   ')                                             
+         ,                                                              
+         PARTITION 42                                                   
+           ENDING AT ('00108096CG   ')                                             
+         ,                                                              
+         PARTITION 43                                                   
+           ENDING AT ('00108207CG   ')                                             
+         ,                                                              
+         PARTITION 44                                                   
+           ENDING AT ('00108509CG   ')                                             
+         ,                                                              
+         PARTITION 45                                                   
+           ENDING AT ('00108840CG   ')                                             
+         ,                                                              
+         PARTITION 46                                                   
+           ENDING AT ('00109209CG   ')                                             
+         ,                                                              
+         PARTITION 47                                                   
+           ENDING AT ('00109429CG   ')                                             
+         ,                                                              
+         PARTITION 48                                                   
+           ENDING AT ('00109804CG   ')                                             
+         ,                                                              
+         PARTITION 49                                                   
+           ENDING AT ('00110149CG   ')                                             
+         ,                                                              
+         PARTITION 50                                                   
+           ENDING AT ('00110570CG   ')                                             
+         ,                                                              
+         PARTITION 51                                                   
+           ENDING AT ('00111298CG   ')                                             
+         ,                                                              
+         PARTITION 52                                                   
+           ENDING AT ('00111316CG   ')                                             
+         ,                                                              
+         PARTITION 53                                                   
+           ENDING AT ('00111613CG   ')                                             
+         ,                                                              
+         PARTITION 54                                                   
+           ENDING AT ('00113159CG   ')                                             
+         ,                                                              
+         PARTITION 55                                                   
+           ENDING AT ('00113983CG   ')                                             
+         ,                                                              
+         PARTITION 56                                                   
+           ENDING AT ('00115265CG   ')                                             
+         ,                                                              
+         PARTITION 57                                                   
+           ENDING AT ('00115274CG   ')                                             
+         ,                                                              
+         PARTITION 58                                                   
+           ENDING AT ('00115490CG   ')                                             
+         ,                                                              
+         PARTITION 59                                                   
+           ENDING AT ('00116203CG   ')                                             
+         ,                                                              
+         PARTITION 60                                                   
+           ENDING AT ('00118259CG   ')                                             
+         ,                                                              
+         PARTITION 61                                                   
+           ENDING AT ('00119290CG   ')                                             
+         ,                                                              
+         PARTITION 62                                                   
+           ENDING AT ('F0011016     ')                                             
+         ,                                                              
+         PARTITION 63                                                   
+           ENDING AT ('F0119155     ')                                             
+         ,                                                              
+         PARTITION 64                                                   
+           ENDING AT ('F0120077     ')                                             
+         ,                                                              
+         PARTITION 65                                                   
+           ENDING AT ('F0120333     ')                                             
+         ,                                                              
+         PARTITION 66                                                   
+           ENDING AT ('F0122080     ')                                             
+         ,                                                              
+         PARTITION 67                                                   
+           ENDING AT ('F1102266     ')                                             
+         ,                                                              
+         PARTITION 68                                                   
+           ENDING AT ('F1150016     ')                                             
+         ,                                                              
+         PARTITION 69                                                   
+           ENDING AT ('F1242573     ')                                             
+         ,                                                              
+         PARTITION 70                                                   
+           ENDING AT ('F1339396     ')                                             
+         ,                                                              
+         PARTITION 71                                                   
+           ENDING AT ('F1427378     ')                                             
+         ,                                                              
+         PARTITION 72                                                   
+           ENDING AT ('F1449432     ')                                             
+         ,                                                              
+         PARTITION 73                                                   
+           ENDING AT ('F1457209     ')                                             
+         ,                                                              
+         PARTITION 74                                                   
+           ENDING AT ('S0000401     ')                                             
+         ,                                                              
+         PARTITION 75                                                   
+           ENDING AT ('S0024562     ')                                             
+         ,                                                              
+         PARTITION 76                                                   
+           ENDING AT ('S0094570     ')                                             
+         ,                                                              
+         PARTITION 77                                                   
+           ENDING AT ('SV000936     ')                                             
+         ,                                                              
+         PARTITION 78                                                   
+           ENDING AT ('SV001616     ')                                             
+         ,                                                              
+         PARTITION 79                                                   
+           ENDING AT ('SV042381     ')                                             
+         ,                                                              
+         PARTITION 80                                                   
+           ENDING AT ('SV100154     ')                                             
+         ,                                                              
+         PARTITION 81                                                   
+           ENDING AT ('SV190685     ')                                             
+         ,                                                              
+         PARTITION 82                                                   
+           ENDING AT ('U0109648     ')                                             
+         ,                                                              
+         PARTITION 83                                                   
+           ENDING AT ('U0123915     ')                                             
+         ,                                                              
+         PARTITION 84                                                   
+           ENDING AT ('U0170929     ')                                             
+         ,                                                              
+         PARTITION 85                                                   
+           ENDING AT ('U0171849     ')                                             
+         ,                                                              
+         PARTITION 86                                                   
+           ENDING AT ('U0177370     ')                                             
+         ,                                                              
+         PARTITION 87                                                   
+           ENDING AT ('V0177370     ')                                             
+         ,                                                              
+         PARTITION 88                                                   
+           ENDING AT ('W0177370     ')                                             
+         ,                                                              
+         PARTITION 89                                                   
+           ENDING AT ('X0177370     ')                                             
+         ,                                                              
+         PARTITION 90                                                   
+           ENDING AT ('X0977370     ')                                             
+         ,                                                              
+         PARTITION 91                                                   
+           ENDING AT ('Z0177370     ')                                             
+         ,                                                              
+         PARTITION 92                                                   
+           ENDING AT ('Z0277370     ')                                             
+         ,                                                              
+         PARTITION 93                                                   
+           ENDING AT ('Z0377370     ')                                             
+         ,                                                              
+         PARTITION 94                                                   
+           ENDING AT ('Z0477370     ')                                             
+         ,                                                              
+         PARTITION 95                                                   
+           ENDING AT ('Z0577370     ')                                             
+         ,                                                              
+         PARTITION 96                                                   
+           ENDING AT ('Z0677370     ')                                             
+         ,                                                              
+         PARTITION 97                                                   
+           ENDING AT ('Z0777370     ')                                             
+         ,                                                              
+         PARTITION 98                                                   
+           ENDING AT ('Z0877370     ')                                             
+         ,                                                              
+         PARTITION 99                                                   
+           ENDING AT ('Z0977370     ')                                             
+         ,                                                              
+         PARTITION 100                                                  
+           ENDING AT ('ZZZZZZZZZZZZZ')                                             
+        )                                                            
+     ;                                                                  
+

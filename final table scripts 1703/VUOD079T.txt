@@ -1,0 +1,293 @@
+     CREATE TABLE
+       BMGVZP.VZ450_MOD_079_T
+        (
+        MAN   CHAR(13) NOT NULL WITH DEFAULT
+         
+       ,MAN_BILL_DATE   DATE NOT NULL WITH DEFAULT
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT
+         
+       ,VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT
+       ,DUP_NUM   SMALLINT NOT NULL WITH DEFAULT
+       ,VZ450_REC_NBR   CHAR(2) NOT NULL WITH DEFAULT
+         
+       ,VZ450_SUB_REC_NBR   CHAR(2) NOT NULL WITH DEFAULT
+         
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT
+         
+       ,ABAN   CHAR(13) NOT NULL WITH DEFAULT
+         
+       ,BILL_DATE   DATE NOT NULL WITH DEFAULT
+       ,SUPP_DATA_ID_CD   CHAR(3) NOT NULL WITH DEFAULT
+         
+       ,SUPP_DATA_ID   CHAR(100) NOT NULL WITH DEFAULT
+         
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT
+        )
+     ;
+     CREATE UNIQUE
+        INDEX BMGVZP.VUOD0791
+       ON BMGVZP.VZ450_MOD_079_T
+        (
+         MAN ASC
+        ,MAN_BILL_DATE ASC
+        ,ORIG_SYSTEM_ID ASC
+        ,VZ450_SEQ_NBR ASC
+        ,DUP_NUM ASC
+        )
+         CLUSTER
+        PARTITION BY RANGE (
+         PARTITION 1
+           ENDING AT ('00005207851  ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 2
+           ENDING AT ('00031402136  ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 3
+           ENDING AT ('00051264369  ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 4
+           ENDING AT ('00067117840  ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 5
+           ENDING AT ('00068015619  ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 6
+           ENDING AT ('93045985     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 7
+           ENDING AT ('93337479     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 8
+           ENDING AT ('AUZ1440169   ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 9
+           ENDING AT ('S0000021     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 10
+           ENDING AT ('S0000401     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 11
+           ENDING AT ('S0000822     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 12
+           ENDING AT ('SV000936     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 13
+           ENDING AT ('SV001616     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 14
+           ENDING AT ('SV001855     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 15
+           ENDING AT ('SV042381     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 16
+           ENDING AT ('SV069991     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 17
+           ENDING AT ('SV087064     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 18
+           ENDING AT ('SV090001     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 19
+           ENDING AT ('SV093413     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 20
+           ENDING AT ('SV100154     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 21
+           ENDING AT ('SV100664     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 22
+           ENDING AT ('SV101577     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 23
+           ENDING AT ('SV127809     ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 24
+           ENDING AT ('X000022634   ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+         ,
+         PARTITION 25
+           ENDING AT ('ZZZZZZZZZZZZZ', '9999-12-31')
+         USING STOGROUP BMGVZPEA
+         PRIQTY 7200
+         SECQTY -1
+         ERASE NO
+         FREEPAGE 0
+         PCTFREE 0
+         GBPCACHE CHANGED
+        )
+         BUFFERPOOL BP2
+         CLOSE YES
+         COPY NO
+         COMPRESS NO
+     ;

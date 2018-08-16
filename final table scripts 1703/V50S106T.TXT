@@ -1,0 +1,51 @@
+     CREATE TABLE                                                       
+       BMGVZP.VZ450_VMT50106_T                                          
+        (                                                               
+        MAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                           
+       ,MAN_BILL_DATE   DATE NOT NULL WITH DEFAULT                      
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                           
+       ,VZ450_BASE_REC_SEQ   INTEGER NOT NULL WITH DEFAULT              
+       ,VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,DUP_NUM   SMALLINT NOT NULL WITH DEFAULT                        
+       ,CUST_ID_DEPT_CD   CHAR(15) NOT NULL WITH DEFAULT                
+                                                           
+       ,LOCATION_ID   CHAR(30) NOT NULL WITH DEFAULT                    
+                                                           
+       ,ADDR_SEQ_CD   INTEGER NOT NULL WITH DEFAULT                     
+       ,ADDR_XREF_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,CHG_CD   CHAR(4) NOT NULL WITH DEFAULT                          
+                                                           
+       ,CHG_CD_ID   INTEGER NOT NULL WITH DEFAULT                       
+       ,LOC_CHG_CD   CHAR(3) NOT NULL WITH DEFAULT                      
+                                                           
+       ,LOC_CHG_CD_ID   INTEGER NOT NULL WITH DEFAULT                   
+       ,LOC_CHG_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT              
+       ,TOT_CALLS   DECIMAL(15) NOT NULL WITH DEFAULT                   
+       ,TOT_MINUTES   DECIMAL(15, 2) NOT NULL WITH DEFAULT              
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                           
+       ,BILL_DATE   DATE NOT NULL WITH DEFAULT                          
+       ,ABAN   CHAR(13) NOT NULL WITH DEFAULT                           
+                                                           
+       ,TF_CORP   CHAR(8) NOT NULL WITH DEFAULT                         
+                                                           
+       ,MODULE_907   CHAR(9) NOT NULL WITH DEFAULT                      
+                                                           
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+        )                                                               
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.V50S1061                                           
+       ON BMGVZP.VZ450_VMT50106_T                                       
+        (                                                               
+         MAN ASC                                                        
+        ,MAN_BILL_DATE ASC                                              
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,VZ450_BASE_REC_SEQ ASC                                         
+        ,VZ450_SEQ_NBR ASC                                              
+        ,DUP_NUM ASC                                                    
+        )                                                                     
+     ;                                                                  
+

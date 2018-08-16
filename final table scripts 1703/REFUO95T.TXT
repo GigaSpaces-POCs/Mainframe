@@ -1,0 +1,49 @@
+     CREATE TABLE                                                       
+       BMGVZP.REF_CODES_95_T                                            
+        (                                                               
+        CODE_DESC_KEY   INTEGER NOT NULL                                
+       ,CODE   CHAR(30) NOT NULL                                        
+                                                          
+       ,"TYPE"   CHAR(3) NOT NULL                                       
+                                                          
+       ,SOURCE_REC_NUM   CHAR(2)                                        
+                                                          
+       ,SOURCE_SUB_REC_NUM   CHAR(2) NOT NULL                           
+                                                          
+       ,SOURCE_TYPE   CHAR(3) NOT NULL                                  
+                                                          
+       ,DESCRIPTION   VARCHAR(100) NOT NULL                             
+                                                          
+       ,LANG_CD   CHAR(3) NOT NULL WITH DEFAULT                         
+                                                          
+       ,TEXT_TYPE_CODE   CHAR(3) NOT NULL WITH DEFAULT                  
+                                                          
+       ,DESCRIPTION_2   VARCHAR(150) NOT NULL WITH DEFAULT              
+                                                          
+       ,DESCRIPTION_1   VARCHAR(150) NOT NULL WITH DEFAULT              
+                                                          
+        )                                                               
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.REFUO951                                           
+       ON BMGVZP.REF_CODES_95_T                                         
+        (                                                               
+         CODE_DESC_KEY ASC                                              
+        )                                                                                                                  
+     ;                                                                  
+     CREATE UNIQUE                                      
+        INDEX BMGVZP.REFUO952                                           
+       ON BMGVZP.REF_CODES_95_T                                         
+        (                                                               
+         CODE ASC                                                       
+        ,"TYPE" ASC                                                     
+        ,LANG_CD ASC                                                    
+        ,SOURCE_REC_NUM ASC                                             
+        ,SOURCE_SUB_REC_NUM ASC                                         
+        ,SOURCE_TYPE ASC                                                
+        ,DESCRIPTION ASC                                                
+        ,DESCRIPTION_1 ASC                                              
+        ,DESCRIPTION_2 ASC                                              
+        )                                                               
+     ;                                                                  
+

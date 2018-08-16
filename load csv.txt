@@ -1,0 +1,2 @@
+db2 load from acct-sum-t-extract-2018-08-14.csv of del insert into BMGVZS.ACCT_SUM_X
+

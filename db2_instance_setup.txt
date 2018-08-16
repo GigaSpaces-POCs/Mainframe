@@ -1,0 +1,73 @@
+ssh -i wan-gateway-example.pem ubuntu@ec2-18-191-240-252.us-east-2.compute.amazonaws.com
+
+DB2 utils:
+sudo apt-get update 
+sudo apt install openjdk-8-jre-headless 
+sudo apt install openjdk-8-jdk-headless 
+sudo apt install unzip
+sudo apt-get install libstdc++6
+sudo apt-get install libstdc++5
+sudo apt-get install ksh
+sudo apt-get install libaio1
+sudo apt-get install rpm
+sudo dpkg --add-architecture i386
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install libpam0g:i386
+sudo apt-get install binutils
+
+UBUNTU x2go:
+sudo apt-get install python-software-properties
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:x2go/stable
+sudo apt-get update
+sudo apt-get install x2goclient
+
+Install DB2:
+sudo mv /tmp/v11.1_linuxx64_server_t.tar.gz /
+sudo tar xfz v11.1_linuxx64_server_t.tar.gz
+sudo server_t/db2setup
+. /home/ubuntu/sqllib/db2profile
+
+
+connection: db2inst1 50000
+
+
+MQ setup:
+download - 
+1 https://www-01.ibm.com/marketing/iwm/iwm/web/download.do?S_PKG=CRZC5ML&source=ESD-WSMQ-EVAL&transactionid=undefined&pageType=urx&S_TACT=000000WT&lang=en_US&dlmethod=http
+2 https://ak-dsw-mul.dhe.ibm.com/sdfdl/v2/fulfill/CN9GYML/Xa.2/Xb.JSiMj8YMrecIlCMeUFUBDy5SbGJRKOBNaGD7tU-2wp0/Xc.CN9GYML/IBM_MQ_9.0.0.0_LINUX_X86-64_TRIAL.tar.gz/Xd./Xf.LPR.D1VK/Xg.9794087/Xi.ESD-WSMQ-EVAL/XY.regsrvs/XZ.Al-H5BkulkBspl_H2mZNPLFE4YI/IBM_MQ_9.0.0.0_LINUX_X86-64_TRIAL.tar.gz
+
+cd MQServer
+sudo ./mqlicense.sh -text_only
+sudo rpm -ivh MQSeriesRuntime-*.rpm MQSeriesServer-*.rpm
+sudo /opt/mqm/bin/setmqinst -i -p /opt/mqm
+sudo usermod -a -G mqm db2inst1
+
+sudo su db2inst1
+db2sampl  -name PUBSRC -sql
+db2 update db cfg for PUBSRC using logarchmeth1 "DISK:/home/db2inst1/db2mqrep"
+db2 backup database PUBSRC to "/home/db2inst1/db2mqrep" without prompting
+export LD_LIBRARY_PATH=/opt/mqm/lib64:$LD_LIBRARY_PATH
+
+java -Djava.library.path=/opt/mqm/java/lib64 -cp "/opt/mqm/java/lib:./*" com.gigaspaces.mq.listener.DB2SpaceListener -qmgr PUBSRC -queue ASN.PUBSRC.DATA -time 60000 -out DEPFiles
+
+java -cp db2-delta-server-1.0-jar-with-dependencies.jar -Djava.library.path=/opt/mqm/java/lib64 com.gigaspaces.mq.util.ReadQueueMessage
+java -Djava.library.path=/opt/mqm/java/lib64 -jar db2-delta-server-1.0-jar-with-dependencies.jar -qmgr PUBSRC -queue ASN.PUBSRC.DATA -time 6000 -out DEPFILES
+
+response file /home/ubuntu/db2server_nr.rsp
+
+
+Run DB2:
+sudo su db2inst1
+db2start
+
+
+
+sudo /gigaspaces-insightedge-enterprise-12.3.1-ga-b19300/bin/gs-agent.sh gsa.gsc 3 gsa.lus 1 gsa.gsm 1 gsa.global.gsm 0 gsa.global.lus 0
+sudo /gigaspaces-insightedge-enterprise-12.3.1-ga-b19300/bin/gs-webui.sh
+
+
+
+
+https://gigaspaces-releases-eu.s3.amazonaws.com/insightedge/12.3.1/gigaspaces-insightedge-enterprise-12.3.1-ga-b19300.zip
+

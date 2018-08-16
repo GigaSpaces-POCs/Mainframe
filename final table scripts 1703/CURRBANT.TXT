@@ -1,0 +1,187 @@
+     CREATE TABLE                                                       
+       BMGVZP.CURRENT_BAN_T                                             
+        (                                                               
+        BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                           
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                           
+       ,MAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                           
+       ,FIRST_DATE   DATE NOT NULL WITH DEFAULT                         
+       ,LAST_DATE   DATE NOT NULL WITH DEFAULT                          
+       ,TOT_BILL_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,TOT_CURR_CHGS   DECIMAL(11, 2) NOT NULL WITH DEFAULT            
+       ,NET_PAST_DUE   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,TIMESTAMP   TIMESTAMP NOT NULL WITH DEFAULT                     
+       ,ENTITY_CD   CHAR(5) NOT NULL WITH DEFAULT                       
+                                                           
+       ,PREV_BILL_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT            
+       ,TOT_PAYS   DECIMAL(13, 2) NOT NULL WITH DEFAULT                 
+       ,TOT_ADJS   DECIMAL(13, 2) NOT NULL WITH DEFAULT                 
+       ,LATE_PAY_CHGS   DECIMAL(13, 2) NOT NULL WITH DEFAULT            
+       ,DISP_ACCT_NUM   CHAR(20) NOT NULL WITH DEFAULT                  
+                                                           
+       ,MAN_PARTIAL_IND   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,ENTERPRISE_ID   DECIMAL(10) NOT NULL WITH DEFAULT               
+       ,SB_OID   DECIMAL(10) NOT NULL WITH DEFAULT                      
+       ,SP_OID   DECIMAL(10) NOT NULL WITH DEFAULT                      
+       ,SERVICE_TYPE   CHAR(20) NOT NULL WITH DEFAULT                   
+                                                           
+       ,SP_STATUS   CHAR(1) NOT NULL WITH DEFAULT                       
+                                                           
+       ,SP_STATUS_DATE   CHAR(10) NOT NULL WITH DEFAULT                 
+                                                           
+       ,SP_BACKEND_SYSTEM   CHAR(10) NOT NULL WITH DEFAULT              
+                                                           
+       ,INVOICE_NBR   CHAR(25) NOT NULL WITH DEFAULT                    
+                                                           
+       ,CHANNEL_CD   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                           
+       ,REMIT_ACCT_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                           
+       ,CURRENCY_CD   CHAR(3) NOT NULL WITH DEFAULT                     
+                                                           
+       ,REGION_CD   CHAR(3) NOT NULL WITH DEFAULT                       
+                                                           
+       ,INVOICE_TYPE   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                           
+       ,INTERNATIONAL_IND   CHAR(1) NOT NULL WITH DEFAULT               
+                                                           
+       ,ACCT_NAME   CHAR(30) NOT NULL WITH DEFAULT                      
+                                                           
+       ,ADDR_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                    
+       ,ADDR_CITY   VARCHAR(60) NOT NULL WITH DEFAULT                   
+                                                           
+       ,ADDR_STATE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                           
+       ,GBR   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                           
+       ,GBR_OSID   CHAR(2) NOT NULL WITH DEFAULT                        
+                                                           
+       ,GBR_DATE   CHAR(10) NOT NULL WITH DEFAULT                       
+                                                           
+       ,PAPER_SUPP_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                           
+       ,PAPER_ELIG_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                           
+       ,PAPER_CONTR_AMEND   CHAR(1) NOT NULL WITH DEFAULT               
+                                                           
+       ,ZIP_CD   CHAR(9) NOT NULL WITH DEFAULT                          
+                                                           
+       ,PEND_ADJ_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,PEND_PAY_AMT   DECIMAL(11, 2) NOT NULL WITH DEFAULT             
+       ,BILL_ADDRESS   VARCHAR(180) NOT NULL WITH DEFAULT               
+                                                           
+       ,SVC_ADDRESS   VARCHAR(180) NOT NULL WITH DEFAULT                
+                                                           
+       ,CREF   CHAR(15) NOT NULL WITH DEFAULT                           
+                                                           
+       ,STAND_ALONE_IND   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,BILL_PERIOD   CHAR(2) NOT NULL WITH DEFAULT                     
+                                                           
+       ,PAPER_CHARGE_CODE   CHAR(2) NOT NULL WITH DEFAULT               
+                                                           
+       ,PAPER_CALL_DETAIL   CHAR(2) NOT NULL WITH DEFAULT               
+                                                           
+       ,PAPER_OID_STATUS   CHAR(2) NOT NULL WITH DEFAULT                
+                                                           
+       ,ACCT_ALIAS   VARCHAR(250) NOT NULL WITH DEFAULT                 
+                                                           
+       ,GBR_CLASS_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                           
+       ,GBR_SP_OID   DECIMAL(10) NOT NULL WITH DEFAULT                  
+       ,GBR_SB_OID   DECIMAL(10) NOT NULL WITH DEFAULT                  
+       ,GBR_SERVICE_TYPE   CHAR(20) NOT NULL WITH DEFAULT               
+                                                           
+       ,M077_SUPP_DATA_ID   CHAR(30) NOT NULL WITH DEFAULT              
+                                                           
+       ,FREQUENCY   CHAR(1) NOT NULL WITH DEFAULT                       
+                                                           
+       ,PENDING_LAST_DATE   CHAR(10) NOT NULL WITH DEFAULT              
+                                                           
+       ,OPCO   CHAR(5) NOT NULL WITH DEFAULT                            
+                                                           
+       ,ACCT_IN_GCP   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                           
+       ,CORP_IN_GCP   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                           
+       ,STATE_CODE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                           
+       ,LAST_ONLINE_ACTION   CHAR(1) NOT NULL WITH DEFAULT              
+                                                           
+       ,INQUIRY_PENDING   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,MAN_DAN   CHAR(20) NOT NULL WITH DEFAULT                        
+                                                           
+       ,LAST_BILL_DATE   DATE NOT NULL WITH DEFAULT                     
+       ,MAN_SP_OID   DECIMAL(10) NOT NULL WITH DEFAULT                  
+       ,RAO   CHAR(3) NOT NULL WITH DEFAULT                             
+                                                           
+       ,COMP_SVC_TYPE   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                           
+       ,SUMM_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                           
+       ,TAX_STATUS_IND_FD   CHAR(1) NOT NULL WITH DEFAULT               
+                                                           
+       ,TAX_STATUS_IND_ST   CHAR(1) NOT NULL WITH DEFAULT               
+                                                           
+       ,TAX_STATUS_E911   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,TAX_STATUS_SCHG   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,TAX_STATUS_IND_LOC   CHAR(1) NOT NULL WITH DEFAULT              
+                                                           
+       ,CLS_OF_SVC_TYPE   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                           
+       ,ACCT_TYPE_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                           
+       ,PAYM_OPT_CD   CHAR(1) NOT NULL WITH DEFAULT                     
+                                                           
+       ,SPEC_PROC_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                           
+       ,WCAS_TAX_CAT   CHAR(2) NOT NULL WITH DEFAULT                    
+                                                           
+       ,AR_SYSTEM   CHAR(30) NOT NULL WITH DEFAULT                      
+                                                           
+       ,Q2C_FLAG   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                           
+       ,ACCOUNT_TYPE   CHAR(10) NOT NULL WITH DEFAULT                   
+                                                           
+       ,CONF_IND   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                           
+       ,SUB_CONTRACT_ID   CHAR(3) NOT NULL WITH DEFAULT                 
+                                                           
+        )                                                               
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.CURRBAN1                                           
+       ON BMGVZP.CURRENT_BAN_T                                          
+        (                                                               
+         BAN ASC                                                        
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,MAN ASC                                                        
+        ,TIMESTAMP ASC                                                  
+        )                                                           
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.CURRBAN2                                           
+       ON BMGVZP.CURRENT_BAN_T                                          
+        (                                                               
+         MAN ASC                                                        
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,BAN ASC                                                        
+        )                                                               
+     ;                                                                  
+     CREATE                                                             
+        INDEX BMGVZP.CURRBAN3                                           
+       ON BMGVZP.CURRENT_BAN_T                                          
+        (                                                               
+         OPCO ASC                                                       
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,MAN ASC                                                        
+        ,BAN ASC                                                        
+        )                                                                 
+     ;                                                                  
+

@@ -1,0 +1,2426 @@
+     CREATE TABLE                                                       
+       BMGVZP.VZ450_6200_T                                              
+        (                                                               
+        MAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                          
+       ,MAN_BILL_DATE   DATE NOT NULL WITH DEFAULT                      
+       ,ORIG_SYSTEM_ID   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                          
+       ,VZ450_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,DUP_NUM   SMALLINT NOT NULL WITH DEFAULT                        
+       ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
+                                                          
+       ,ABAN   CHAR(13) NOT NULL WITH DEFAULT                           
+                                                          
+       ,BILL_DATE   DATE NOT NULL WITH DEFAULT                          
+       ,WORKING_TEL_NBR   CHAR(10) NOT NULL WITH DEFAULT                
+                                                          
+       ,STATE_CODE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                          
+       ,ENTITY_CD   CHAR(5) NOT NULL WITH DEFAULT                       
+                                                          
+       ,ENTITY_CD_ID   INTEGER NOT NULL WITH DEFAULT                    
+       ,INV_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,ASSOC_CHG_CD   CHAR(4) NOT NULL WITH DEFAULT                    
+                                                          
+       ,ASSOC_CHG_CD_ID   INTEGER NOT NULL WITH DEFAULT                 
+       ,CLASSIFICATION_CD   CHAR(1) NOT NULL WITH DEFAULT               
+                                                          
+       ,MODULE_IND   CHAR(1) NOT NULL WITH DEFAULT                      
+                                                          
+       ,PRICING_PLAN_CD   CHAR(5) NOT NULL WITH DEFAULT                 
+                                                          
+       ,PRICING_PLAN_CD_ID   INTEGER NOT NULL WITH DEFAULT              
+       ,CUST_ID_DEPT_CD   CHAR(13) NOT NULL WITH DEFAULT                
+                                                          
+       ,CUST_ID_DEPT_CD_ID   INTEGER NOT NULL WITH DEFAULT              
+       ,CUST_ID_CD   CHAR(15) NOT NULL WITH DEFAULT                     
+                                                          
+       ,CUST_ID_CD_ID   INTEGER NOT NULL WITH DEFAULT                   
+       ,GLOBAL_REF_NBR   INTEGER NOT NULL WITH DEFAULT                  
+       ,SUB_CIC   CHAR(5) NOT NULL WITH DEFAULT                         
+                                                          
+       ,SUB_CIC_ID   INTEGER NOT NULL WITH DEFAULT                      
+       ,BASIC_SVC_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,ADJUST_LN_CD   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,TEXT_IND   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                          
+       ,DISPLAY_CD   CHAR(1) NOT NULL WITH DEFAULT                      
+                                                          
+       ,BILL_PAGE_NUMBER   INTEGER NOT NULL WITH DEFAULT                
+       ,ITEM_NUMBER   SMALLINT NOT NULL WITH DEFAULT                    
+       ,REV_ID_CD   CHAR(1) NOT NULL WITH DEFAULT                       
+                                                          
+       ,REV_ID   CHAR(8) NOT NULL WITH DEFAULT                          
+                                                          
+       ,PAPER_BILL_IND   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,ASSOC_BILL_SECT_CD   CHAR(4) NOT NULL WITH DEFAULT              
+                                                          
+       ,FIBER_LINE_CD   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                          
+       ,GROUP_ID   CHAR(3) NOT NULL WITH DEFAULT                        
+                                                          
+       ,SPECIAL_PROC_CD   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,SPECIAL_REC_TYPE   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,SPECIAL_ORIG_CD   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,LOCATION_ID   CHAR(30) NOT NULL WITH DEFAULT                    
+                                                          
+       ,GRP_ID_1   CHAR(25) NOT NULL WITH DEFAULT                       
+                                                          
+       ,GRP_ID_2   CHAR(25) NOT NULL WITH DEFAULT                       
+                                                          
+       ,GRP_ID_3   CHAR(25) NOT NULL WITH DEFAULT                       
+                                                          
+       ,ID_OR_ACCTG_CD   CHAR(11) NOT NULL WITH DEFAULT                 
+                                                          
+       ,CALLING_CARD_NBR   CHAR(14) NOT NULL WITH DEFAULT               
+                                                          
+       ,CONF_ID   CHAR(9) NOT NULL WITH DEFAULT                         
+                                                          
+       ,USAGE_EVENT_DATE   CHAR(10) NOT NULL WITH DEFAULT               
+                                                          
+       ,CONNECT_TIME   CHAR(6) NOT NULL WITH DEFAULT                    
+                                                          
+       ,USAGE_TYPE_IND   CHAR(2) NOT NULL WITH DEFAULT                  
+                                                          
+       ,BILLABLE_UNITS_FMT   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,BILLABLE_UNITS   CHAR(10) NOT NULL WITH DEFAULT                 
+                                                          
+       ,ORIG_NBR   CHAR(20) NOT NULL WITH DEFAULT                       
+                                                          
+       ,ORIG_CITY_COUNTRY   CHAR(20) NOT NULL WITH DEFAULT              
+                                                          
+       ,ORIG_STATE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                          
+       ,ORIG_COUNTRY_CD   CHAR(3) NOT NULL WITH DEFAULT                 
+                                                          
+       ,TERM_NBR   CHAR(20) NOT NULL WITH DEFAULT                       
+                                                          
+       ,TERM_CITY_COUNTRY   CHAR(20) NOT NULL WITH DEFAULT              
+                                                          
+       ,TERM_STATE   CHAR(2) NOT NULL WITH DEFAULT                      
+                                                          
+       ,TERM_COUNTRY_CD   CHAR(3) NOT NULL WITH DEFAULT                 
+                                                          
+       ,CHARGE_AMT   DECIMAL(15, 5) NOT NULL WITH DEFAULT               
+       ,PPHONE_USAGE_CHG   DECIMAL(7, 2) NOT NULL WITH DEFAULT          
+       ,CHARGE_AMT_SUR   DECIMAL(7, 2) NOT NULL WITH DEFAULT            
+       ,TAX_AMT   DECIMAL(11, 6) NOT NULL WITH DEFAULT                  
+       ,DISCOUNT_AMT   DECIMAL(13, 2) NOT NULL WITH DEFAULT             
+       ,INBND_OUTBND_IND   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,TOLLFREE_IND   CHAR(1) NOT NULL WITH DEFAULT                    
+                                                          
+       ,BALANCING_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                          
+       ,NETWK_ORIG_TERM_CD   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,JURISDICTION_TX_CD   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,PRICING_METHOD   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,RATE_PERIOD   CHAR(2) NOT NULL WITH DEFAULT                     
+                                                          
+       ,CALL_TYPE   CHAR(2) NOT NULL WITH DEFAULT                       
+                                                          
+       ,BLOCK_FROM_DISP   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,ACCESS_CODE_CONF   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,CELLULAR_CALLS   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,CELL_USAGE_TYPE   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,CPN_IND   CHAR(1) NOT NULL WITH DEFAULT                         
+                                                          
+       ,CCID   CHAR(1) NOT NULL WITH DEFAULT                            
+                                                          
+       ,DATA_CALL_SPEED   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,ADV_CARD_FEAT_CD   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,ENHANCED_FEAT_CD   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,NCP_CODE   CHAR(1) NOT NULL WITH DEFAULT                        
+                                                          
+       ,OP_ASSISTED_CODE   CHAR(1) NOT NULL WITH DEFAULT                
+                                                          
+       ,PRODUCT_FAMILY   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,PRODUCT_ID_TYPE   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,PRODUCT_ID   CHAR(10) NOT NULL WITH DEFAULT                     
+                                                          
+       ,PIC_DIRECTIONAL_CD   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,PPHONE_INFO_DIGITS   CHAR(2) NOT NULL WITH DEFAULT              
+                                                          
+       ,SERVICE_METHOD   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,USAGE_ENTITY_CD   CHAR(1) NOT NULL WITH DEFAULT                 
+                                                          
+       ,TEXT_KEY_NBR1   INTEGER NOT NULL WITH DEFAULT                   
+       ,TEXT_KEY_NBR2   INTEGER NOT NULL WITH DEFAULT                   
+       ,TEXT_KEY_NBR3   INTEGER NOT NULL WITH DEFAULT                   
+       ,DNIS_ID   CHAR(10) NOT NULL WITH DEFAULT                        
+                                                          
+       ,NIVR_SIVR_IND   CHAR(1) NOT NULL WITH DEFAULT                   
+                                                          
+       ,SWITCH_CD   CHAR(4) NOT NULL WITH DEFAULT                       
+                                                          
+       ,QTY   CHAR(5) NOT NULL WITH DEFAULT                             
+                                                          
+       ,PLAT_MINS   DECIMAL(11, 2) NOT NULL WITH DEFAULT                
+       ,PLAT_USAGE_CHG   DECIMAL(11, 2) NOT NULL WITH DEFAULT           
+       ,XPORT_USAGE_CHG   DECIMAL(11, 2) NOT NULL WITH DEFAULT          
+       ,CALL_TAKEBK_COUNT   SMALLINT NOT NULL WITH DEFAULT              
+       ,MENU_ROUTING_COUNT   SMALLINT NOT NULL WITH DEFAULT             
+       ,MSG_ANNOUNCE_COUNT   SMALLINT NOT NULL WITH DEFAULT             
+       ,DB_ROUTING_COUNT   SMALLINT NOT NULL WITH DEFAULT               
+       ,BUSY_ACC_COUNT   SMALLINT NOT NULL WITH DEFAULT                 
+       ,TAKEBK_XFER_COUNT   SMALLINT NOT NULL WITH DEFAULT              
+       ,CALING_CD_DISP_IND   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,USAGE_SUB_CAT   CHAR(5) NOT NULL WITH DEFAULT                   
+                                                          
+       ,ECR_LEGEND_CD   CHAR(6) NOT NULL WITH DEFAULT                   
+                                                          
+       ,TRANSPORT_MINS   DECIMAL(10, 2) NOT NULL WITH DEFAULT           
+       ,QUEUING_MINS   DECIMAL(10, 2) NOT NULL WITH DEFAULT             
+       ,QUEUING_USG_CHGS   DECIMAL(10, 2) NOT NULL WITH DEFAULT         
+       ,ORIG_LATA   SMALLINT NOT NULL WITH DEFAULT                      
+       ,TERM_LATA   SMALLINT NOT NULL WITH DEFAULT                      
+       ,FREQ_CALL_NBR   INTEGER NOT NULL WITH DEFAULT                   
+       ,TOTAL_FREQ_CALLS   INTEGER NOT NULL WITH DEFAULT                
+       ,FREQ_TOTAL_AMT   DECIMAL(13, 3) NOT NULL WITH DEFAULT           
+       ,SVC_METHOD   CHAR(3) NOT NULL WITH DEFAULT                      
+                                                          
+       ,TRAFFIC_USE_CLASS   CHAR(1) NOT NULL WITH DEFAULT               
+                                                          
+       ,SUB_CLASS_ITEM   CHAR(1) NOT NULL WITH DEFAULT                  
+                                                          
+       ,ORIG_CNTRY_CD_ID   INTEGER NOT NULL WITH DEFAULT                
+       ,TERM_CNTRY_CD_ID   INTEGER NOT NULL WITH DEFAULT                
+       ,GRP_ID_1_ID   INTEGER NOT NULL WITH DEFAULT                     
+       ,GRP_ID_2_ID   INTEGER NOT NULL WITH DEFAULT                     
+       ,GRP_ID_3_ID   INTEGER NOT NULL WITH DEFAULT                     
+       ,PROJECT_NBR   CHAR(16) NOT NULL WITH DEFAULT                    
+                                                          
+       ,ACCT_CD_ID   INTEGER NOT NULL WITH DEFAULT                      
+       ,CONF_ID_ID   INTEGER NOT NULL WITH DEFAULT                      
+       ,MOD_PHRASE_CD   CHAR(30) NOT NULL WITH DEFAULT                  
+                                                          
+       ,PRODUCT_ID_ID   INTEGER NOT NULL WITH DEFAULT                   
+       ,CONN_ANNOUNCE_CNT   SMALLINT NOT NULL WITH DEFAULT              
+       ,CLI_USE_IND   CHAR(2) NOT NULL WITH DEFAULT                     
+                                                          
+       ,CLI_NUM   VARCHAR(70) NOT NULL WITH DEFAULT                     
+                                                          
+       ,DIAL_CODE   CHAR(20)                                            
+                                                          
+       ,CCID_EMEA   CHAR(5)                                             
+                                                          
+       ,EXTENSION   CHAR(30)                                            
+                                                          
+       ,TERM_CITY_CNTRY   CHAR(50)                                      
+                                                          
+       ,LINE_TYPE   CHAR(1)                                             
+                                                          
+       ,COST_CENTER_CD   CHAR(14)                                       
+                                                          
+       ,GRP_CD   CHAR(3)                                                
+                                                          
+       ,DESCR_GRP   CHAR(50)                                            
+                                                          
+       ,MOD_PHRASE_CD_ID   INTEGER NOT NULL WITH DEFAULT                
+       ,NBR_ACCUMUL_RECS   INTEGER NOT NULL WITH DEFAULT                
+       ,USAGE_SUB_CAT_ID   INTEGER NOT NULL WITH DEFAULT                
+       ,MODULE_046   VARCHAR(35) NOT NULL WITH DEFAULT                  
+                                                          
+       ,MODULE_124   VARCHAR(11) NOT NULL WITH DEFAULT                  
+                                                          
+       ,JURISDICTN_DISP_CD   CHAR(1) NOT NULL WITH DEFAULT              
+                                                          
+       ,ECR_JURIS_DISP_CD   CHAR(1) NOT NULL WITH DEFAULT               
+                                                          
+       ,MODULE_028   VARCHAR(27) NOT NULL WITH DEFAULT                  
+                                                          
+       ,MODULE_065   VARCHAR(9) NOT NULL WITH DEFAULT                   
+                                                          
+       ,MODULE_129   VARCHAR(40) NOT NULL WITH DEFAULT                  
+                                                          
+       ,NETWRK_INGRES_IND   CHAR(1) NOT NULL WITH DEFAULT               
+                                                          
+       ,MOD_46_PTRS   VARCHAR(20) NOT NULL WITH DEFAULT                 
+                                                          
+       ,MODULE_056   VARCHAR(37) NOT NULL WITH DEFAULT                  
+                                                          
+       ,MODULE_094   VARCHAR(26) NOT NULL WITH DEFAULT                  
+                                                          
+       ,INTL_RATE   VARCHAR(100) NOT NULL WITH DEFAULT                  
+                                                          
+       ,INTL_DEST_GRP   VARCHAR(100) NOT NULL WITH DEFAULT              
+                                                          
+       ,TF_CORP   CHAR(8) NOT NULL WITH DEFAULT                         
+                                                          
+       ,MODULE_066   VARCHAR(33) NOT NULL WITH DEFAULT                  
+                                                          
+       ,M067_CODE_ID   INTEGER NOT NULL WITH DEFAULT                    
+       ,M067_CODE_VALUE   CHAR(10) NOT NULL WITH DEFAULT                
+                                                          
+       ,M067_CODE_DESC_KEY   INTEGER NOT NULL WITH DEFAULT              
+       ,ECR_ADDL_FEATURES   CHAR(1) NOT NULL WITH DEFAULT               
+                                                          
+       ,MODULE_160   VARCHAR(42) NOT NULL WITH DEFAULT                  
+                                                          
+       ,M045_PROD_LINE_ID   CHAR(5) NOT NULL WITH DEFAULT               
+                                                          
+       ,M045_PROD_ID_CD   CHAR(7) NOT NULL WITH DEFAULT                 
+                                                          
+       ,M045_PROD_LINE_ID_ID   INTEGER NOT NULL WITH DEFAULT            
+       ,M045_PROD_ID_CD_ID   INTEGER NOT NULL WITH DEFAULT              
+       ,BIN_FILE_SEQ_NBR   INTEGER NOT NULL WITH DEFAULT                
+       ,M099_01   CHAR(8) NOT NULL WITH DEFAULT                         
+                                                          
+       ,M099_02   CHAR(8) NOT NULL WITH DEFAULT                         
+                                                          
+       ,MODULE_300   CHAR(71) NOT NULL WITH DEFAULT                     
+                                                          
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+       ,MODULE_301   VARCHAR(16) NOT NULL WITH DEFAULT                  
+                                                          
+        )                                                               
+     ;                                                                  
+     CREATE UNIQUE                                                      
+        INDEX BMGVZP.VZ6200X1                                           
+       ON BMGVZP.VZ450_6200_T                                           
+        (                                                               
+         MAN ASC                                                        
+        ,MAN_BILL_DATE ASC                                              
+        ,ORIG_SYSTEM_ID ASC                                             
+        ,VZ450_SEQ_NBR ASC                                              
+        ,DUP_NUM ASC                                                    
+        ,GRP_ID_2 ASC                                                   
+        )                                                               
+         CLUSTER                                                        
+        PARTITION BY RANGE (                                            
+         PARTITION 1                                                    
+           ENDING AT ('DEC0129760   ', '2013-02-01', 'MU', 11345, 0, '  
+                       ')                                               
+         USING STOGROUP BMGVZPEA                                        
+         PRIQTY 7200                                                    
+         SECQTY -1                                                      
+         ERASE NO                                                       
+         FREEPAGE 0                                                     
+         PCTFREE 0                                                      
+         GBPCACHE CHANGED                                               
+         ,                                                              
+         PARTITION 2                                                    
+           ENDING AT ('DEC0241723   ', '2010-11-01', 'MU', 555840, 0, ' 
+                        ')                                              
+         USING STOGROUP BMGVZPEA                                        
+         PRIQTY 7200                                                    03340000
+         SECQTY -1                                                      03350000
+         ERASE NO                                                       03360000
+         FREEPAGE 0                                                     03370000
+         PCTFREE 0                                                      03380000
+         GBPCACHE CHANGED                                               03390000
+         ,                                                              03400000
+         PARTITION 3                                                    03410000
+           ENDING AT ('FRC0021615   ', '2012-02-01', 'MU', 1198096, 0, '03420000
+                         ')                                             03430000
+         USING STOGROUP BMGVZPEA                                        03440000
+         PRIQTY 7200                                                    03450000
+         SECQTY -1                                                      03460000
+         ERASE NO                                                       03470000
+         FREEPAGE 0                                                     03480000
+         PCTFREE 0                                                      03490000
+         GBPCACHE CHANGED                                               03500000
+         ,                                                              03510000
+         PARTITION 4                                                    03520000
+           ENDING AT ('SV000936     ', '2017-04-20', 'MH', 55212636, 0, 03530000
+'26                       ')                                            03540000
+         USING STOGROUP BMGVZPEA                                        03550000
+         PRIQTY 7200                                                    03560000
+         SECQTY -1                                                      03570000
+         ERASE NO                                                       03580000
+         FREEPAGE 0                                                     03590000
+         PCTFREE 0                                                      03600000
+         GBPCACHE CHANGED                                               03610000
+         ,                                                              03620000
+         PARTITION 5                                                    03630000
+           ENDING AT ('SV001616     ', '2017-11-20', 'MH', 1807334, 0, '03640000
+47                       ')                                             03650000
+         USING STOGROUP BMGVZPEA                                        03660000
+         PRIQTY 7200                                                    03670000
+         SECQTY -1                                                      03680000
+         ERASE NO                                                       03690000
+         FREEPAGE 0                                                     03700000
+         PCTFREE 0                                                      03710000
+         GBPCACHE CHANGED                                               03720000
+         ,                                                              03730000
+         PARTITION 6                                                    03740000
+           ENDING AT ('SV100154     ', '2017-06-20', 'MH', 2263983, 0, '03750000
+26                       ')                                             03760000
+         USING STOGROUP BMGVZPEA                                        03770000
+         PRIQTY 7200                                                    03780000
+         SECQTY -1                                                      03790000
+         ERASE NO                                                       03800000
+         FREEPAGE 0                                                     03810000
+         PCTFREE 0                                                      03820000
+         GBPCACHE CHANGED                                               03830000
+         ,                                                              03840000
+         PARTITION 7                                                    03850000
+           ENDING AT ('S0000401     ', '2017-04-20', 'MH', 3757852, 0, '03860000
+73                       ')                                             03870000
+         USING STOGROUP BMGVZPEA                                        03880000
+         PRIQTY 7200                                                    03890000
+         SECQTY -1                                                      03900000
+         ERASE NO                                                       03910000
+         FREEPAGE 0                                                     03920000
+         PCTFREE 0                                                      03930000
+         GBPCACHE CHANGED                                               03940000
+         ,                                                              03950000
+         PARTITION 8                                                    03960000
+           ENDING AT ('UKC2672530   ', '2016-08-01', 'MU', 21762, 0, '  03970000
+                       ')                                               03980000
+         USING STOGROUP BMGVZPEA                                        03990000
+         PRIQTY 7200                                                    04000000
+         SECQTY -1                                                      04010000
+         ERASE NO                                                       04020000
+         FREEPAGE 0                                                     04030000
+         PCTFREE 0                                                      04040000
+         GBPCACHE CHANGED                                               04050000
+         ,                                                              04060000
+         PARTITION 9                                                    04070000
+           ENDING AT ('X000024329   ', '2013-04-04', 'MU', 31475, 0, '  04080000
+                       ')                                               04090000
+         USING STOGROUP BMGVZPEA                                        04100000
+         PRIQTY 7200                                                    04110000
+         SECQTY -1                                                      04120000
+         ERASE NO                                                       04130000
+         FREEPAGE 0                                                     04140000
+         PCTFREE 0                                                      04150000
+         GBPCACHE CHANGED                                               04160000
+         ,                                                              04170000
+         PARTITION 10                                                   04180000
+           ENDING AT ('X000035326   ', '2013-04-01', 'MU', 1504237, 0, '04190000
+                         ')                                             04200000
+         USING STOGROUP BMGVZPEA                                        04210000
+         PRIQTY 7200                                                    04220000
+         SECQTY -1                                                      04230000
+         ERASE NO                                                       04240000
+         FREEPAGE 0                                                     04250000
+         PCTFREE 0                                                      04260000
+         GBPCACHE CHANGED                                               04270000
+         ,                                                              04280000
+         PARTITION 11                                                   04290000
+           ENDING AT ('X000109778   ', '2016-06-01', 'MU', 231793, 0, ' 04300000
+                        ')                                              04310000
+         USING STOGROUP BMGVZPEA                                        04320000
+         PRIQTY 7200                                                    04330000
+         SECQTY -1                                                      04340000
+         ERASE NO                                                       04350000
+         FREEPAGE 0                                                     04360000
+         PCTFREE 0                                                      04370000
+         GBPCACHE CHANGED                                               04380000
+         ,                                                              04390000
+         PARTITION 12                                                   04400000
+           ENDING AT ('X000199371   ', '2016-11-01', 'MU', 3697, 0, '   04410000
+                      ')                                                04420000
+         USING STOGROUP BMGVZPEA                                        04430000
+         PRIQTY 7200                                                    04440000
+         SECQTY -1                                                      04450000
+         ERASE NO                                                       04460000
+         FREEPAGE 0                                                     04470000
+         PCTFREE 0                                                      04480000
+         GBPCACHE CHANGED                                               04490000
+         ,                                                              04500000
+         PARTITION 13                                                   04510000
+           ENDING AT ('0000007335X25', '2016-12-01', 'M3', 1312, 0, 'VST04520000
+001                   ')                                                04530000
+         USING STOGROUP BMGVZPEA                                        04540000
+         PRIQTY 7200                                                    04550000
+         SECQTY -1                                                      04560000
+         ERASE NO                                                       04570000
+         FREEPAGE 0                                                     04580000
+         PCTFREE 0                                                      04590000
+         GBPCACHE CHANGED                                               04600000
+         ,                                                              04610000
+         PARTITION 14                                                   04620000
+           ENDING AT ('0000014834X26', '2016-11-01', 'M3', 62988, 0, 'VS04630000
+T001                   ')                                               04640000
+         USING STOGROUP BMGVZPEA                                        04650000
+         PRIQTY 7200                                                    04660000
+         SECQTY -1                                                      04670000
+         ERASE NO                                                       04680000
+         FREEPAGE 0                                                     04690000
+         PCTFREE 0                                                      04700000
+         GBPCACHE CHANGED                                               04710000
+         ,                                                              04720000
+         PARTITION 15                                                   04730000
+           ENDING AT ('0000015173X26', '2016-11-01', 'M3', 263682, 0, 'V04740000
+ST009                   ')                                              04750000
+         USING STOGROUP BMGVZPEA                                        04760000
+         PRIQTY 7200                                                    04770000
+         SECQTY -1                                                      04780000
+         ERASE NO                                                       04790000
+         FREEPAGE 0                                                     04800000
+         PCTFREE 0                                                      04810000
+         GBPCACHE CHANGED                                               04820000
+         ,                                                              04830000
+         PARTITION 16                                                   04840000
+           ENDING AT ('0000018188X25', '2011-11-01', 'M3', 39768, 0, 'VS04850000
+T009                   ')                                               04860000
+         USING STOGROUP BMGVZPEA                                        04870000
+         PRIQTY 7200                                                    04880000
+         SECQTY -1                                                      04890000
+         ERASE NO                                                       04900000
+         FREEPAGE 0                                                     04910000
+         PCTFREE 0                                                      04920000
+         GBPCACHE CHANGED                                               04930000
+         ,                                                              04940000
+         PARTITION 17                                                   04950000
+           ENDING AT ('0000018418X25', '2018-03-01', 'M3', 556211, 0, 'V04960000
+ST009                   ')                                              04970000
+         USING STOGROUP BMGVZPEA                                        04980000
+         PRIQTY 7200                                                    04990000
+         SECQTY -1                                                      05000000
+         ERASE NO                                                       05010000
+         FREEPAGE 0                                                     05020000
+         PCTFREE 0                                                      05030000
+         GBPCACHE CHANGED                                               05040000
+         ,                                                              05050000
+         PARTITION 18                                                   05060000
+           ENDING AT ('0000054123X25', '2017-10-03', 'M3', 1294264, 0, '05070000
+VST002                   ')                                             05080000
+         USING STOGROUP BMGVZPEA                                        05090000
+         PRIQTY 7200                                                    05100000
+         SECQTY -1                                                      05110000
+         ERASE NO                                                       05120000
+         FREEPAGE 0                                                     05130000
+         PCTFREE 0                                                      05140000
+         GBPCACHE CHANGED                                               05150000
+         ,                                                              05160000
+         PARTITION 19                                                   05170000
+           ENDING AT ('0002000005825', '2017-08-08', 'XO', 10208, 0, '  05180000
+                       ')                                               05190000
+         USING STOGROUP BMGVZPEA                                        05200000
+         PRIQTY 7200                                                    05210000
+         SECQTY -1                                                      05220000
+         ERASE NO                                                       05230000
+         FREEPAGE 0                                                     05240000
+         PCTFREE 0                                                      05250000
+         GBPCACHE CHANGED                                               05260000
+         ,                                                              05270000
+         PARTITION 20                                                   05280000
+           ENDING AT ('00101543CG   ', '2017-04-08', 'PO', 55026, 0, '2005290000
+5260                   ')                                               05300000
+         USING STOGROUP BMGVZPEA                                        05310000
+         PRIQTY 7200                                                    05320000
+         SECQTY -1                                                      05330000
+         ERASE NO                                                       05340000
+         FREEPAGE 0                                                     05350000
+         PCTFREE 0                                                      05360000
+         GBPCACHE CHANGED                                               05370000
+         ,                                                              05380000
+         PARTITION 21                                                   05390000
+           ENDING AT ('00103044CG   ', '2018-01-08', 'PO', 2262221, 0, '05400000
+205260                   ')                                             05410000
+         USING STOGROUP BMGVZPEA                                        05420000
+         PRIQTY 7200                                                    05430000
+         SECQTY -1                                                      05440000
+         ERASE NO                                                       05450000
+         FREEPAGE 0                                                     05460000
+         PCTFREE 0                                                      05470000
+         GBPCACHE CHANGED                                               05480000
+         ,                                                              05490000
+         PARTITION 22                                                   05500000
+           ENDING AT ('00103083CG   ', '2017-03-08', 'PO', 5674823, 0, '05510000
+205260                   ')                                             05520000
+         USING STOGROUP BMGVZPEA                                        05530000
+         PRIQTY 7200                                                    05540000
+         SECQTY -1                                                      05550000
+         ERASE NO                                                       05560000
+         FREEPAGE 0                                                     05570000
+         PCTFREE 0                                                      05580000
+         GBPCACHE CHANGED                                               05590000
+         ,                                                              05600000
+         PARTITION 23                                                   05610000
+           ENDING AT ('00103261CG   ', '2016-12-08', 'PO', 23745, 0, '2005620000
+5260                   ')                                               05630000
+         USING STOGROUP BMGVZPEA                                        05640000
+         PRIQTY 7200                                                    05650000
+         SECQTY -1                                                      05660000
+         ERASE NO                                                       05670000
+         FREEPAGE 0                                                     05680000
+         PCTFREE 0                                                      05690000
+         GBPCACHE CHANGED                                               05700000
+         ,                                                              05710000
+         PARTITION 24                                                   05720000
+           ENDING AT ('00103283CG   ', '2017-02-08', 'PO', 825505, 0, '205730000
+05260                   ')                                              05740000
+         USING STOGROUP BMGVZPEA                                        05750000
+         PRIQTY 7200                                                    05760000
+         SECQTY -1                                                      05770000
+         ERASE NO                                                       05780000
+         FREEPAGE 0                                                     05790000
+         PCTFREE 0                                                      05800000
+         GBPCACHE CHANGED                                               05810000
+         ,                                                              05820000
+         PARTITION 25                                                   05830000
+           ENDING AT ('00104479CG   ', '2016-04-08', 'PO', 199362, 0, '205840000
+05260                   ')                                              05850000
+         USING STOGROUP BMGVZPEA                                        05860000
+         PRIQTY 7200                                                    05870000
+         SECQTY -1                                                      05880000
+         ERASE NO                                                       05890000
+         FREEPAGE 0                                                     05900000
+         PCTFREE 0                                                      05910000
+         GBPCACHE CHANGED                                               05920000
+         ,                                                              05930000
+         PARTITION 26                                                   05940000
+           ENDING AT ('00104633CG   ', '2016-10-08', 'PO', 332405, 0, '205950000
+05260                   ')                                              05960000
+         USING STOGROUP BMGVZPEA                                        05970000
+         PRIQTY 7200                                                    05980000
+         SECQTY -1                                                      05990000
+         ERASE NO                                                       06000000
+         FREEPAGE 0                                                     06010000
+         PCTFREE 0                                                      06020000
+         GBPCACHE CHANGED                                               06030000
+         ,                                                              06040000
+         PARTITION 27                                                   06050000
+           ENDING AT ('00105875CG   ', '2017-02-08', 'PO', 426060, 0, '206060000
+05260                   ')                                              06070000
+         USING STOGROUP BMGVZPEA                                        06080000
+         PRIQTY 7200                                                    06090000
+         SECQTY -1                                                      06100000
+         ERASE NO                                                       06110000
+         FREEPAGE 0                                                     06120000
+         PCTFREE 0                                                      06130000
+         GBPCACHE CHANGED                                               06140000
+         ,                                                              06150000
+         PARTITION 28                                                   06160000
+           ENDING AT ('00106704CG   ', '2017-03-08', 'PO', 471429, 0, '206170000
+05260                   ')                                              06180000
+         USING STOGROUP BMGVZPEA                                        06190000
+         PRIQTY 7200                                                    06200000
+         SECQTY -1                                                      06210000
+         ERASE NO                                                       06220000
+         FREEPAGE 0                                                     06230000
+         PCTFREE 0                                                      06240000
+         GBPCACHE CHANGED                                               06250000
+         ,                                                              06260000
+         PARTITION 29                                                   06270000
+           ENDING AT ('00108060CG   ', '2016-11-08', 'PO', 65215, 0, '2006280000
+5260                   ')                                               06290000
+         USING STOGROUP BMGVZPEA                                        06300000
+         PRIQTY 7200                                                    06310000
+         SECQTY -1                                                      06320000
+         ERASE NO                                                       06330000
+         FREEPAGE 0                                                     06340000
+         PCTFREE 0                                                      06350000
+         GBPCACHE CHANGED                                               06360000
+         ,                                                              06370000
+         PARTITION 30                                                   06380000
+           ENDING AT ('00109429CG   ', '2016-01-08', 'PO', 328453, 0, '206390000
+05260                   ')                                              06400000
+         USING STOGROUP BMGVZPEA                                        06410000
+         PRIQTY 7200                                                    06420000
+         SECQTY -1                                                      06430000
+         ERASE NO                                                       06440000
+         FREEPAGE 0                                                     06450000
+         PCTFREE 0                                                      06460000
+         GBPCACHE CHANGED                                               06470000
+         ,                                                              06480000
+         PARTITION 31                                                   06490000
+           ENDING AT ('00111298CG   ', '2016-09-08', 'PO', 66081, 0, '2006500000
+5260                   ')                                               06510000
+         USING STOGROUP BMGVZPEA                                        06520000
+         PRIQTY 7200                                                    06530000
+         SECQTY -1                                                      06540000
+         ERASE NO                                                       06550000
+         FREEPAGE 0                                                     06560000
+         PCTFREE 0                                                      06570000
+         GBPCACHE CHANGED                                               06580000
+         ,                                                              06590000
+         PARTITION 32                                                   06600000
+           ENDING AT ('00116203CG   ', '2016-11-08', 'PO', 478769, 0, '206610000
+05260                   ')                                              06620000
+         USING STOGROUP BMGVZPEA                                        06630000
+         PRIQTY 7200                                                    06640000
+         SECQTY -1                                                      06650000
+         ERASE NO                                                       06660000
+         FREEPAGE 0                                                     06670000
+         PCTFREE 0                                                      06680000
+         GBPCACHE CHANGED                                               06690000
+         ,                                                              06700000
+         PARTITION 33                                                   06710000
+           ENDING AT ('08655131124  ', '2016-06-16', 'MK', 729, 0, '    06720000
+                     ')                                                 06730000
+         USING STOGROUP BMGVZPEA                                        06740000
+         PRIQTY 7200                                                    06750000
+         SECQTY -1                                                      06760000
+         ERASE NO                                                       06770000
+         FREEPAGE 0                                                     06780000
+         PCTFREE 0                                                      06790000
+         GBPCACHE CHANGED                                               06800000
+         ,                                                              06810000
+         PARTITION 34                                                   06820000
+           ENDING AT ('08688693318  ', '2016-03-19', 'MK', 1078, 0, '   06830000
+                      ')                                                06840000
+         USING STOGROUP BMGVZPEA                                        06850000
+         PRIQTY 7200                                                    06860000
+         SECQTY -1                                                      06870000
+         ERASE NO                                                       06880000
+         FREEPAGE 0                                                     06890000
+         PCTFREE 0                                                      06900000
+         GBPCACHE CHANGED                                               06910000
+         ,                                                              06920000
+         PARTITION 35                                                   06930000
+           ENDING AT ('08692523852  ', '2012-05-07', 'MK', 369, 0, '    06940000
+                     ')                                                 06950000
+         USING STOGROUP BMGVZPEA                                        06960000
+         PRIQTY 7200                                                    06970000
+         SECQTY -1                                                      06980000
+         ERASE NO                                                       06990000
+         FREEPAGE 0                                                     07000000
+         PCTFREE 0                                                      07010000
+         GBPCACHE CHANGED                                               07020000
+         ,                                                              07030000
+         PARTITION 36                                                   07040000
+           ENDING AT ('1000000080016', '2018-05-08', 'XO', 71824, 0, '  07050000
+                       ')                                               07060000
+         USING STOGROUP BMGVZPEA                                        07070000
+         PRIQTY 7200                                                    07080000
+         SECQTY -1                                                      07090000
+         ERASE NO                                                       07100000
+         FREEPAGE 0                                                     07110000
+         PCTFREE 0                                                      07120000
+         GBPCACHE CHANGED                                               07130000
+         ,                                                              07140000
+         PARTITION 37                                                   07150000
+           ENDING AT ('4000000032495', '2017-08-08', 'XO', 59209, 0, '  07160000
+                       ')                                               07170000
+         USING STOGROUP BMGVZPEA                                        07180000
+         PRIQTY 7200                                                    07190000
+         SECQTY -1                                                      07200000
+         ERASE NO                                                       07210000
+         FREEPAGE 0                                                     07220000
+         PCTFREE 0                                                      07230000
+         GBPCACHE CHANGED                                               07240000
+         ,                                                              07250000
+         PARTITION 38                                                   07260000
+           ENDING AT ('4000000123583', '2017-11-08', 'XO', 223, 0, '    07270000
+                     ')                                                 07280000
+         USING STOGROUP BMGVZPEA                                        07290000
+         PRIQTY 7200                                                    07300000
+         SECQTY -1                                                      07310000
+         ERASE NO                                                       07320000
+         FREEPAGE 0                                                     07330000
+         PCTFREE 0                                                      07340000
+         GBPCACHE CHANGED                                               07350000
+         ,                                                              07360000
+         PARTITION 39                                                   07370000
+           ENDING AT ('4000000174677', '2017-08-08', 'XO', 11972, 0, '  07380000
+                       ')                                               07390000
+         USING STOGROUP BMGVZPEA                                        07400000
+         PRIQTY 7200                                                    07410000
+         SECQTY -1                                                      07420000
+         ERASE NO                                                       07430000
+         FREEPAGE 0                                                     07440000
+         PCTFREE 0                                                      07450000
+         GBPCACHE CHANGED                                               07460000
+         ,                                                              07470000
+         PARTITION 40                                                   07480000
+           ENDING AT ('4000000212115', '2017-12-08', 'XO', 31395, 0, '  07490000
+                       ')                                               07500000
+         USING STOGROUP BMGVZPEA                                        07510000
+         PRIQTY 7200                                                    07520000
+         SECQTY -1                                                      07530000
+         ERASE NO                                                       07540000
+         FREEPAGE 0                                                     07550000
+         PCTFREE 0                                                      07560000
+         GBPCACHE CHANGED                                               07570000
+         ,                                                              07580000
+         PARTITION 41                                                   07590000
+           ENDING AT ('6000036199X26', '2012-11-26', 'M3', 53587, 0, 'VS07600000
+T009                   ')                                               07610000
+         USING STOGROUP BMGVZPEA                                        07620000
+         PRIQTY 7200                                                    07630000
+         SECQTY -1                                                      07640000
+         ERASE NO                                                       07650000
+         FREEPAGE 0                                                     07660000
+         PCTFREE 0                                                      07670000
+         GBPCACHE CHANGED                                               07680000
+         ,                                                              07690000
+         PARTITION 42                                                   07700000
+           ENDING AT ('6000051545X26', '2012-09-26', 'M3', 970576, 0, 'V07710000
+ST002                   ')                                              07720000
+         USING STOGROUP BMGVZPEA                                        07730000
+         PRIQTY 7200                                                    07740000
+         SECQTY -1                                                      07750000
+         ERASE NO                                                       07760000
+         FREEPAGE 0                                                     07770000
+         PCTFREE 0                                                      07780000
+         GBPCACHE CHANGED                                               07790000
+         ,                                                              07800000
+         PARTITION 43                                                   07810000
+           ENDING AT ('6000058920X26', '2012-11-01', 'M3', 253512, 0, 'V07820000
+ST009                   ')                                              07830000
+         USING STOGROUP BMGVZPEA                                        07840000
+         PRIQTY 7200                                                    07850000
+         SECQTY -1                                                      07860000
+         ERASE NO                                                       07870000
+         FREEPAGE 0                                                     07880000
+         PCTFREE 0                                                      07890000
+         GBPCACHE CHANGED                                               07900000
+         ,                                                              07910000
+         PARTITION 44                                                   07920000
+           ENDING AT ('6000066165X26', '2012-07-26', 'M3', 425, 0, 'VST007930000
+09                   ')                                                 07940000
+         USING STOGROUP BMGVZPEA                                        07950000
+         PRIQTY 7200                                                    07960000
+         SECQTY -1                                                      07970000
+         ERASE NO                                                       07980000
+         FREEPAGE 0                                                     07990000
+         PCTFREE 0                                                      08000000
+         GBPCACHE CHANGED                                               08010000
+         ,                                                              08020000
+         PARTITION 45                                                   08030000
+           ENDING AT ('6000070708X26', '2013-01-01', 'M3', 1885, 0, 'VST08040000
+009                   ')                                                08050000
+         USING STOGROUP BMGVZPEA                                        08060000
+         PRIQTY 7200                                                    08070000
+         SECQTY -1                                                      08080000
+         ERASE NO                                                       08090000
+         FREEPAGE 0                                                     08100000
+         PCTFREE 0                                                      08110000
+         GBPCACHE CHANGED                                               08120000
+         ,                                                              08130000
+         PARTITION 46                                                   08140000
+           ENDING AT ('6000076029X26', '2013-05-01', 'M3', 127, 0, 'VST008150000
+09                   ')                                                 08160000
+         USING STOGROUP BMGVZPEA                                        08170000
+         PRIQTY 7200                                                    08180000
+         SECQTY -1                                                      08190000
+         ERASE NO                                                       08200000
+         FREEPAGE 0                                                     08210000
+         PCTFREE 0                                                      08220000
+         GBPCACHE CHANGED                                               08230000
+         ,                                                              08240000
+         PARTITION 47                                                   08250000
+           ENDING AT ('8760047823X26', '2012-10-01', 'M3', 437129, 0, 'V08260000
+ST002                   ')                                              08270000
+         USING STOGROUP BMGVZPEA                                        08280000
+         PRIQTY 7200                                                    08290000
+         SECQTY -1                                                      08300000
+         ERASE NO                                                       08310000
+         FREEPAGE 0                                                     08320000
+         PCTFREE 0                                                      08330000
+         GBPCACHE CHANGED                                               08340000
+         ,                                                              08350000
+         PARTITION 48                                                   08360000
+           ENDING AT ('90043518     ', '2012-05-25', 'M2', 323931, 0, '108370000
+                        ')                                              08380000
+         USING STOGROUP BMGVZPEA                                        08390000
+         PRIQTY 7200                                                    08400000
+         SECQTY -1                                                      08410000
+         ERASE NO                                                       08420000
+         FREEPAGE 0                                                     08430000
+         PCTFREE 0                                                      08440000
+         GBPCACHE CHANGED                                               08450000
+         ,                                                              08460000
+         PARTITION 49                                                   08470000
+           ENDING AT ('90078645     ', '2013-06-25', 'M2', 811024, 0, '208480000
+                        ')                                              08490000
+         USING STOGROUP BMGVZPEA                                        08500000
+         PRIQTY 7200                                                    08510000
+         SECQTY -1                                                      08520000
+         ERASE NO                                                       08530000
+         FREEPAGE 0                                                     08540000
+         PCTFREE 0                                                      08550000
+         GBPCACHE CHANGED                                               08560000
+         ,                                                              08570000
+         PARTITION 50                                                   08580000
+           ENDING AT ('90132061     ', '2013-06-25', 'M2', 729841, 0, '108590000
+                        ')                                              08600000
+         USING STOGROUP BMGVZPEA                                        08610000
+         PRIQTY 7200                                                    08620000
+         SECQTY -1                                                      08630000
+         ERASE NO                                                       08640000
+         FREEPAGE 0                                                     08650000
+         PCTFREE 0                                                      08660000
+         GBPCACHE CHANGED                                               08670000
+         ,                                                              08680000
+         PARTITION 51                                                   08690000
+           ENDING AT ('90206628     ', '2012-09-10', 'M1', 253940, 0, '108700000
+                        ')                                              08710000
+         USING STOGROUP BMGVZPEA                                        08720000
+         PRIQTY 7200                                                    08730000
+         SECQTY -1                                                      08740000
+         ERASE NO                                                       08750000
+         FREEPAGE 0                                                     08760000
+         PCTFREE 0                                                      08770000
+         GBPCACHE CHANGED                                               08780000
+         ,                                                              08790000
+         PARTITION 52                                                   08800000
+           ENDING AT ('90244373     ', '2012-11-10', 'M1', 816965, 0, '108810000
+                        ')                                              08820000
+         USING STOGROUP BMGVZPEA                                        08830000
+         PRIQTY 7200                                                    08840000
+         SECQTY -1                                                      08850000
+         ERASE NO                                                       08860000
+         FREEPAGE 0                                                     08870000
+         PCTFREE 0                                                      08880000
+         GBPCACHE CHANGED                                               08890000
+         ,                                                              08900000
+         PARTITION 53                                                   08910000
+           ENDING AT ('90287495     ', '2013-04-25', 'M2', 20563, 0, '1 08920000
+                       ')                                               08930000
+         USING STOGROUP BMGVZPEA                                        08940000
+         PRIQTY 7200                                                    08950000
+         SECQTY -1                                                      08960000
+         ERASE NO                                                       08970000
+         FREEPAGE 0                                                     08980000
+         PCTFREE 0                                                      08990000
+         GBPCACHE CHANGED                                               09000000
+         ,                                                              09010000
+         PARTITION 54                                                   09020000
+           ENDING AT ('90344491     ', '2013-01-10', 'M1', 81230, 0, '1 09030000
+                       ')                                               09040000
+         USING STOGROUP BMGVZPEA                                        09050000
+         PRIQTY 7200                                                    09060000
+         SECQTY -1                                                      09070000
+         ERASE NO                                                       09080000
+         FREEPAGE 0                                                     09090000
+         PCTFREE 0                                                      09100000
+         GBPCACHE CHANGED                                               09110000
+         ,                                                              09120000
+         PARTITION 55                                                   09130000
+           ENDING AT ('90527260     ', '2013-01-25', 'M2', 150, 0, '1   09140000
+                     ')                                                 09150000
+         USING STOGROUP BMGVZPEA                                        09160000
+         PRIQTY 7200                                                    09170000
+         SECQTY -1                                                      09180000
+         ERASE NO                                                       09190000
+         FREEPAGE 0                                                     09200000
+         PCTFREE 0                                                      09210000
+         GBPCACHE CHANGED                                               09220000
+         ,                                                              09230000
+         PARTITION 56                                                   09240000
+           ENDING AT ('90621269     ', '2013-06-25', 'M2', 20351, 0, '1 09250000
+                       ')                                               09260000
+         USING STOGROUP BMGVZPEA                                        09270000
+         PRIQTY 7200                                                    09280000
+         SECQTY -1                                                      09290000
+         ERASE NO                                                       09300000
+         FREEPAGE 0                                                     09310000
+         PCTFREE 0                                                      09320000
+         GBPCACHE CHANGED                                               09330000
+         ,                                                              09340000
+         PARTITION 57                                                   09350000
+           ENDING AT ('90741319     ', '2012-11-25', 'M2', 100883, 0, '209360000
+                        ')                                              09370000
+         USING STOGROUP BMGVZPEA                                        09380000
+         PRIQTY 7200                                                    09390000
+         SECQTY -1                                                      09400000
+         ERASE NO                                                       09410000
+         FREEPAGE 0                                                     09420000
+         PCTFREE 0                                                      09430000
+         GBPCACHE CHANGED                                               09440000
+         ,                                                              09450000
+         PARTITION 58                                                   09460000
+           ENDING AT ('90926168     ', '2013-01-25', 'M2', 6858, 0, '1  09470000
+                      ')                                                09480000
+         USING STOGROUP BMGVZPEA                                        09490000
+         PRIQTY 7200                                                    09500000
+         SECQTY -1                                                      09510000
+         ERASE NO                                                       09520000
+         FREEPAGE 0                                                     09530000
+         PCTFREE 0                                                      09540000
+         GBPCACHE CHANGED                                               09550000
+         ,                                                              09560000
+         PARTITION 59                                                   09570000
+           ENDING AT ('91137174     ', '2013-01-25', 'M2', 55171, 0, '1 09580000
+                       ')                                               09590000
+         USING STOGROUP BMGVZPEA                                        09600000
+         PRIQTY 7200                                                    09610000
+         SECQTY -1                                                      09620000
+         ERASE NO                                                       09630000
+         FREEPAGE 0                                                     09640000
+         PCTFREE 0                                                      09650000
+         GBPCACHE CHANGED                                               09660000
+         ,                                                              09670000
+         PARTITION 60                                                   09680000
+           ENDING AT ('91266724     ')                                  09690000
+         USING STOGROUP BMGVZPEA                                        09700000
+         PRIQTY 7200                                                    09710000
+         SECQTY -1                                                      09720000
+         ERASE NO                                                       09730000
+         FREEPAGE 0                                                     09740000
+         PCTFREE 0                                                      09750000
+         GBPCACHE CHANGED                                               09760000
+         ,                                                              09770000
+         PARTITION 61                                                   09780000
+           ENDING AT ('91294579     ')                                  09790000
+         USING STOGROUP BMGVZPEA                                        09800000
+         PRIQTY 7200                                                    09810000
+         SECQTY -1                                                      09820000
+         ERASE NO                                                       09830000
+         FREEPAGE 0                                                     09840000
+         PCTFREE 0                                                      09850000
+         GBPCACHE CHANGED                                               09860000
+         ,                                                              09870000
+         PARTITION 62                                                   09880000
+           ENDING AT ('91325407     ')                                  09890000
+         USING STOGROUP BMGVZPEA                                        09900000
+         PRIQTY 7200                                                    09910000
+         SECQTY -1                                                      09920000
+         ERASE NO                                                       09930000
+         FREEPAGE 0                                                     09940000
+         PCTFREE 0                                                      09950000
+         GBPCACHE CHANGED                                               09960000
+         ,                                                              09970000
+         PARTITION 63                                                   09980000
+           ENDING AT ('91344448     ')                                  09990000
+         USING STOGROUP BMGVZPEA                                        10000000
+         PRIQTY 7200                                                    10010000
+         SECQTY -1                                                      10020000
+         ERASE NO                                                       10030000
+         FREEPAGE 0                                                     10040000
+         PCTFREE 0                                                      10050000
+         GBPCACHE CHANGED                                               10060000
+         ,                                                              10070000
+         PARTITION 64                                                   10080000
+           ENDING AT ('91387172     ')                                  10090000
+         USING STOGROUP BMGVZPEA                                        10100000
+         PRIQTY 7200                                                    10110000
+         SECQTY -1                                                      10120000
+         ERASE NO                                                       10130000
+         FREEPAGE 0                                                     10140000
+         PCTFREE 0                                                      10150000
+         GBPCACHE CHANGED                                               10160000
+         ,                                                              10170000
+         PARTITION 65                                                   10180000
+           ENDING AT ('91420456     ')                                  10190000
+         USING STOGROUP BMGVZPEA                                        10200000
+         PRIQTY 7200                                                    10210000
+         SECQTY -1                                                      10220000
+         ERASE NO                                                       10230000
+         FREEPAGE 0                                                     10240000
+         PCTFREE 0                                                      10250000
+         GBPCACHE CHANGED                                               10260000
+         ,                                                              10270000
+         PARTITION 66                                                   10280000
+           ENDING AT ('91485212     ')                                  10290000
+         USING STOGROUP BMGVZPEA                                        10300000
+         PRIQTY 7200                                                    10310000
+         SECQTY -1                                                      10320000
+         ERASE NO                                                       10330000
+         FREEPAGE 0                                                     10340000
+         PCTFREE 0                                                      10350000
+         GBPCACHE CHANGED                                               10360000
+         ,                                                              10370000
+         PARTITION 67                                                   10380000
+           ENDING AT ('9150035497X23')                                  10390000
+         USING STOGROUP BMGVZPEA                                        10400000
+         PRIQTY 7200                                                    10410000
+         SECQTY -1                                                      10420000
+         ERASE NO                                                       10430000
+         FREEPAGE 0                                                     10440000
+         PCTFREE 0                                                      10450000
+         GBPCACHE CHANGED                                               10460000
+         ,                                                              10470000
+         PARTITION 68                                                   10480000
+           ENDING AT ('9150037375X23')                                  10490000
+         USING STOGROUP BMGVZPEA                                        10500000
+         PRIQTY 7200                                                    10510000
+         SECQTY -1                                                      10520000
+         ERASE NO                                                       10530000
+         FREEPAGE 0                                                     10540000
+         PCTFREE 0                                                      10550000
+         GBPCACHE CHANGED                                               10560000
+         ,                                                              10570000
+         PARTITION 69                                                   10580000
+           ENDING AT ('9150164442X25')                                  10590000
+         USING STOGROUP BMGVZPEA                                        10600000
+         PRIQTY 7200                                                    10610000
+         SECQTY -1                                                      10620000
+         ERASE NO                                                       10630000
+         FREEPAGE 0                                                     10640000
+         PCTFREE 0                                                      10650000
+         GBPCACHE CHANGED                                               10660000
+         ,                                                              10670000
+         PARTITION 70                                                   10680000
+           ENDING AT ('9150196834X25')                                  10690000
+         USING STOGROUP BMGVZPEA                                        10700000
+         PRIQTY 7200                                                    10710000
+         SECQTY -1                                                      10720000
+         ERASE NO                                                       10730000
+         FREEPAGE 0                                                     10740000
+         PCTFREE 0                                                      10750000
+         GBPCACHE CHANGED                                               10760000
+         ,                                                              10770000
+         PARTITION 71                                                   10780000
+           ENDING AT ('9150224521X25', '2010-06-01', 'M3', 300343, 0, 'V10790000
+ST005                   ')                                              10800000
+         USING STOGROUP BMGVZPEA                                        10810000
+         PRIQTY 7200                                                    10820000
+         SECQTY -1                                                      10830000
+         ERASE NO                                                       10840000
+         FREEPAGE 0                                                     10850000
+         PCTFREE 0                                                      10860000
+         GBPCACHE CHANGED                                               10870000
+         ,                                                              10880000
+         PARTITION 72                                                   10890000
+           ENDING AT ('9150226544X25', '2010-07-01', 'M3', 138071, 0, 'V10900000
+ST005                   ')                                              10910000
+         USING STOGROUP BMGVZPEA                                        10920000
+         PRIQTY 7200                                                    10930000
+         SECQTY -1                                                      10940000
+         ERASE NO                                                       10950000
+         FREEPAGE 0                                                     10960000
+         PCTFREE 0                                                      10970000
+         GBPCACHE CHANGED                                               10980000
+         ,                                                              10990000
+         PARTITION 73                                                   11000000
+           ENDING AT ('9150236881X25', '2010-03-01', 'M3', 10294, 0, 'VS11010000
+T005                   ')                                               11020000
+         USING STOGROUP BMGVZPEA                                        11030000
+         PRIQTY 7200                                                    11040000
+         SECQTY -1                                                      11050000
+         ERASE NO                                                       11060000
+         FREEPAGE 0                                                     11070000
+         PCTFREE 0                                                      11080000
+         GBPCACHE CHANGED                                               11090000
+         ,                                                              11100000
+         PARTITION 74                                                   11110000
+           ENDING AT ('9150245492X25', '2012-03-01', 'M3', 198951, 0, 'V11120000
+ST001                   ')                                              11130000
+         USING STOGROUP BMGVZPEA                                        11140000
+         PRIQTY 7200                                                    11150000
+         SECQTY -1                                                      11160000
+         ERASE NO                                                       11170000
+         FREEPAGE 0                                                     11180000
+         PCTFREE 0                                                      11190000
+         GBPCACHE CHANGED                                               11200000
+         ,                                                              11210000
+         PARTITION 75                                                   11220000
+           ENDING AT ('91507292     ', '2011-08-10', 'M1', 622728, 0, '111230000
+                        ')                                              11240000
+         USING STOGROUP BMGVZPEA                                        11250000
+         PRIQTY 7200                                                    11260000
+         SECQTY -1                                                      11270000
+         ERASE NO                                                       11280000
+         FREEPAGE 0                                                     11290000
+         PCTFREE 0                                                      11300000
+         GBPCACHE CHANGED                                               11310000
+         ,                                                              11320000
+         PARTITION 76                                                   11330000
+           ENDING AT ('91637126     ')                                  11340000
+         USING STOGROUP BMGVZPEA                                        11350000
+         PRIQTY 7200                                                    11360000
+         SECQTY -1                                                      11370000
+         ERASE NO                                                       11380000
+         FREEPAGE 0                                                     11390000
+         PCTFREE 0                                                      11400000
+         GBPCACHE CHANGED                                               11410000
+         ,                                                              11420000
+         PARTITION 77                                                   11430000
+           ENDING AT ('91653868     ')                                  11440000
+         USING STOGROUP BMGVZPEA                                        11450000
+         PRIQTY 7200                                                    11460000
+         SECQTY -1                                                      11470000
+         ERASE NO                                                       11480000
+         FREEPAGE 0                                                     11490000
+         PCTFREE 0                                                      11500000
+         GBPCACHE CHANGED                                               11510000
+         ,                                                              11520000
+         PARTITION 78                                                   11530000
+           ENDING AT ('91673788     ')                                  11540000
+         USING STOGROUP BMGVZPEA                                        11550000
+         PRIQTY 7200                                                    11560000
+         SECQTY -1                                                      11570000
+         ERASE NO                                                       11580000
+         FREEPAGE 0                                                     11590000
+         PCTFREE 0                                                      11600000
+         GBPCACHE CHANGED                                               11610000
+         ,                                                              11620000
+         PARTITION 79                                                   11630000
+           ENDING AT ('91711847     ')                                  11640000
+         USING STOGROUP BMGVZPEA                                        11650000
+         PRIQTY 7200                                                    11660000
+         SECQTY -1                                                      11670000
+         ERASE NO                                                       11680000
+         FREEPAGE 0                                                     11690000
+         PCTFREE 0                                                      11700000
+         GBPCACHE CHANGED                                               11710000
+         ,                                                              11720000
+         PARTITION 80                                                   11730000
+           ENDING AT ('91728272     ')                                  11740000
+         USING STOGROUP BMGVZPEA                                        11750000
+         PRIQTY 7200                                                    11760000
+         SECQTY -1                                                      11770000
+         ERASE NO                                                       11780000
+         FREEPAGE 0                                                     11790000
+         PCTFREE 0                                                      11800000
+         GBPCACHE CHANGED                                               11810000
+         ,                                                              11820000
+         PARTITION 81                                                   11830000
+           ENDING AT ('91764845     ')                                  11840000
+         USING STOGROUP BMGVZPEA                                        11850000
+         PRIQTY 7200                                                    11860000
+         SECQTY -1                                                      11870000
+         ERASE NO                                                       11880000
+         FREEPAGE 0                                                     11890000
+         PCTFREE 0                                                      11900000
+         GBPCACHE CHANGED                                               11910000
+         ,                                                              11920000
+         PARTITION 82                                                   11930000
+           ENDING AT ('91776443     ')                                  11940000
+         USING STOGROUP BMGVZPEA                                        11950000
+         PRIQTY 7200                                                    11960000
+         SECQTY -1                                                      11970000
+         ERASE NO                                                       11980000
+         FREEPAGE 0                                                     11990000
+         PCTFREE 0                                                      12000000
+         GBPCACHE CHANGED                                               12010000
+         ,                                                              12020000
+         PARTITION 83                                                   12030000
+           ENDING AT ('91793460     ')                                  12040000
+         USING STOGROUP BMGVZPEA                                        12050000
+         PRIQTY 7200                                                    12060000
+         SECQTY -1                                                      12070000
+         ERASE NO                                                       12080000
+         FREEPAGE 0                                                     12090000
+         PCTFREE 0                                                      12100000
+         GBPCACHE CHANGED                                               12110000
+         ,                                                              12120000
+         PARTITION 84                                                   12130000
+           ENDING AT ('91831940     ')                                  12140000
+         USING STOGROUP BMGVZPEA                                        12150000
+         PRIQTY 7200                                                    12160000
+         SECQTY -1                                                      12170000
+         ERASE NO                                                       12180000
+         FREEPAGE 0                                                     12190000
+         PCTFREE 0                                                      12200000
+         GBPCACHE CHANGED                                               12210000
+         ,                                                              12220000
+         PARTITION 85                                                   12230000
+           ENDING AT ('91846441     ')                                  12240000
+         USING STOGROUP BMGVZPEA                                        12250000
+         PRIQTY 7200                                                    12260000
+         SECQTY -1                                                      12270000
+         ERASE NO                                                       12280000
+         FREEPAGE 0                                                     12290000
+         PCTFREE 0                                                      12300000
+         GBPCACHE CHANGED                                               12310000
+         ,                                                              12320000
+         PARTITION 86                                                   12330000
+           ENDING AT ('91895971     ')                                  12340000
+         USING STOGROUP BMGVZPEA                                        12350000
+         PRIQTY 7200                                                    12360000
+         SECQTY -1                                                      12370000
+         ERASE NO                                                       12380000
+         FREEPAGE 0                                                     12390000
+         PCTFREE 0                                                      12400000
+         GBPCACHE CHANGED                                               12410000
+         ,                                                              12420000
+         PARTITION 87                                                   12430000
+           ENDING AT ('91921135     ')                                  12440000
+         USING STOGROUP BMGVZPEA                                        12450000
+         PRIQTY 7200                                                    12460000
+         SECQTY -1                                                      12470000
+         ERASE NO                                                       12480000
+         FREEPAGE 0                                                     12490000
+         PCTFREE 0                                                      12500000
+         GBPCACHE CHANGED                                               12510000
+         ,                                                              12520000
+         PARTITION 88                                                   12530000
+           ENDING AT ('91941433     ')                                  12540000
+         USING STOGROUP BMGVZPEA                                        12550000
+         PRIQTY 7200                                                    12560000
+         SECQTY -1                                                      12570000
+         ERASE NO                                                       12580000
+         FREEPAGE 0                                                     12590000
+         PCTFREE 0                                                      12600000
+         GBPCACHE CHANGED                                               12610000
+         ,                                                              12620000
+         PARTITION 89                                                   12630000
+           ENDING AT ('91981991     ')                                  12640000
+         USING STOGROUP BMGVZPEA                                        12650000
+         PRIQTY 7200                                                    12660000
+         SECQTY -1                                                      12670000
+         ERASE NO                                                       12680000
+         FREEPAGE 0                                                     12690000
+         PCTFREE 0                                                      12700000
+         GBPCACHE CHANGED                                               12710000
+         ,                                                              12720000
+         PARTITION 90                                                   12730000
+           ENDING AT ('92043446     ')                                  12740000
+         USING STOGROUP BMGVZPEA                                        12750000
+         PRIQTY 7200                                                    12760000
+         SECQTY -1                                                      12770000
+         ERASE NO                                                       12780000
+         FREEPAGE 0                                                     12790000
+         PCTFREE 0                                                      12800000
+         GBPCACHE CHANGED                                               12810000
+         ,                                                              12820000
+         PARTITION 91                                                   12830000
+           ENDING AT ('92083475     ')                                  12840000
+         USING STOGROUP BMGVZPEA                                        12850000
+         PRIQTY 7200                                                    12860000
+         SECQTY -1                                                      12870000
+         ERASE NO                                                       12880000
+         FREEPAGE 0                                                     12890000
+         PCTFREE 0                                                      12900000
+         GBPCACHE CHANGED                                               12910000
+         ,                                                              12920000
+         PARTITION 92                                                   12930000
+           ENDING AT ('92143324     ')                                  12940000
+         USING STOGROUP BMGVZPEA                                        12950000
+         PRIQTY 7200                                                    12960000
+         SECQTY -1                                                      12970000
+         ERASE NO                                                       12980000
+         FREEPAGE 0                                                     12990000
+         PCTFREE 0                                                      13000000
+         GBPCACHE CHANGED                                               13010000
+         ,                                                              13020000
+         PARTITION 93                                                   13030000
+           ENDING AT ('92212214     ')                                  13040000
+         USING STOGROUP BMGVZPEA                                        13050000
+         PRIQTY 7200                                                    13060000
+         SECQTY -1                                                      13070000
+         ERASE NO                                                       13080000
+         FREEPAGE 0                                                     13090000
+         PCTFREE 0                                                      13100000
+         GBPCACHE CHANGED                                               13110000
+         ,                                                              13120000
+         PARTITION 94                                                   13130000
+           ENDING AT ('92261783     ')                                  13140000
+         USING STOGROUP BMGVZPEA                                        13150000
+         PRIQTY 7200                                                    13160000
+         SECQTY -1                                                      13170000
+         ERASE NO                                                       13180000
+         FREEPAGE 0                                                     13190000
+         PCTFREE 0                                                      13200000
+         GBPCACHE CHANGED                                               13210000
+         ,                                                              13220000
+         PARTITION 95                                                   13230000
+           ENDING AT ('92313339     ')                                  13240000
+         USING STOGROUP BMGVZPEA                                        13250000
+         PRIQTY 7200                                                    13260000
+         SECQTY -1                                                      13270000
+         ERASE NO                                                       13280000
+         FREEPAGE 0                                                     13290000
+         PCTFREE 0                                                      13300000
+         GBPCACHE CHANGED                                               13310000
+         ,                                                              13320000
+         PARTITION 96                                                   13330000
+           ENDING AT ('92386724     ')                                  13340000
+         USING STOGROUP BMGVZPEA                                        13350000
+         PRIQTY 7200                                                    13360000
+         SECQTY -1                                                      13370000
+         ERASE NO                                                       13380000
+         FREEPAGE 0                                                     13390000
+         PCTFREE 0                                                      13400000
+         GBPCACHE CHANGED                                               13410000
+         ,                                                              13420000
+         PARTITION 97                                                   13430000
+           ENDING AT ('92409506     ')                                  13440000
+         USING STOGROUP BMGVZPEA                                        13450000
+         PRIQTY 7200                                                    13460000
+         SECQTY -1                                                      13470000
+         ERASE NO                                                       13480000
+         FREEPAGE 0                                                     13490000
+         PCTFREE 0                                                      13500000
+         GBPCACHE CHANGED                                               13510000
+         ,                                                              13520000
+         PARTITION 98                                                   13530000
+           ENDING AT ('92421297     ')                                  13540000
+         USING STOGROUP BMGVZPEA                                        13550000
+         PRIQTY 7200                                                    13560000
+         SECQTY -1                                                      13570000
+         ERASE NO                                                       13580000
+         FREEPAGE 0                                                     13590000
+         PCTFREE 0                                                      13600000
+         GBPCACHE CHANGED                                               13610000
+         ,                                                              13620000
+         PARTITION 99                                                   13630000
+           ENDING AT ('92460646     ')                                  13640000
+         USING STOGROUP BMGVZPEA                                        13650000
+         PRIQTY 7200                                                    13660000
+         SECQTY -1                                                      13670000
+         ERASE NO                                                       13680000
+         FREEPAGE 0                                                     13690000
+         PCTFREE 0                                                      13700000
+         GBPCACHE CHANGED                                               13710000
+         ,                                                              13720000
+         PARTITION 100                                                  13730000
+           ENDING AT ('92507598     ')                                  13740000
+         USING STOGROUP BMGVZPEA                                        13750000
+         PRIQTY 7200                                                    13760000
+         SECQTY -1                                                      13770000
+         ERASE NO                                                       13780000
+         FREEPAGE 0                                                     13790000
+         PCTFREE 0                                                      13800000
+         GBPCACHE CHANGED                                               13810000
+         ,                                                              13820000
+         PARTITION 101                                                  13830000
+           ENDING AT ('92532700     ')                                  13840000
+         USING STOGROUP BMGVZPEA                                        13850000
+         PRIQTY 7200                                                    13860000
+         SECQTY -1                                                      13870000
+         ERASE NO                                                       13880000
+         FREEPAGE 0                                                     13890000
+         PCTFREE 0                                                      13900000
+         GBPCACHE CHANGED                                               13910000
+         ,                                                              13920000
+         PARTITION 102                                                  13930000
+           ENDING AT ('92567182     ')                                  13940000
+         USING STOGROUP BMGVZPEA                                        13950000
+         PRIQTY 7200                                                    13960000
+         SECQTY -1                                                      13970000
+         ERASE NO                                                       13980000
+         FREEPAGE 0                                                     13990000
+         PCTFREE 0                                                      14000000
+         GBPCACHE CHANGED                                               14010000
+         ,                                                              14020000
+         PARTITION 103                                                  14030000
+           ENDING AT ('92609086     ')                                  14040000
+         USING STOGROUP BMGVZPEA                                        14050000
+         PRIQTY 7200                                                    14060000
+         SECQTY -1                                                      14070000
+         ERASE NO                                                       14080000
+         FREEPAGE 0                                                     14090000
+         PCTFREE 0                                                      14100000
+         GBPCACHE CHANGED                                               14110000
+         ,                                                              14120000
+         PARTITION 104                                                  14130000
+           ENDING AT ('92661698     ')                                  14140000
+         USING STOGROUP BMGVZPEA                                        14150000
+         PRIQTY 7200                                                    14160000
+         SECQTY -1                                                      14170000
+         ERASE NO                                                       14180000
+         FREEPAGE 0                                                     14190000
+         PCTFREE 0                                                      14200000
+         GBPCACHE CHANGED                                               14210000
+         ,                                                              14220000
+         PARTITION 105                                                  14230000
+           ENDING AT ('92712850     ')                                  14240000
+         USING STOGROUP BMGVZPEA                                        14250000
+         PRIQTY 7200                                                    14260000
+         SECQTY -1                                                      14270000
+         ERASE NO                                                       14280000
+         FREEPAGE 0                                                     14290000
+         PCTFREE 0                                                      14300000
+         GBPCACHE CHANGED                                               14310000
+         ,                                                              14320000
+         PARTITION 106                                                  14330000
+           ENDING AT ('92748489     ')                                  14340000
+         USING STOGROUP BMGVZPEA                                        14350000
+         PRIQTY 7200                                                    14360000
+         SECQTY -1                                                      14370000
+         ERASE NO                                                       14380000
+         FREEPAGE 0                                                     14390000
+         PCTFREE 0                                                      14400000
+         GBPCACHE CHANGED                                               14410000
+         ,                                                              14420000
+         PARTITION 107                                                  14430000
+           ENDING AT ('92775758     ')                                  14440000
+         USING STOGROUP BMGVZPEA                                        14450000
+         PRIQTY 7200                                                    14460000
+         SECQTY -1                                                      14470000
+         ERASE NO                                                       14480000
+         FREEPAGE 0                                                     14490000
+         PCTFREE 0                                                      14500000
+         GBPCACHE CHANGED                                               14510000
+         ,                                                              14520000
+         PARTITION 108                                                  14530000
+           ENDING AT ('92799706     ')                                  14540000
+         USING STOGROUP BMGVZPEA                                        14550000
+         PRIQTY 7200                                                    14560000
+         SECQTY -1                                                      14570000
+         ERASE NO                                                       14580000
+         FREEPAGE 0                                                     14590000
+         PCTFREE 0                                                      14600000
+         GBPCACHE CHANGED                                               14610000
+         ,                                                              14620000
+         PARTITION 109                                                  14630000
+           ENDING AT ('92816741     ')                                  14640000
+         USING STOGROUP BMGVZPEA                                        14650000
+         PRIQTY 7200                                                    14660000
+         SECQTY -1                                                      14670000
+         ERASE NO                                                       14680000
+         FREEPAGE 0                                                     14690000
+         PCTFREE 0                                                      14700000
+         GBPCACHE CHANGED                                               14710000
+         ,                                                              14720000
+         PARTITION 110                                                  14730000
+           ENDING AT ('92839912     ')                                  14740000
+         USING STOGROUP BMGVZPEA                                        14750000
+         PRIQTY 7200                                                    14760000
+         SECQTY -1                                                      14770000
+         ERASE NO                                                       14780000
+         FREEPAGE 0                                                     14790000
+         PCTFREE 0                                                      14800000
+         GBPCACHE CHANGED                                               14810000
+         ,                                                              14820000
+         PARTITION 111                                                  14830000
+           ENDING AT ('92854176     ')                                  14840000
+         USING STOGROUP BMGVZPEA                                        14850000
+         PRIQTY 7200                                                    14860000
+         SECQTY -1                                                      14870000
+         ERASE NO                                                       14880000
+         FREEPAGE 0                                                     14890000
+         PCTFREE 0                                                      14900000
+         GBPCACHE CHANGED                                               14910000
+         ,                                                              14920000
+         PARTITION 112                                                  14930000
+           ENDING AT ('92872118     ')                                  14940000
+         USING STOGROUP BMGVZPEA                                        14950000
+         PRIQTY 7200                                                    14960000
+         SECQTY -1                                                      14970000
+         ERASE NO                                                       14980000
+         FREEPAGE 0                                                     14990000
+         PCTFREE 0                                                      15000000
+         GBPCACHE CHANGED                                               15010000
+         ,                                                              15020000
+         PARTITION 113                                                  15030000
+           ENDING AT ('92878062     ')                                  15040000
+         USING STOGROUP BMGVZPEA                                        15050000
+         PRIQTY 7200                                                    15060000
+         SECQTY -1                                                      15070000
+         ERASE NO                                                       15080000
+         FREEPAGE 0                                                     15090000
+         PCTFREE 0                                                      15100000
+         GBPCACHE CHANGED                                               15110000
+         ,                                                              15120000
+         PARTITION 114                                                  15130000
+           ENDING AT ('92888359     ')                                  15140000
+         USING STOGROUP BMGVZPEA                                        15150000
+         PRIQTY 7200                                                    15160000
+         SECQTY -1                                                      15170000
+         ERASE NO                                                       15180000
+         FREEPAGE 0                                                     15190000
+         PCTFREE 0                                                      15200000
+         GBPCACHE CHANGED                                               15210000
+         ,                                                              15220000
+         PARTITION 115                                                  15230000
+           ENDING AT ('92902893     ')                                  15240000
+         USING STOGROUP BMGVZPEA                                        15250000
+         PRIQTY 7200                                                    15260000
+         SECQTY -1                                                      15270000
+         ERASE NO                                                       15280000
+         FREEPAGE 0                                                     15290000
+         PCTFREE 0                                                      15300000
+         GBPCACHE CHANGED                                               15310000
+         ,                                                              15320000
+         PARTITION 116                                                  15330000
+           ENDING AT ('92908355     ')                                  15340000
+         USING STOGROUP BMGVZPEA                                        15350000
+         PRIQTY 7200                                                    15360000
+         SECQTY -1                                                      15370000
+         ERASE NO                                                       15380000
+         FREEPAGE 0                                                     15390000
+         PCTFREE 0                                                      15400000
+         GBPCACHE CHANGED                                               15410000
+         ,                                                              15420000
+         PARTITION 117                                                  15430000
+           ENDING AT ('92928927     ')                                  15440000
+         USING STOGROUP BMGVZPEA                                        15450000
+         PRIQTY 7200                                                    15460000
+         SECQTY -1                                                      15470000
+         ERASE NO                                                       15480000
+         FREEPAGE 0                                                     15490000
+         PCTFREE 0                                                      15500000
+         GBPCACHE CHANGED                                               15510000
+         ,                                                              15520000
+         PARTITION 118                                                  15530000
+           ENDING AT ('92933089     ')                                  15540000
+         USING STOGROUP BMGVZPEA                                        15550000
+         PRIQTY 7200                                                    15560000
+         SECQTY -1                                                      15570000
+         ERASE NO                                                       15580000
+         FREEPAGE 0                                                     15590000
+         PCTFREE 0                                                      15600000
+         GBPCACHE CHANGED                                               15610000
+         ,                                                              15620000
+         PARTITION 119                                                  15630000
+           ENDING AT ('92942495     ')                                  15640000
+         USING STOGROUP BMGVZPEA                                        15650000
+         PRIQTY 7200                                                    15660000
+         SECQTY -1                                                      15670000
+         ERASE NO                                                       15680000
+         FREEPAGE 0                                                     15690000
+         PCTFREE 0                                                      15700000
+         GBPCACHE CHANGED                                               15710000
+         ,                                                              15720000
+         PARTITION 120                                                  15730000
+           ENDING AT ('92947776     ')                                  15740000
+         USING STOGROUP BMGVZPEA                                        15750000
+         PRIQTY 7200                                                    15760000
+         SECQTY -1                                                      15770000
+         ERASE NO                                                       15780000
+         FREEPAGE 0                                                     15790000
+         PCTFREE 0                                                      15800000
+         GBPCACHE CHANGED                                               15810000
+         ,                                                              15820000
+         PARTITION 121                                                  15830000
+           ENDING AT ('92952426     ')                                  15840000
+         USING STOGROUP BMGVZPEA                                        15850000
+         PRIQTY 7200                                                    15860000
+         SECQTY -1                                                      15870000
+         ERASE NO                                                       15880000
+         FREEPAGE 0                                                     15890000
+         PCTFREE 0                                                      15900000
+         GBPCACHE CHANGED                                               15910000
+         ,                                                              15920000
+         PARTITION 122                                                  15930000
+           ENDING AT ('92958312     ')                                  15940000
+         USING STOGROUP BMGVZPEA                                        15950000
+         PRIQTY 7200                                                    15960000
+         SECQTY -1                                                      15970000
+         ERASE NO                                                       15980000
+         FREEPAGE 0                                                     15990000
+         PCTFREE 0                                                      16000000
+         GBPCACHE CHANGED                                               16010000
+         ,                                                              16020000
+         PARTITION 123                                                  16030000
+           ENDING AT ('92966743     ')                                  16040000
+         USING STOGROUP BMGVZPEA                                        16050000
+         PRIQTY 7200                                                    16060000
+         SECQTY -1                                                      16070000
+         ERASE NO                                                       16080000
+         FREEPAGE 0                                                     16090000
+         PCTFREE 0                                                      16100000
+         GBPCACHE CHANGED                                               16110000
+         ,                                                              16120000
+         PARTITION 124                                                  16130000
+           ENDING AT ('92974265     ')                                  16140000
+         USING STOGROUP BMGVZPEA                                        16150000
+         PRIQTY 7200                                                    16160000
+         SECQTY -1                                                      16170000
+         ERASE NO                                                       16180000
+         FREEPAGE 0                                                     16190000
+         PCTFREE 0                                                      16200000
+         GBPCACHE CHANGED                                               16210000
+         ,                                                              16220000
+         PARTITION 125                                                  16230000
+           ENDING AT ('92979825     ')                                  16240000
+         USING STOGROUP BMGVZPEA                                        16250000
+         PRIQTY 7200                                                    16260000
+         SECQTY -1                                                      16270000
+         ERASE NO                                                       16280000
+         FREEPAGE 0                                                     16290000
+         PCTFREE 0                                                      16300000
+         GBPCACHE CHANGED                                               16310000
+         ,                                                              16320000
+         PARTITION 126                                                  16330000
+           ENDING AT ('92983127     ')                                  16340000
+         USING STOGROUP BMGVZPEA                                        16350000
+         PRIQTY 7200                                                    16360000
+         SECQTY -1                                                      16370000
+         ERASE NO                                                       16380000
+         FREEPAGE 0                                                     16390000
+         PCTFREE 0                                                      16400000
+         GBPCACHE CHANGED                                               16410000
+         ,                                                              16420000
+         PARTITION 127                                                  16430000
+           ENDING AT ('92988565     ')                                  16440000
+         USING STOGROUP BMGVZPEA                                        16450000
+         PRIQTY 7200                                                    16460000
+         SECQTY -1                                                      16470000
+         ERASE NO                                                       16480000
+         FREEPAGE 0                                                     16490000
+         PCTFREE 0                                                      16500000
+         GBPCACHE CHANGED                                               16510000
+         ,                                                              16520000
+         PARTITION 128                                                  16530000
+           ENDING AT ('92995601     ', '2011-05-10', 'M1', 2602519, 0, '16540000
+1                        ')                                             16550000
+         USING STOGROUP BMGVZPEA                                        16560000
+         PRIQTY 7200                                                    16570000
+         SECQTY -1                                                      16580000
+         ERASE NO                                                       16590000
+         FREEPAGE 0                                                     16600000
+         PCTFREE 0                                                      16610000
+         GBPCACHE CHANGED                                               16620000
+         ,                                                              16630000
+         PARTITION 129                                                  16640000
+           ENDING AT ('92995601     ', '2011-10-10', 'M1', 4730584, 0, '16650000
+1                        ')                                             16660000
+         USING STOGROUP BMGVZPEA                                        16670000
+         PRIQTY 7200                                                    16680000
+         SECQTY -1                                                      16690000
+         ERASE NO                                                       16700000
+         FREEPAGE 0                                                     16710000
+         PCTFREE 0                                                      16720000
+         GBPCACHE CHANGED                                               16730000
+         ,                                                              16740000
+         PARTITION 130                                                  16750000
+           ENDING AT ('93006472     ')                                  16760000
+         USING STOGROUP BMGVZPEA                                        16770000
+         PRIQTY 7200                                                    16780000
+         SECQTY -1                                                      16790000
+         ERASE NO                                                       16800000
+         FREEPAGE 0                                                     16810000
+         PCTFREE 0                                                      16820000
+         GBPCACHE CHANGED                                               16830000
+         ,                                                              16840000
+         PARTITION 131                                                  16850000
+           ENDING AT ('93010247     ')                                  16860000
+         USING STOGROUP BMGVZPEA                                        16870000
+         PRIQTY 7200                                                    16880000
+         SECQTY -1                                                      16890000
+         ERASE NO                                                       16900000
+         FREEPAGE 0                                                     16910000
+         PCTFREE 0                                                      16920000
+         GBPCACHE CHANGED                                               16930000
+         ,                                                              16940000
+         PARTITION 132                                                  16950000
+           ENDING AT ('93093816     ')                                  16960000
+         USING STOGROUP BMGVZPEA                                        16970000
+         PRIQTY 7200                                                    16980000
+         SECQTY -1                                                      16990000
+         ERASE NO                                                       17000000
+         FREEPAGE 0                                                     17010000
+         PCTFREE 0                                                      17020000
+         GBPCACHE CHANGED                                               17030000
+         ,                                                              17040000
+         PARTITION 133                                                  17050000
+           ENDING AT ('93142054     ')                                  17060000
+         USING STOGROUP BMGVZPEA                                        17070000
+         PRIQTY 7200                                                    17080000
+         SECQTY -1                                                      17090000
+         ERASE NO                                                       17100000
+         FREEPAGE 0                                                     17110000
+         PCTFREE 0                                                      17120000
+         GBPCACHE CHANGED                                               17130000
+         ,                                                              17140000
+         PARTITION 134                                                  17150000
+           ENDING AT ('93149700     ', '2016-07-10', 'M1', 289156, 0, '217160000
+                        ')                                              17170000
+         USING STOGROUP BMGVZPEA                                        17180000
+         PRIQTY 7200                                                    17190000
+         SECQTY -1                                                      17200000
+         ERASE NO                                                       17210000
+         FREEPAGE 0                                                     17220000
+         PCTFREE 0                                                      17230000
+         GBPCACHE CHANGED                                               17240000
+         ,                                                              17250000
+         PARTITION 135                                                  17260000
+           ENDING AT ('93160405     ', '2017-01-25', 'M2', 38413, 0, '1 17270000
+                       ')                                               17280000
+         USING STOGROUP BMGVZPEA                                        17290000
+         PRIQTY 7200                                                    17300000
+         SECQTY -1                                                      17310000
+         ERASE NO                                                       17320000
+         FREEPAGE 0                                                     17330000
+         PCTFREE 0                                                      17340000
+         GBPCACHE CHANGED                                               17350000
+         ,                                                              17360000
+         PARTITION 136                                                  17370000
+           ENDING AT ('93163404     ', '2017-01-10', 'M1', 1499614, 0, '17380000
+2                        ')                                             17390000
+         USING STOGROUP BMGVZPEA                                        17400000
+         PRIQTY 7200                                                    17410000
+         SECQTY -1                                                      17420000
+         ERASE NO                                                       17430000
+         FREEPAGE 0                                                     17440000
+         PCTFREE 0                                                      17450000
+         GBPCACHE CHANGED                                               17460000
+         ,                                                              17470000
+         PARTITION 137                                                  17480000
+           ENDING AT ('93165862     ', '2016-06-10', 'M1', 748198, 0, '217490000
+                        ')                                              17500000
+         USING STOGROUP BMGVZPEA                                        17510000
+         PRIQTY 7200                                                    17520000
+         SECQTY -1                                                      17530000
+         ERASE NO                                                       17540000
+         FREEPAGE 0                                                     17550000
+         PCTFREE 0                                                      17560000
+         GBPCACHE CHANGED                                               17570000
+         ,                                                              17580000
+         PARTITION 138                                                  17590000
+           ENDING AT ('93168194     ', '2016-06-10', 'M1', 12427566, 0, 17600000
+'12                       ')                                            17610000
+         USING STOGROUP BMGVZPEA                                        17620000
+         PRIQTY 7200                                                    17630000
+         SECQTY -1                                                      17640000
+         ERASE NO                                                       17650000
+         FREEPAGE 0                                                     17660000
+         PCTFREE 0                                                      17670000
+         GBPCACHE CHANGED                                               17680000
+         ,                                                              17690000
+         PARTITION 139                                                  17700000
+           ENDING AT ('93168194     ', '2016-09-10', 'M1', 16908877, 0, 17710000
+'2                        ')                                            17720000
+         USING STOGROUP BMGVZPEA                                        17730000
+         PRIQTY 7200                                                    17740000
+         SECQTY -1                                                      17750000
+         ERASE NO                                                       17760000
+         FREEPAGE 0                                                     17770000
+         PCTFREE 0                                                      17780000
+         GBPCACHE CHANGED                                               17790000
+         ,                                                              17800000
+         PARTITION 140                                                  17810000
+           ENDING AT ('93168194     ', '2017-01-10', 'M1', 12341912, 0, 17820000
+'12                       ')                                            17830000
+         USING STOGROUP BMGVZPEA                                        17840000
+         PRIQTY 7200                                                    17850000
+         SECQTY -1                                                      17860000
+         ERASE NO                                                       17870000
+         FREEPAGE 0                                                     17880000
+         PCTFREE 0                                                      17890000
+         GBPCACHE CHANGED                                               17900000
+         ,                                                              17910000
+         PARTITION 141                                                  17920000
+           ENDING AT ('93168194     ', '2017-04-10', 'M1', 18706259, 0, 17930000
+'2                        ')                                            17940000
+         USING STOGROUP BMGVZPEA                                        17950000
+         PRIQTY 7200                                                    17960000
+         SECQTY -1                                                      17970000
+         ERASE NO                                                       17980000
+         FREEPAGE 0                                                     17990000
+         PCTFREE 0                                                      18000000
+         GBPCACHE CHANGED                                               18010000
+         ,                                                              18020000
+         PARTITION 142                                                  18030000
+           ENDING AT ('93169605     ', '2016-08-10', 'M1', 1875756, 0, '18040000
+2                        ')                                             18050000
+         USING STOGROUP BMGVZPEA                                        18060000
+         PRIQTY 7200                                                    18070000
+         SECQTY -1                                                      18080000
+         ERASE NO                                                       18090000
+         FREEPAGE 0                                                     18100000
+         PCTFREE 0                                                      18110000
+         GBPCACHE CHANGED                                               18120000
+         ,                                                              18130000
+         PARTITION 143                                                  18140000
+           ENDING AT ('93169824     ')                                  18150000
+         USING STOGROUP BMGVZPEA                                        18160000
+         PRIQTY 7200                                                    18170000
+         SECQTY -1                                                      18180000
+         ERASE NO                                                       18190000
+         FREEPAGE 0                                                     18200000
+         PCTFREE 0                                                      18210000
+         GBPCACHE CHANGED                                               18220000
+         ,                                                              18230000
+         PARTITION 144                                                  18240000
+           ENDING AT ('93172805     ')                                  18250000
+         USING STOGROUP BMGVZPEA                                        18260000
+         PRIQTY 7200                                                    18270000
+         SECQTY -1                                                      18280000
+         ERASE NO                                                       18290000
+         FREEPAGE 0                                                     18300000
+         PCTFREE 0                                                      18310000
+         GBPCACHE CHANGED                                               18320000
+         ,                                                              18330000
+         PARTITION 145                                                  18340000
+           ENDING AT ('93175962     ')                                  18350000
+         USING STOGROUP BMGVZPEA                                        18360000
+         PRIQTY 7200                                                    18370000
+         SECQTY -1                                                      18380000
+         ERASE NO                                                       18390000
+         FREEPAGE 0                                                     18400000
+         PCTFREE 0                                                      18410000
+         GBPCACHE CHANGED                                               18420000
+         ,                                                              18430000
+         PARTITION 146                                                  18440000
+           ENDING AT ('93240888     ')                                  18450000
+         USING STOGROUP BMGVZPEA                                        18460000
+         PRIQTY 7200                                                    18470000
+         SECQTY -1                                                      18480000
+         ERASE NO                                                       18490000
+         FREEPAGE 0                                                     18500000
+         PCTFREE 0                                                      18510000
+         GBPCACHE CHANGED                                               18520000
+         ,                                                              18530000
+         PARTITION 147                                                  18540000
+           ENDING AT ('93241323     ')                                  18550000
+         USING STOGROUP BMGVZPEA                                        18560000
+         PRIQTY 7200                                                    18570000
+         SECQTY -1                                                      18580000
+         ERASE NO                                                       18590000
+         FREEPAGE 0                                                     18600000
+         PCTFREE 0                                                      18610000
+         GBPCACHE CHANGED                                               18620000
+         ,                                                              18630000
+         PARTITION 148                                                  18640000
+           ENDING AT ('93246693     ')                                  18650000
+         USING STOGROUP BMGVZPEA                                        18660000
+         PRIQTY 7200                                                    18670000
+         SECQTY -1                                                      18680000
+         ERASE NO                                                       18690000
+         FREEPAGE 0                                                     18700000
+         PCTFREE 0                                                      18710000
+         GBPCACHE CHANGED                                               18720000
+         ,                                                              18730000
+         PARTITION 149                                                  18740000
+           ENDING AT ('93247703     ')                                  18750000
+         USING STOGROUP BMGVZPEA                                        18760000
+         PRIQTY 7200                                                    18770000
+         SECQTY -1                                                      18780000
+         ERASE NO                                                       18790000
+         FREEPAGE 0                                                     18800000
+         PCTFREE 0                                                      18810000
+         GBPCACHE CHANGED                                               18820000
+         ,                                                              18830000
+         PARTITION 150                                                  18840000
+           ENDING AT ('93250440     ', '2013-04-10', 'M1', 516448, 0, '218850000
+                        ')                                              18860000
+         USING STOGROUP BMGVZPEA                                        18870000
+         PRIQTY 7200                                                    18880000
+         SECQTY -1                                                      18890000
+         ERASE NO                                                       18900000
+         FREEPAGE 0                                                     18910000
+         PCTFREE 0                                                      18920000
+         GBPCACHE CHANGED                                               18930000
+         ,                                                              18940000
+         PARTITION 151                                                  18950000
+           ENDING AT ('93250506     ', '2012-10-10', 'M1', 62135504, 0, 18960000
+'2                        ')                                            18970000
+         USING STOGROUP BMGVZPEA                                        18980000
+         PRIQTY 7200                                                    18990000
+         SECQTY -1                                                      19000000
+         ERASE NO                                                       19010000
+         FREEPAGE 0                                                     19020000
+         PCTFREE 0                                                      19030000
+         GBPCACHE CHANGED                                               19040000
+         ,                                                              19050000
+         PARTITION 152                                                  19060000
+           ENDING AT ('93251641     ')                                  19070000
+         USING STOGROUP BMGVZPEA                                        19080000
+         PRIQTY 7200                                                    19090000
+         SECQTY -1                                                      19100000
+         ERASE NO                                                       19110000
+         FREEPAGE 0                                                     19120000
+         PCTFREE 0                                                      19130000
+         GBPCACHE CHANGED                                               19140000
+         ,                                                              19150000
+         PARTITION 153                                                  19160000
+           ENDING AT ('93253783     ')                                  19170000
+         USING STOGROUP BMGVZPEA                                        19180000
+         PRIQTY 7200                                                    19190000
+         SECQTY -1                                                      19200000
+         ERASE NO                                                       19210000
+         FREEPAGE 0                                                     19220000
+         PCTFREE 0                                                      19230000
+         GBPCACHE CHANGED                                               19240000
+         ,                                                              19250000
+         PARTITION 154                                                  19260000
+           ENDING AT ('93257670     ')                                  19270000
+         USING STOGROUP BMGVZPEA                                        19280000
+         PRIQTY 7200                                                    19290000
+         SECQTY -1                                                      19300000
+         ERASE NO                                                       19310000
+         FREEPAGE 0                                                     19320000
+         PCTFREE 0                                                      19330000
+         GBPCACHE CHANGED                                               19340000
+         ,                                                              19350000
+         PARTITION 155                                                  19360000
+           ENDING AT ('93264809     ')                                  19370000
+         USING STOGROUP BMGVZPEA                                        19380000
+         PRIQTY 7200                                                    19390000
+         SECQTY -1                                                      19400000
+         ERASE NO                                                       19410000
+         FREEPAGE 0                                                     19420000
+         PCTFREE 0                                                      19430000
+         GBPCACHE CHANGED                                               19440000
+         ,                                                              19450000
+         PARTITION 156                                                  19460000
+           ENDING AT ('93276225     ')                                  19470000
+         USING STOGROUP BMGVZPEA                                        19480000
+         PRIQTY 7200                                                    19490000
+         SECQTY -1                                                      19500000
+         ERASE NO                                                       19510000
+         FREEPAGE 0                                                     19520000
+         PCTFREE 0                                                      19530000
+         GBPCACHE CHANGED                                               19540000
+         ,                                                              19550000
+         PARTITION 157                                                  19560000
+           ENDING AT ('93279638     ', '2013-08-10', 'M1', 1695670, 0, '19570000
+2                        ')                                             19580000
+         USING STOGROUP BMGVZPEA                                        19590000
+         PRIQTY 7200                                                    19600000
+         SECQTY -1                                                      19610000
+         ERASE NO                                                       19620000
+         FREEPAGE 0                                                     19630000
+         PCTFREE 0                                                      19640000
+         GBPCACHE CHANGED                                               19650000
+         ,                                                              19660000
+         PARTITION 158                                                  19670000
+           ENDING AT ('93282177     ', '2013-08-10', 'M1', 40271, 0, '2 19680000
+                       ')                                               19690000
+         USING STOGROUP BMGVZPEA                                        19700000
+         PRIQTY 7200                                                    19710000
+         SECQTY -1                                                      19720000
+         ERASE NO                                                       19730000
+         FREEPAGE 0                                                     19740000
+         PCTFREE 0                                                      19750000
+         GBPCACHE CHANGED                                               19760000
+         ,                                                              19770000
+         PARTITION 159                                                  19780000
+           ENDING AT ('93287662     ')                                  19790000
+         USING STOGROUP BMGVZPEA                                        19800000
+         PRIQTY 7200                                                    19810000
+         SECQTY -1                                                      19820000
+         ERASE NO                                                       19830000
+         FREEPAGE 0                                                     19840000
+         PCTFREE 0                                                      19850000
+         GBPCACHE CHANGED                                               19860000
+         ,                                                              19870000
+         PARTITION 160                                                  19880000
+           ENDING AT ('93303494     ', '2009-06-25', 'M2', 16351, 0, '1 19890000
+                       ')                                               19900000
+         USING STOGROUP BMGVZPEA                                        19910000
+         PRIQTY 7200                                                    19920000
+         SECQTY -1                                                      19930000
+         ERASE NO                                                       19940000
+         FREEPAGE 0                                                     19950000
+         PCTFREE 0                                                      19960000
+         GBPCACHE CHANGED                                               19970000
+         ,                                                              19980000
+         PARTITION 161                                                  19990000
+           ENDING AT ('93322165     ', '2013-06-25', 'M2', 34589, 0, '2 20000000
+                       ')                                               20010000
+         USING STOGROUP BMGVZPEA                                        20020000
+         PRIQTY 7200                                                    20030000
+         SECQTY -1                                                      20040000
+         ERASE NO                                                       20050000
+         FREEPAGE 0                                                     20060000
+         PCTFREE 0                                                      20070000
+         GBPCACHE CHANGED                                               20080000
+         ,                                                              20090000
+         PARTITION 162                                                  20100000
+           ENDING AT ('93329672     ', '2013-01-10', 'M1', 2038484, 0, '20110000
+1                        ')                                             20120000
+         USING STOGROUP BMGVZPEA                                        20130000
+         PRIQTY 7200                                                    20140000
+         SECQTY -1                                                      20150000
+         ERASE NO                                                       20160000
+         FREEPAGE 0                                                     20170000
+         PCTFREE 0                                                      20180000
+         GBPCACHE CHANGED                                               20190000
+         ,                                                              20200000
+         PARTITION 163                                                  20210000
+           ENDING AT ('93345910     ', '2016-11-10', 'M1', 60615, 0, '2 20220000
+                       ')                                               20230000
+         USING STOGROUP BMGVZPEA                                        20240000
+         PRIQTY 7200                                                    20250000
+         SECQTY -1                                                      20260000
+         ERASE NO                                                       20270000
+         FREEPAGE 0                                                     20280000
+         PCTFREE 0                                                      20290000
+         GBPCACHE CHANGED                                               20300000
+         ,                                                              20310000
+         PARTITION 164                                                  20320000
+           ENDING AT ('93357740     ', '2017-05-10', 'M1', 22096, 0, '1220330000
+                       ')                                               20340000
+         USING STOGROUP BMGVZPEA                                        20350000
+         PRIQTY 7200                                                    20360000
+         SECQTY -1                                                      20370000
+         ERASE NO                                                       20380000
+         FREEPAGE 0                                                     20390000
+         PCTFREE 0                                                      20400000
+         GBPCACHE CHANGED                                               20410000
+         ,                                                              20420000
+         PARTITION 165                                                  20430000
+           ENDING AT ('93363550     ', '2017-07-10', 'M1', 9593151, 0, '20440000
+2                        ')                                             20450000
+         USING STOGROUP BMGVZPEA                                        20460000
+         PRIQTY 7200                                                    20470000
+         SECQTY -1                                                      20480000
+         ERASE NO                                                       20490000
+         FREEPAGE 0                                                     20500000
+         PCTFREE 0                                                      20510000
+         GBPCACHE CHANGED                                               20520000
+         ,                                                              20530000
+         PARTITION 166                                                  20540000
+           ENDING AT ('93371969     ', '2017-04-10', 'M1', 500000, 0, '220550000
+                        ')                                              20560000
+         USING STOGROUP BMGVZPEA                                        20570000
+         PRIQTY 7200                                                    20580000
+         SECQTY -1                                                      20590000
+         ERASE NO                                                       20600000
+         FREEPAGE 0                                                     20610000
+         PCTFREE 0                                                      20620000
+         GBPCACHE CHANGED                                               20630000
+         ,                                                              20640000
+         PARTITION 167                                                  20650000
+           ENDING AT ('93375018     ', '2015-11-10', 'M1', 11679, 0, '2 20660000
+                       ')                                               20670000
+         USING STOGROUP BMGVZPEA                                        20680000
+         PRIQTY 7200                                                    20690000
+         SECQTY -1                                                      20700000
+         ERASE NO                                                       20710000
+         FREEPAGE 0                                                     20720000
+         PCTFREE 0                                                      20730000
+         GBPCACHE CHANGED                                               20740000
+         ,                                                              20750000
+         PARTITION 168                                                  20760000
+           ENDING AT ('93375415     ', '2017-08-10', 'M1', 1056647, 0, '20770000
+2                        ')                                             20780000
+         USING STOGROUP BMGVZPEA                                        20790000
+         PRIQTY 7200                                                    20800000
+         SECQTY -1                                                      20810000
+         ERASE NO                                                       20820000
+         FREEPAGE 0                                                     20830000
+         PCTFREE 0                                                      20840000
+         GBPCACHE CHANGED                                               20850000
+         ,                                                              20860000
+         PARTITION 169                                                  20870000
+           ENDING AT ('93376289     ', '2016-12-10', 'M1', 723649, 0, '220880000
+                        ')                                              20890000
+         USING STOGROUP BMGVZPEA                                        20900000
+         PRIQTY 7200                                                    20910000
+         SECQTY -1                                                      20920000
+         ERASE NO                                                       20930000
+         FREEPAGE 0                                                     20940000
+         PCTFREE 0                                                      20950000
+         GBPCACHE CHANGED                                               20960000
+         ,                                                              20970000
+         PARTITION 170                                                  20980000
+           ENDING AT ('99057597     ', '2016-10-25', 'M2', 47960, 0, '2 20990000
+                       ')                                               21000000
+         USING STOGROUP BMGVZPEA                                        21010000
+         PRIQTY 7200                                                    21020000
+         SECQTY -1                                                      21030000
+         ERASE NO                                                       21040000
+         FREEPAGE 0                                                     21050000
+         PCTFREE 0                                                      21060000
+         GBPCACHE CHANGED                                               21070000
+         ,                                                              21080000
+         PARTITION 171                                                  21090000
+           ENDING AT ('99083406     ', '2015-01-10', 'M1', 18916243, 0, 21100000
+'1                        ')                                            21110000
+         USING STOGROUP BMGVZPEA                                        21120000
+         PRIQTY 7200                                                    21130000
+         SECQTY -1                                                      21140000
+         ERASE NO                                                       21150000
+         FREEPAGE 0                                                     21160000
+         PCTFREE 0                                                      21170000
+         GBPCACHE CHANGED                                               21180000
+         ,                                                              21190000
+         PARTITION 172                                                  21200000
+           ENDING AT ('99091388     ', '2016-10-10', 'M1', 370849, 0, '221210000
+                        ')                                              21220000
+         USING STOGROUP BMGVZPEA                                        21230000
+         PRIQTY 7200                                                    21240000
+         SECQTY -1                                                      21250000
+         ERASE NO                                                       21260000
+         FREEPAGE 0                                                     21270000
+         PCTFREE 0                                                      21280000
+         GBPCACHE CHANGED                                               21290000
+         ,                                                              21300000
+         PARTITION 173                                                  21310000
+           ENDING AT ('99094308     ', '2016-08-10', 'M1', 333842, 0, '221320000
+                        ')                                              21330000
+         USING STOGROUP BMGVZPEA                                        21340000
+         PRIQTY 7200                                                    21350000
+         SECQTY -1                                                      21360000
+         ERASE NO                                                       21370000
+         FREEPAGE 0                                                     21380000
+         PCTFREE 0                                                      21390000
+         GBPCACHE CHANGED                                               21400000
+         ,                                                              21410000
+         PARTITION 174                                                  21420000
+           ENDING AT ('99110618     ', '2017-01-10', 'M1', 3384292, 0, '21430000
+2                        ')                                             21440000
+         USING STOGROUP BMGVZPEA                                        21450000
+         PRIQTY 7200                                                    21460000
+         SECQTY -1                                                      21470000
+         ERASE NO                                                       21480000
+         FREEPAGE 0                                                     21490000
+         PCTFREE 0                                                      21500000
+         GBPCACHE CHANGED                                               21510000
+         ,                                                              21520000
+         PARTITION 175                                                  21530000
+           ENDING AT ('99141006     ', '2017-02-10', 'M1', 133530, 0, '221540000
+                        ')                                              21550000
+         USING STOGROUP BMGVZPEA                                        21560000
+         PRIQTY 7200                                                    21570000
+         SECQTY -1                                                      21580000
+         ERASE NO                                                       21590000
+         FREEPAGE 0                                                     21600000
+         PCTFREE 0                                                      21610000
+         GBPCACHE CHANGED                                               21620000
+         ,                                                              21630000
+         PARTITION 176                                                  21640000
+           ENDING AT ('99164243     ', '2016-04-10', 'M1', 6389, 0, '1  21650000
+                      ')                                                21660000
+         USING STOGROUP BMGVZPEA                                        21670000
+         PRIQTY 7200                                                    21680000
+         SECQTY -1                                                      21690000
+         ERASE NO                                                       21700000
+         FREEPAGE 0                                                     21710000
+         PCTFREE 0                                                      21720000
+         GBPCACHE CHANGED                                               21730000
+         ,                                                              21740000
+         PARTITION 177                                                  21750000
+           ENDING AT ('99368398     ', '2016-04-25', 'M2', 71539, 0, '2 21760000
+                       ')                                               21770000
+         USING STOGROUP BMGVZPEA                                        21780000
+         PRIQTY 7200                                                    21790000
+         SECQTY -1                                                      21800000
+         ERASE NO                                                       21810000
+         FREEPAGE 0                                                     21820000
+         PCTFREE 0                                                      21830000
+         GBPCACHE CHANGED                                               21840000
+         ,                                                              21850000
+         PARTITION 178                                                  21860000
+           ENDING AT ('99416196     ')                                  21870000
+         USING STOGROUP BMGVZPEA                                        21880000
+         PRIQTY 7200                                                    21890000
+         SECQTY -1                                                      21900000
+         ERASE NO                                                       21910000
+         FREEPAGE 0                                                     21920000
+         PCTFREE 0                                                      21930000
+         GBPCACHE CHANGED                                               21940000
+         ,                                                              21950000
+         PARTITION 179                                                  21960000
+           ENDING AT ('99446456     ')                                  21970000
+         USING STOGROUP BMGVZPEA                                        21980000
+         PRIQTY 7200                                                    21990000
+         SECQTY -1                                                      22000000
+         ERASE NO                                                       22010000
+         FREEPAGE 0                                                     22020000
+         PCTFREE 0                                                      22030000
+         GBPCACHE CHANGED                                               22040000
+         ,                                                              22050000
+         PARTITION 180                                                  22060000
+           ENDING AT ('99484388     ')                                  22070000
+         USING STOGROUP BMGVZPEA                                        22080000
+         PRIQTY 7200                                                    22090000
+         SECQTY -1                                                      22100000
+         ERASE NO                                                       22110000
+         FREEPAGE 0                                                     22120000
+         PCTFREE 0                                                      22130000
+         GBPCACHE CHANGED                                               22140000
+         ,                                                              22150000
+         PARTITION 181                                                  22160000
+           ENDING AT ('99530679     ')                                  22170000
+         USING STOGROUP BMGVZPEA                                        22180000
+         PRIQTY 7200                                                    22190000
+         SECQTY -1                                                      22200000
+         ERASE NO                                                       22210000
+         FREEPAGE 0                                                     22220000
+         PCTFREE 0                                                      22230000
+         GBPCACHE CHANGED                                               22240000
+         ,                                                              22250000
+         PARTITION 182                                                  22260000
+           ENDING AT ('99567296     ')                                  22270000
+         USING STOGROUP BMGVZPEA                                        22280000
+         PRIQTY 7200                                                    22290000
+         SECQTY -1                                                      22300000
+         ERASE NO                                                       22310000
+         FREEPAGE 0                                                     22320000
+         PCTFREE 0                                                      22330000
+         GBPCACHE CHANGED                                               22340000
+         ,                                                              22350000
+         PARTITION 183                                                  22360000
+           ENDING AT ('99596374     ')                                  22370000
+         USING STOGROUP BMGVZPEA                                        22380000
+         PRIQTY 7200                                                    22390000
+         SECQTY -1                                                      22400000
+         ERASE NO                                                       22410000
+         FREEPAGE 0                                                     22420000
+         PCTFREE 0                                                      22430000
+         GBPCACHE CHANGED                                               22440000
+         ,                                                              22450000
+         PARTITION 184                                                  22460000
+           ENDING AT ('99694359     ')                                  22470000
+         USING STOGROUP BMGVZPEA                                        22480000
+         PRIQTY 7200                                                    22490000
+         SECQTY -1                                                      22500000
+         ERASE NO                                                       22510000
+         FREEPAGE 0                                                     22520000
+         PCTFREE 0                                                      22530000
+         GBPCACHE CHANGED                                               22540000
+         ,                                                              22550000
+         PARTITION 185                                                  22560000
+           ENDING AT ('99749170     ')                                  22570000
+         USING STOGROUP BMGVZPEA                                        22580000
+         PRIQTY 7200                                                    22590000
+         SECQTY -1                                                      22600000
+         ERASE NO                                                       22610000
+         FREEPAGE 0                                                     22620000
+         PCTFREE 0                                                      22630000
+         GBPCACHE CHANGED                                               22640000
+         ,                                                              22650000
+         PARTITION 186                                                  22660000
+           ENDING AT ('99810964     ')                                  22670000
+         USING STOGROUP BMGVZPEA                                        22680000
+         PRIQTY 7200                                                    22690000
+         SECQTY -1                                                      22700000
+         ERASE NO                                                       22710000
+         FREEPAGE 0                                                     22720000
+         PCTFREE 0                                                      22730000
+         GBPCACHE CHANGED                                               22740000
+         ,                                                              22750000
+         PARTITION 187                                                  22760000
+           ENDING AT ('99851754     ')                                  22770000
+         USING STOGROUP BMGVZPEA                                        22780000
+         PRIQTY 7200                                                    22790000
+         SECQTY -1                                                      22800000
+         ERASE NO                                                       22810000
+         FREEPAGE 0                                                     22820000
+         PCTFREE 0                                                      22830000
+         GBPCACHE CHANGED                                               22840000
+         ,                                                              22850000
+         PARTITION 188                                                  22860000
+           ENDING AT ('99900611     ')                                  22870000
+         USING STOGROUP BMGVZPEA                                        22880000
+         PRIQTY 7200                                                    22890000
+         SECQTY -1                                                      22900000
+         ERASE NO                                                       22910000
+         FREEPAGE 0                                                     22920000
+         PCTFREE 0                                                      22930000
+         GBPCACHE CHANGED                                               22940000
+         ,                                                              22950000
+         PARTITION 189                                                  22960000
+           ENDING AT ('99930313     ')                                  22970000
+         USING STOGROUP BMGVZPEA                                        22980000
+         PRIQTY 7200                                                    22990000
+         SECQTY -1                                                      23000000
+         ERASE NO                                                       23010000
+         FREEPAGE 0                                                     23020000
+         PCTFREE 0                                                      23030000
+         GBPCACHE CHANGED                                               23040000
+         ,                                                              23050000
+         PARTITION 190                                                  23060000
+           ENDING AT ('99934117     ')                                  23070000
+         USING STOGROUP BMGVZPEA                                        23080000
+         PRIQTY 7200                                                    23090000
+         SECQTY -1                                                      23100000
+         ERASE NO                                                       23110000
+         FREEPAGE 0                                                     23120000
+         PCTFREE 0                                                      23130000
+         GBPCACHE CHANGED                                               23140000
+         ,                                                              23150000
+         PARTITION 191                                                  23160000
+           ENDING AT ('99982042     ', '2017-03-10', 'M1', 138338, 0, '123170000
+                        ')                                              23180000
+         USING STOGROUP BMGVZPEA                                        23190000
+         PRIQTY 7200                                                    23200000
+         SECQTY -1                                                      23210000
+         ERASE NO                                                       23220000
+         FREEPAGE 0                                                     23230000
+         PCTFREE 0                                                      23240000
+         GBPCACHE CHANGED                                               23250000
+         ,                                                              23260000
+         PARTITION 192                                                  23270000
+           ENDING AT ('99985295     ', '2017-06-10', 'M1', 1143221, 0, '23280000
+1                        ')                                             23290000
+         USING STOGROUP BMGVZPEA                                        23300000
+         PRIQTY 7200                                                    23310000
+         SECQTY -1                                                      23320000
+         ERASE NO                                                       23330000
+         FREEPAGE 0                                                     23340000
+         PCTFREE 0                                                      23350000
+         GBPCACHE CHANGED                                               23360000
+         ,                                                              23370000
+         PARTITION 193                                                  23380000
+           ENDING AT ('99985295     ', '2017-09-10', 'M1', 8154952, 0, '23390000
+1                        ')                                             23400000
+         USING STOGROUP BMGVZPEA                                        23410000
+         PRIQTY 7200                                                    23420000
+         SECQTY -1                                                      23430000
+         ERASE NO                                                       23440000
+         FREEPAGE 0                                                     23450000
+         PCTFREE 0                                                      23460000
+         GBPCACHE CHANGED                                               23470000
+         ,                                                              23480000
+         PARTITION 194                                                  23490000
+           ENDING AT ('99985295     ', '2018-01-10', 'M1', 1111968, 0, '23500000
+1                        ')                                             23510000
+         USING STOGROUP BMGVZPEA                                        23520000
+         PRIQTY 7200                                                    23530000
+         SECQTY -1                                                      23540000
+         ERASE NO                                                       23550000
+         FREEPAGE 0                                                     23560000
+         PCTFREE 0                                                      23570000
+         GBPCACHE CHANGED                                               23580000
+         ,                                                              23590000
+         PARTITION 195                                                  23600000
+           ENDING AT ('99991219     ', '2009-09-10', 'M1', 63651377, 0, 23610000
+'1                        ')                                            23620000
+         USING STOGROUP BMGVZPEA                                        23630000
+         PRIQTY 7200                                                    23640000
+         SECQTY -1                                                      23650000
+         ERASE NO                                                       23660000
+         FREEPAGE 0                                                     23670000
+         PCTFREE 0                                                      23680000
+         GBPCACHE CHANGED                                               23690000
+         ,                                                              23700000
+         PARTITION 196                                                  23710000
+           ENDING AT ('99991336     ', '2012-03-10', 'M1', 467414, 0, '223720000
+                        ')                                              23730000
+         USING STOGROUP BMGVZPEA                                        23740000
+         PRIQTY 7200                                                    23750000
+         SECQTY -1                                                      23760000
+         ERASE NO                                                       23770000
+         FREEPAGE 0                                                     23780000
+         PCTFREE 0                                                      23790000
+         GBPCACHE CHANGED                                               23800000
+         ,                                                              23810000
+         PARTITION 197                                                  23820000
+           ENDING AT ('99991477     ', '2011-11-10', 'M1', 14397978, 0, 23830000
+'2                        ')                                            23840000
+         USING STOGROUP BMGVZPEA                                        23850000
+         PRIQTY 7200                                                    23860000
+         SECQTY -1                                                      23870000
+         ERASE NO                                                       23880000
+         FREEPAGE 0                                                     23890000
+         PCTFREE 0                                                      23900000
+         GBPCACHE CHANGED                                               23910000
+         ,                                                              23920000
+         PARTITION 198                                                  23930000
+           ENDING AT ('99991477     ', '2012-03-10', 'M1', 38157269, 0, 23940000
+'2                        ')                                            23950000
+         USING STOGROUP BMGVZPEA                                        23960000
+         PRIQTY 7200                                                    23970000
+         SECQTY -1                                                      23980000
+         ERASE NO                                                       23990000
+         FREEPAGE 0                                                     24000000
+         PCTFREE 0                                                      24010000
+         GBPCACHE CHANGED                                               24020000
+         ,                                                              24030000
+         PARTITION 199                                                  24040000
+           ENDING AT ('99991477     ', '2012-08-10', 'M1', 32095124, 0, 24050000
+'2                        ')                                            24060000
+         USING STOGROUP BMGVZPEA                                        24070000
+         PRIQTY 7200                                                    24080000
+         SECQTY -1                                                      24090000
+         ERASE NO                                                       24100000
+         FREEPAGE 0                                                     24110000
+         PCTFREE 0                                                      24120000
+         GBPCACHE CHANGED                                               24130000
+         ,                                                              24140000
+         PARTITION 200                                                  24150000
+           ENDING AT ('9999999999999')                                  24160000
+         USING STOGROUP BMGVZPEA                                        24170000
+         PRIQTY 7200                                                    24180000
+         SECQTY -1                                                      24190000
+         ERASE NO                                                       24200000
+         FREEPAGE 0                                                     24210000
+         PCTFREE 0                                                      24220000
+         GBPCACHE CHANGED                                               24230000
+        )                                                               24240000
+         BUFFERPOOL BP2                                                 24250000
+         CLOSE YES                                                      24260000
+         COPY NO                                                        24270000
+         COMPRESS NO                                                    24280000
+     ;                                                                  24290000
+
