@@ -3,6 +3,7 @@ package com.gigaspaces;
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,986 +18,1088 @@ import javax.persistence.Table;
 public class AcctSumX {
 
     @EmbeddedId
-    private CompositeId compositeId;
+    private AcctSumXCompositeId acctSumXCompositeId;
 
-    private String MAN;
-    private String STATE_CODE;
-    private String DEPT_CD;
-    private String PAY_BY_DATE;
-    private Float TOT_BILL_AMT;
-    private Float PREV_BILL_AMT;
-    private Float TOT_PAYS;
-    private Float TOT_ADJS;
-    private Float TRNSFR_AMT;
-    private Float CURR_CHGS_MAN;
-    private Float TOT_BILL_CHGS_BANS;
-    private Float NET_PAST_DUE;
-    private Float LATE_PAY_CHGS;
-    private Float TOT_CURR_CHGS;
-    private String PMTS_THRU_DATE;
-    private Character SUMM_BILL_IND;
-    private Character ACCT_STATUS_IND;
-    private Character CLS_OF_SVC_TYPE;
-    private Character HOLD_BILL_IND;
-    private Character ARREARS_IND;
-    private Float LATE_PAY_CHG_RATE;
-    private Character TAX_STATUS_IND_FD;
-    private Character TAX_STATUS_IND_ST;
-    private Character TAX_STATUS_E911;
-    private Character TAX_STATUS_SCHG;
-    private Character TAX_STATUS_IND_LOC;
-    private String TAR_CD_INFO;
-    private String GEO_CD;
-    private Character ACCT_TYPE_CD;
-    private Float RESALE_DISC_AMT;
-    private Float PACKAGE_DISC_AMT;
-    private String ACCSUMXT_DAN;
-
-    private String ACCT_NAME;
-    private Integer ADDR_SEQ_NBR;
-    private Integer TAR_CD_INFO_ID;
-    private Character TXFER_TYPE;
-    private Character TEXT_IND;
-    private Integer BILL_PAGE_NUMBER;
-    private Byte ITEM_NUMBER;
-    private String CUST_ID_CD;
-    private String CUST_ID_DEPT_CD;
-    private Float TOT_CARR_CHGS;
-    private Float COLL_REFER_AMT;
-    private Character BILL_BASIS_CD;
-    private Float AMT_PEND_LEGAL;
-    private Float FUTURE_LPAY_RATE;
-    private Float AMT_SUBJ_LPAY;
-    private Character PAYM_OPT_CD;
-    private Float PEND_LPAY_AMT;
-    private Float TOLL_CAP_AMT;
-    private String CUSTOMER_PIN;
-    private Float TRANSFER_PAST_CHGS;
-    private String RAO;
-    private Character CLASSIFICATION_CD;
-    private Character NBBE_CODE;
-    private String COMPANY_CODE;
-    private Integer END_VZ450_SEQ_NBR;
-    private Integer CUST_ID_CD_ID;
-    private Integer CUST_ID_DEPT_CD_ID;
-    private Integer PAYMADDT_SEQ_NBR;
-    private Integer TEXT1_SEQ_NBR;
-    private Integer TEXT2_SEQ_NBR;
-    private Character ADDL_TEXT_IND;
-    private Character FIBER_ACCT_CD;
-    private String SUB_CIC;
-    private Character COMP_SVC_TYPE;
-    private String ISRT_CD;
-    private Character ISRT_STATION;
-    private Float ISRT_WEIGHT;
-    private String CHK_DIGIT_NBR;
-    private Character CHK_ACCEPT_IND;
-    private String BILL_LINE_ID;
-    private Character ACCT_ASSOC_CD;
-    private Character ACCT_SYSTEM_ID;
-    private String CLSSVC_USOC;
-    private String REV_BOOK_CD;
-    private Character MERGE_FMT_IND;
-    private Character SPEC_REC_ORIG_CD;
-    private String ENTITY_CD;
-    private String CHANNEL_CD;
-    private String NATL_ACCT_ID;
-    private String LEGACY_ACCT_ID;
-    private Character INV_BILL_IND;
-    private String INVOICE_NBR;
-    private Integer TEXT_KEY_NBR1;
-    private Integer TEXT_KEY_NBR2;
-    private Integer TEXT_KEY_NBR3;
-    private String IMMEDIATE_MAN;
-    private Character RECORD_LEVEL;
-    private Character REMIT_ACCT_IND;
-    private Character LDEP_IND;
-    private String ORG_LEVEL1_CD;
-    private String ORG_LEVEL2_CD;
-    private Character FREQUENCY;
-    private String BILL_CURR;
-    private String CONV_CURR;
-    private String REGION_CD;
-    private String INVOICE_SERIES_NBR;
-    private Character COST_CNTR_IND;
-    private String WIRELESS_DAN;
-    private String MASTER_CHANNEL_CD;
-    private String MODULE_084;
-    private String OPCO;
-    private String MODULE_087;
-    private Character SPEC_PROC_CD;
-    private String WCAS_TAX_CAT;
-    private String MODULE_302;
+    @Column(name = "MAN")
+    private String man;
+    @Column(name = "STATE_CODE")
+    private String stateCode;
+    @Column(name = "DEPT_CD")
+    private String deptCd;
+    @Column(name = "PAY_BY_DATE")
+    private String payByDate;
+    @Column(name = "TOT_BILL_AMT")
+    private Float totBillAmt;
+    @Column(name = "PREV_BILL_AMT")
+    private Float prevBillAmt;
+    @Column(name = "TOT_PAYS")
+    private Float totPays;
+    @Column(name = "TOT_ADJS")
+    private Float totAdjs;
+    @Column(name = "TRNSFR_AMT")
+    private Float trnsfrAmt;
+    @Column(name = "CURR_CHGS_MAN")
+    private Float currChgs_man;
+    @Column(name = "TOT_BILL_CHGS_BANS")
+    private Float totBillChgsBans;
+    @Column(name = "NET_PAST_DUE")
+    private Float netPastDue;
+    @Column(name = "LATE_PAY_CHGS")
+    private Float latePayChgs;
+    @Column(name = "TOT_CURR_CHGS")
+    private Float totCurrChgs;
+    @Column(name = "PMTS_THRU_DATE")
+    private String pmtsThruDate;
+    @Column(name = "SUMM_BILL_IND")
+    private Character summBillInd;
+    @Column(name = "ACCT_STATUS_IND")
+    private Character acctStatusInd;
+    @Column(name = "CLS_OF_SVC_TYPE")
+    private Character clsOfSvcType;
+    @Column(name = "HOLD_BILL_IND")
+    private Character holdBillInd;
+    @Column(name = "ARREARS_IND")
+    private Character arrearsInd;
+    @Column(name = "LATE_PAY_CHG_RATE")
+    private Float latePayChgRate;
+    @Column(name = "TAX_STATUS_IND_FD")
+    private Character taxStatusIndFd;
+    @Column(name = "TAX_STATUS_IND_ST")
+    private Character taxStatusIndSt;
+    @Column(name = "TAX_STATUS_E911")
+    private Character taxStatusE911;
+    @Column(name = "TAX_STATUS_SCHG")
+    private Character taxStatusSchg;
+    @Column(name = "TAX_STATUS_IND_LOC")
+    private Character taxStatusIndLoc;
+    @Column(name = "TAR_CD_INFO")
+    private String tarCdInfo;
+    @Column(name = "GEO_CD")
+    private String geoCd;
+    @Column(name = "ACCT_TYPE_CD")
+    private Character acctTypeCd;
+    @Column(name = "RESALE_DISC_AMT")
+    private Float resaleDiscAmt;
+    @Column(name = "PACKAGE_DISC_AMT")
+    private Float packageDiscAmt;
+    @Column(name = "ACCSUMXT_DAN")
+    private String accsumxtDan;
+    @Column(name = "ACCT_NAME")
+    private String acctName;
+    @Column(name = "ADDR_SEQ_NBR")
+    private Integer addrSeqNbr;
+    @Column(name = "TAR_CD_INFO_ID")
+    private Integer tarCdInfoId;
+    @Column(name = "TXFER_TYPE")
+    private Character txferType;
+    @Column(name = "TEXT_IND")
+    private Character textInd;
+    @Column(name = "BILL_PAGE_NUMBER")
+    private Integer billPageNumber;
+    @Column(name = "ITEM_NUMBER")
+    private Byte itemNumber;
+    @Column(name = "CUST_ID_CD")
+    private String custIdCd;
+    @Column(name = "CUST_ID_DEPT_CD")
+    private String custIdDeptCd;
+    @Column(name = "TOT_CARR_CHGS")
+    private Float totCarrChgs;
+    @Column(name = "COLL_REFER_AMT")
+    private Float collReferAmt;
+    @Column(name = "BILL_BASIS_CD")
+    private Character billBasisCd;
+    @Column(name = "AMT_PEND_LEGAL")
+    private Float amtPendLegal;
+    @Column(name = "FUTURE_LPAY_RATE")
+    private Float futureLpayRate;
+    @Column(name = "AMT_SUBJ_LPAY")
+    private Float amtSubjLpay;
+    @Column(name = "PAYM_OPT_CD")
+    private Character paymOptCd;
+    @Column(name = "PEND_LPAY_AMT")
+    private Float pendLpayAmt;
+    @Column(name = "TOLL_CAP_AMT")
+    private Float tollCapAmt;
+    @Column(name = "CUSTOMER_PIN")
+    private String customerPin;
+    @Column(name = "TRANSFER_PAST_CHGS")
+    private Float transferPastChgs;
+    @Column(name = "RAO")
+    private String rao;
+    @Column(name = "CLASSIFICATION_CD")
+    private Character classificationCd;
+    @Column(name = "NBBE_CODE")
+    private Character nbbeCode;
+    @Column(name = "COMPANY_CODE")
+    private String companyCode;
+    @Column(name = "END_VZ450_SEQ_NBR")
+    private Integer end_vz450SeqNbr;
+    @Column(name = "CUST_ID_CD_ID")
+    private Integer custIdCdId;
+    @Column(name = "CUST_ID_DEPT_CD_ID")
+    private Integer custIdDeptCdId;
+    @Column(name = "PAYMADDT_SEQ_NBR")
+    private Integer paymaddtSeqNbr;
+    @Column(name = "TEXT1_SEQ_NBR")
+    private Integer text1SeqNbr;
+    @Column(name = "TEXT2_SEQ_NBR")
+    private Integer text2SeqNbr;
+    @Column(name = "ADDL_TEXT_IND")
+    private Character addlTextInd;
+    @Column(name = "FIBER_ACCT_CD")
+    private Character fiberAcctCd;
+    @Column(name = "SUB_CIC")
+    private String subCic;
+    @Column(name = "COMP_SVC_TYPE")
+    private Character compSvcType;
+    @Column(name = "ISRT_CD")
+    private String isrtCd;
+    @Column(name = "ISRT_STATION")
+    private Character isrtStation;
+    @Column(name = "ISRT_WEIGHT")
+    private Float isrt_weight;
+    @Column(name = "CHK_DIGIT_NBR")
+    private String chkDigitNbr;
+    @Column(name = "CHK_ACCEPT_IND")
+    private Character chkAcceptInd;
+    @Column(name = "BILL_LINE_ID")
+    private String billLineId;
+    @Column(name = "ACCT_ASSOC_CD")
+    private Character acctAssocCd;
+    @Column(name = "ACCT_SYSTEM_ID")
+    private Character acctSystemId;
+    @Column(name = "CLSSVC_USOC")
+    private String clssvcUsoc;
+    @Column(name = "REV_BOOK_CD")
+    private String revBookCd;
+    @Column(name = "MERGE_FMT_IND")
+    private Character mergeFmtInd;
+    @Column(name = "SPEC_REC_ORIG_CD")
+    private Character specRecOrigCd;
+    @Column(name = "ENTITY_CD")
+    private String entityCd;
+    @Column(name = "CHANNEL_CD")
+    private String channelCd;
+    @Column(name = "NATL_ACCT_ID")
+    private String natlAcctId;
+    @Column(name = "LEGACY_ACCT_ID")
+    private String legacyAcctId;
+    @Column(name = "INV_BILL_IND")
+    private Character invBillInd;
+    @Column(name = "INVOICE_NBR")
+    private String invoiceNbr;
+    @Column(name = "TEXT_KEY_NBR1")
+    private Integer text_keyNbr1;
+    @Column(name = "TEXT_KEY_NBR2")
+    private Integer text_keyNbr2;
+    @Column(name = "TEXT_KEY_NBR3")
+    private Integer text_keyNbr3;
+    @Column(name = "IMMEDIATE_MAN")
+    private String immediateMan;
+    @Column(name = "RECORD_LEVEL")
+    private Character recordLevel;
+    @Column(name = "REMIT_ACCT_IND")
+    private Character remitAcctInd;
+    @Column(name = "LDEP_IND")
+    private Character ldepInd;
+    @Column(name = "ORG_LEVEL1_CD")
+    private String orgLevel1Cd;
+    @Column(name = "ORG_LEVEL2_CD")
+    private String orgLevel2Cd;
+    @Column(name = "FREQUENCY")
+    private Character frequency;
+    @Column(name = "BILL_CURR")
+    private String billCurr;
+    @Column(name = "CONV_CURR")
+    private String convCurr;
+    @Column(name = "REGION_CD")
+    private String regionCd;
+    @Column(name = "INVOICE_SERIES_NBR")
+    private String invoiceSeriesNbr;
+    @Column(name = "COST_CNTR_IND")
+    private Character costCntrInd;
+    @Column(name = "WIRELESS_DAN")
+    private String wirelessDan;
+    @Column(name = "MASTER_CHANNEL_CD")
+    private String masterChannelCd;
+    @Column(name = "MODULE_084")
+    private String module084;
+    @Column(name = "OPCO")
+    private String opco;
+    @Column(name = "MODULE_087")
+    private String module087;
+    @Column(name = "SPEC_PROC_CD")
+    private Character specProcCd;
+    @Column(name = "WCAS_TAX_CAT")
+    private String wcasTaxCat;
+    @Column(name = "MODULE_302")
+    private String module302;
 
     public AcctSumX(){}
 
-    public String getMAN() {
-        return MAN;
+    public String getMan() {
+        return man;
     }
 
-    public void setMAN(String MAN) {
-        this.MAN = MAN;
+    public void setMan(String man) {
+        this.man = man;
     }
 
-
-    public String getSTATE_CODE() {
-        return STATE_CODE;
+    public String getStateCode() {
+        return stateCode;
     }
 
-    public void setSTATE_CODE(String STATE_CODE) {
-        this.STATE_CODE = STATE_CODE;
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
     }
-
 
-    public String getDEPT_CD() {
-        return DEPT_CD;
+    public String getDeptCd() {
+        return deptCd;
     }
 
-    public void setDEPT_CD(String DEPT_CD) {
-        this.DEPT_CD = DEPT_CD;
+    public void setDeptCd(String deptCd) {
+        this.deptCd = deptCd;
     }
 
-    public String getPAY_BY_DATE() {
-        return PAY_BY_DATE;
+    public String getPayByDate() {
+        return payByDate;
     }
 
-    public void setPAY_BY_DATE(String PAY_BY_DATE) {
-        this.PAY_BY_DATE = PAY_BY_DATE;
+    public void setPayByDate(String payByDate) {
+        this.payByDate = payByDate;
     }
 
-    public Float getTOT_BILL_AMT() {
-        return TOT_BILL_AMT;
+    public Float getTotBillAmt() {
+        return totBillAmt;
     }
 
-    public void setTOT_BILL_AMT(Float TOT_BILL_AMT) {
-        this.TOT_BILL_AMT = TOT_BILL_AMT;
+    public void setTotBillAmt(Float totBillAmt) {
+        this.totBillAmt = totBillAmt;
     }
 
-    public Float getPREV_BILL_AMT() {
-        return PREV_BILL_AMT;
+    public Float getPrevBillAmt() {
+        return prevBillAmt;
     }
 
-    public void setPREV_BILL_AMT(Float PREV_BILL_AMT) {
-        this.PREV_BILL_AMT = PREV_BILL_AMT;
+    public void setPrevBillAmt(Float prevBillAmt) {
+        this.prevBillAmt = prevBillAmt;
     }
 
-    public Float getTOT_PAYS() {
-        return TOT_PAYS;
+    public Float getTotPays() {
+        return totPays;
     }
 
-    public void setTOT_PAYS(Float TOT_PAYS) {
-        this.TOT_PAYS = TOT_PAYS;
+    public void setTotPays(Float totPays) {
+        this.totPays = totPays;
     }
 
-    public Float getTOT_ADJS() {
-        return TOT_ADJS;
+    public Float getTotAdjs() {
+        return totAdjs;
     }
 
-    public void setTOT_ADJS(Float TOT_ADJS) {
-        this.TOT_ADJS = TOT_ADJS;
+    public void setTotAdjs(Float totAdjs) {
+        this.totAdjs = totAdjs;
     }
 
-    public Float getTRNSFR_AMT() {
-        return TRNSFR_AMT;
+    public Float getTrnsfrAmt() {
+        return trnsfrAmt;
     }
 
-    public void setTRNSFR_AMT(Float TRNSFR_AMT) {
-        this.TRNSFR_AMT = TRNSFR_AMT;
+    public void setTrnsfrAmt(Float trnsfrAmt) {
+        this.trnsfrAmt = trnsfrAmt;
     }
 
-    public Float getCURR_CHGS_MAN() {
-        return CURR_CHGS_MAN;
+    public Float getCurrChgs_man() {
+        return currChgs_man;
     }
 
-    public void setCURR_CHGS_MAN(Float CURR_CHGS_MAN) {
-        this.CURR_CHGS_MAN = CURR_CHGS_MAN;
+    public void setCurrChgs_man(Float currChgs_man) {
+        this.currChgs_man = currChgs_man;
     }
 
-    public Float getTOT_BILL_CHGS_BANS() {
-        return TOT_BILL_CHGS_BANS;
+    public Float getTotBillChgsBans() {
+        return totBillChgsBans;
     }
 
-    public void setTOT_BILL_CHGS_BANS(Float TOT_BILL_CHGS_BANS) {
-        this.TOT_BILL_CHGS_BANS = TOT_BILL_CHGS_BANS;
+    public void setTotBillChgsBans(Float totBillChgsBans) {
+        this.totBillChgsBans = totBillChgsBans;
     }
 
-    public Float getNET_PAST_DUE() {
-        return NET_PAST_DUE;
+    public Float getNetPastDue() {
+        return netPastDue;
     }
 
-    public void setNET_PAST_DUE(Float NET_PAST_DUE) {
-        this.NET_PAST_DUE = NET_PAST_DUE;
+    public void setNetPastDue(Float netPastDue) {
+        this.netPastDue = netPastDue;
     }
 
-    public Float getLATE_PAY_CHGS() {
-        return LATE_PAY_CHGS;
+    public Float getLatePayChgs() {
+        return latePayChgs;
     }
 
-    public void setLATE_PAY_CHGS(Float LATE_PAY_CHGS) {
-        this.LATE_PAY_CHGS = LATE_PAY_CHGS;
+    public void setLatePayChgs(Float latePayChgs) {
+        this.latePayChgs = latePayChgs;
     }
 
-    public Float getTOT_CURR_CHGS() {
-        return TOT_CURR_CHGS;
+    public Float getTotCurrChgs() {
+        return totCurrChgs;
     }
 
-    public void setTOT_CURR_CHGS(Float TOT_CURR_CHGS) {
-        this.TOT_CURR_CHGS = TOT_CURR_CHGS;
+    public void setTotCurrChgs(Float totCurrChgs) {
+        this.totCurrChgs = totCurrChgs;
     }
 
-    public String getPMTS_THRU_DATE() {
-        return PMTS_THRU_DATE;
+    public String getPmtsThruDate() {
+        return pmtsThruDate;
     }
 
-    public void setPMTS_THRU_DATE(String PMTS_THRU_DATE) {
-        this.PMTS_THRU_DATE = PMTS_THRU_DATE;
+    public void setPmtsThruDate(String pmtsThruDate) {
+        this.pmtsThruDate = pmtsThruDate;
     }
 
-    public Character getSUMM_BILL_IND() {
-        return SUMM_BILL_IND;
+    public Character getSummBillInd() {
+        return summBillInd;
     }
 
-    public void setSUMM_BILL_IND(Character SUMM_BILL_IND) {
-        this.SUMM_BILL_IND = SUMM_BILL_IND;
+    public void setSummBillInd(Character summBillInd) {
+        this.summBillInd = summBillInd;
     }
 
-    public Character getACCT_STATUS_IND() {
-        return ACCT_STATUS_IND;
+    public Character getAcctStatusInd() {
+        return acctStatusInd;
     }
 
-    public void setACCT_STATUS_IND(Character ACCT_STATUS_IND) {
-        this.ACCT_STATUS_IND = ACCT_STATUS_IND;
+    public void setAcctStatusInd(Character acctStatusInd) {
+        this.acctStatusInd = acctStatusInd;
     }
 
-    public Character getCLS_OF_SVC_TYPE() {
-        return CLS_OF_SVC_TYPE;
+    public Character getClsOfSvcType() {
+        return clsOfSvcType;
     }
 
-    public void setCLS_OF_SVC_TYPE(Character CLS_OF_SVC_TYPE) {
-        this.CLS_OF_SVC_TYPE = CLS_OF_SVC_TYPE;
+    public void setClsOfSvcType(Character clsOfSvcType) {
+        this.clsOfSvcType = clsOfSvcType;
     }
 
-    public Character getHOLD_BILL_IND() {
-        return HOLD_BILL_IND;
+    public Character getHoldBillInd() {
+        return holdBillInd;
     }
 
-    public void setHOLD_BILL_IND(Character HOLD_BILL_IND) {
-        this.HOLD_BILL_IND = HOLD_BILL_IND;
+    public void setHoldBillInd(Character holdBillInd) {
+        this.holdBillInd = holdBillInd;
     }
 
-    public Character getARREARS_IND() {
-        return ARREARS_IND;
+    public Character getArrearsInd() {
+        return arrearsInd;
     }
 
-    public void setARREARS_IND(Character ARREARS_IND) {
-        this.ARREARS_IND = ARREARS_IND;
+    public void setArrearsInd(Character arrearsInd) {
+        this.arrearsInd = arrearsInd;
     }
 
-    public Float getLATE_PAY_CHG_RATE() {
-        return LATE_PAY_CHG_RATE;
+    public Float getLatePayChgRate() {
+        return latePayChgRate;
     }
 
-    public void setLATE_PAY_CHG_RATE(Float LATE_PAY_CHG_RATE) {
-        this.LATE_PAY_CHG_RATE = LATE_PAY_CHG_RATE;
+    public void setLatePayChgRate(Float latePayChgRate) {
+        this.latePayChgRate = latePayChgRate;
     }
 
-    public Character getTAX_STATUS_IND_FD() {
-        return TAX_STATUS_IND_FD;
+    public Character getTaxStatusIndFd() {
+        return taxStatusIndFd;
     }
 
-    public void setTAX_STATUS_IND_FD(Character TAX_STATUS_IND_FD) {
-        this.TAX_STATUS_IND_FD = TAX_STATUS_IND_FD;
+    public void setTaxStatusIndFd(Character taxStatusIndFd) {
+        this.taxStatusIndFd = taxStatusIndFd;
     }
 
-    public Character getTAX_STATUS_IND_ST() {
-        return TAX_STATUS_IND_ST;
+    public Character getTaxStatusIndSt() {
+        return taxStatusIndSt;
     }
 
-    public void setTAX_STATUS_IND_ST(Character TAX_STATUS_IND_ST) {
-        this.TAX_STATUS_IND_ST = TAX_STATUS_IND_ST;
+    public void setTaxStatusIndSt(Character taxStatusIndSt) {
+        this.taxStatusIndSt = taxStatusIndSt;
     }
 
-    public Character getTAX_STATUS_E911() {
-        return TAX_STATUS_E911;
+    public Character getTaxStatusE911() {
+        return taxStatusE911;
     }
 
-    public void setTAX_STATUS_E911(Character TAX_STATUS_E911) {
-        this.TAX_STATUS_E911 = TAX_STATUS_E911;
+    public void setTaxStatusE911(Character taxStatusE911) {
+        this.taxStatusE911 = taxStatusE911;
     }
 
-    public Character getTAX_STATUS_SCHG() {
-        return TAX_STATUS_SCHG;
+    public Character getTaxStatusSchg() {
+        return taxStatusSchg;
     }
 
-    public void setTAX_STATUS_SCHG(Character TAX_STATUS_SCHG) {
-        this.TAX_STATUS_SCHG = TAX_STATUS_SCHG;
+    public void setTaxStatusSchg(Character taxStatusSchg) {
+        this.taxStatusSchg = taxStatusSchg;
     }
 
-    public Character getTAX_STATUS_IND_LOC() {
-        return TAX_STATUS_IND_LOC;
+    public Character getTaxStatusIndLoc() {
+        return taxStatusIndLoc;
     }
 
-    public void setTAX_STATUS_IND_LOC(Character TAX_STATUS_IND_LOC) {
-        this.TAX_STATUS_IND_LOC = TAX_STATUS_IND_LOC;
+    public void setTaxStatusIndLoc(Character taxStatusIndLoc) {
+        this.taxStatusIndLoc = taxStatusIndLoc;
     }
 
-    public String getTAR_CD_INFO() {
-        return TAR_CD_INFO;
+    public String getTarCdInfo() {
+        return tarCdInfo;
     }
 
-    public void setTAR_CD_INFO(String TAR_CD_INFO) {
-        this.TAR_CD_INFO = TAR_CD_INFO;
+    public void setTarCdInfo(String tarCdInfo) {
+        this.tarCdInfo = tarCdInfo;
     }
 
-    public String getGEO_CD() {
-        return GEO_CD;
+    public String getGeoCd() {
+        return geoCd;
     }
 
-    public void setGEO_CD(String GEO_CD) {
-        this.GEO_CD = GEO_CD;
+    public void setGeoCd(String geoCd) {
+        this.geoCd = geoCd;
     }
 
-    public Character getACCT_TYPE_CD() {
-        return ACCT_TYPE_CD;
+    public Character getAcctTypeCd() {
+        return acctTypeCd;
     }
 
-    public void setACCT_TYPE_CD(Character ACCT_TYPE_CD) {
-        this.ACCT_TYPE_CD = ACCT_TYPE_CD;
+    public void setAcctTypeCd(Character acctTypeCd) {
+        this.acctTypeCd = acctTypeCd;
     }
 
-    public Float getRESALE_DISC_AMT() {
-        return RESALE_DISC_AMT;
+    public Float getResaleDiscAmt() {
+        return resaleDiscAmt;
     }
 
-    public void setRESALE_DISC_AMT(Float RESALE_DISC_AMT) {
-        this.RESALE_DISC_AMT = RESALE_DISC_AMT;
+    public void setResaleDiscAmt(Float resaleDiscAmt) {
+        this.resaleDiscAmt = resaleDiscAmt;
     }
 
-    public Float getPACKAGE_DISC_AMT() {
-        return PACKAGE_DISC_AMT;
+    public Float getPackageDiscAmt() {
+        return packageDiscAmt;
     }
 
-    public void setPACKAGE_DISC_AMT(Float PACKAGE_DISC_AMT) {
-        this.PACKAGE_DISC_AMT = PACKAGE_DISC_AMT;
+    public void setPackageDiscAmt(Float packageDiscAmt) {
+        this.packageDiscAmt = packageDiscAmt;
     }
 
-    public String getACCSUMXT_DAN() {
-        return ACCSUMXT_DAN;
+    public String getAccsumxtDan() {
+        return accsumxtDan;
     }
 
-    public void setACCSUMXT_DAN(String ACCSUMXT_DAN) {
-        this.ACCSUMXT_DAN = ACCSUMXT_DAN;
+    public void setAccsumxtDan(String accsumxtDan) {
+        this.accsumxtDan = accsumxtDan;
     }
 
-    public String getACCT_NAME() {
-        return ACCT_NAME;
+    public String getAcctName() {
+        return acctName;
     }
 
-    public void setACCT_NAME(String ACCT_NAME) {
-        this.ACCT_NAME = ACCT_NAME;
+    public void setAcctName(String acctName) {
+        this.acctName = acctName;
     }
 
-    public Integer getADDR_SEQ_NBR() {
-        return ADDR_SEQ_NBR;
+    public Integer getAddrSeqNbr() {
+        return addrSeqNbr;
     }
 
-    public void setADDR_SEQ_NBR(Integer ADDR_SEQ_NBR) {
-        this.ADDR_SEQ_NBR = ADDR_SEQ_NBR;
+    public void setAddrSeqNbr(Integer addrSeqNbr) {
+        this.addrSeqNbr = addrSeqNbr;
     }
 
-    public Integer getTAR_CD_INFO_ID() {
-        return TAR_CD_INFO_ID;
+    public Integer getTarCdInfoId() {
+        return tarCdInfoId;
     }
 
-    public void setTAR_CD_INFO_ID(Integer TAR_CD_INFO_ID) {
-        this.TAR_CD_INFO_ID = TAR_CD_INFO_ID;
+    public void setTarCdInfoId(Integer tarCdInfoId) {
+        this.tarCdInfoId = tarCdInfoId;
     }
 
-
-    public Character getTXFER_TYPE() {
-        return TXFER_TYPE;
+    public Character getTxferType() {
+        return txferType;
     }
 
-    public void setTXFER_TYPE(Character TXFER_TYPE) {
-        this.TXFER_TYPE = TXFER_TYPE;
+    public void setTxferType(Character txferType) {
+        this.txferType = txferType;
     }
 
-    public Character getTEXT_IND() {
-        return TEXT_IND;
+    public Character getTextInd() {
+        return textInd;
     }
 
-    public void setTEXT_IND(Character TEXT_IND) {
-        this.TEXT_IND = TEXT_IND;
+    public void setTextInd(Character textInd) {
+        this.textInd = textInd;
     }
 
-    public Integer getBILL_PAGE_NUMBER() {
-        return BILL_PAGE_NUMBER;
+    public Integer getBillPageNumber() {
+        return billPageNumber;
     }
 
-    public void setBILL_PAGE_NUMBER(Integer BILL_PAGE_NUMBER) {
-        this.BILL_PAGE_NUMBER = BILL_PAGE_NUMBER;
+    public void setBillPageNumber(Integer billPageNumber) {
+        this.billPageNumber = billPageNumber;
     }
 
-    public Byte getITEM_NUMBER() {
-        return ITEM_NUMBER;
+    public Byte getItemNumber() {
+        return itemNumber;
     }
 
-    public void setITEM_NUMBER(Byte ITEM_NUMBER) {
-        this.ITEM_NUMBER = ITEM_NUMBER;
+    public void setItemNumber(Byte itemNumber) {
+        this.itemNumber = itemNumber;
     }
 
-    public String getCUST_ID_CD() {
-        return CUST_ID_CD;
+    public String getCustIdCd() {
+        return custIdCd;
     }
 
-    public void setCUST_ID_CD(String CUST_ID_CD) {
-        this.CUST_ID_CD = CUST_ID_CD;
+    public void setCustIdCd(String custIdCd) {
+        this.custIdCd = custIdCd;
     }
 
-    public String getCUST_ID_DEPT_CD() {
-        return CUST_ID_DEPT_CD;
+    public String getCustIdDeptCd() {
+        return custIdDeptCd;
     }
 
-    public void setCUST_ID_DEPT_CD(String CUST_ID_DEPT_CD) {
-        this.CUST_ID_DEPT_CD = CUST_ID_DEPT_CD;
+    public void setCustIdDeptCd(String custIdDeptCd) {
+        this.custIdDeptCd = custIdDeptCd;
     }
 
-    public Float getTOT_CARR_CHGS() {
-        return TOT_CARR_CHGS;
+    public Float getTotCarrChgs() {
+        return totCarrChgs;
     }
 
-    public void setTOT_CARR_CHGS(Float TOT_CARR_CHGS) {
-        this.TOT_CARR_CHGS = TOT_CARR_CHGS;
+    public void setTotCarrChgs(Float totCarrChgs) {
+        this.totCarrChgs = totCarrChgs;
     }
 
-    public Float getCOLL_REFER_AMT() {
-        return COLL_REFER_AMT;
+    public Float getCollReferAmt() {
+        return collReferAmt;
     }
 
-    public void setCOLL_REFER_AMT(Float COLL_REFER_AMT) {
-        this.COLL_REFER_AMT = COLL_REFER_AMT;
+    public void setCollReferAmt(Float collReferAmt) {
+        this.collReferAmt = collReferAmt;
     }
 
-    public Character getBILL_BASIS_CD() {
-        return BILL_BASIS_CD;
+    public Character getBillBasisCd() {
+        return billBasisCd;
     }
 
-    public void setBILL_BASIS_CD(Character BILL_BASIS_CD) {
-        this.BILL_BASIS_CD = BILL_BASIS_CD;
+    public void setBillBasisCd(Character billBasisCd) {
+        this.billBasisCd = billBasisCd;
     }
 
-    public Float getAMT_PEND_LEGAL() {
-        return AMT_PEND_LEGAL;
+    public Float getAmtPendLegal() {
+        return amtPendLegal;
     }
 
-    public void setAMT_PEND_LEGAL(Float AMT_PEND_LEGAL) {
-        this.AMT_PEND_LEGAL = AMT_PEND_LEGAL;
+    public void setAmtPendLegal(Float amtPendLegal) {
+        this.amtPendLegal = amtPendLegal;
     }
 
-    public Float getFUTURE_LPAY_RATE() {
-        return FUTURE_LPAY_RATE;
+    public Float getFutureLpayRate() {
+        return futureLpayRate;
     }
 
-    public void setFUTURE_LPAY_RATE(Float FUTURE_LPAY_RATE) {
-        this.FUTURE_LPAY_RATE = FUTURE_LPAY_RATE;
+    public void setFutureLpayRate(Float futureLpayRate) {
+        this.futureLpayRate = futureLpayRate;
     }
 
-    public Float getAMT_SUBJ_LPAY() {
-        return AMT_SUBJ_LPAY;
+    public Float getAmtSubjLpay() {
+        return amtSubjLpay;
     }
 
-    public void setAMT_SUBJ_LPAY(Float AMT_SUBJ_LPAY) {
-        this.AMT_SUBJ_LPAY = AMT_SUBJ_LPAY;
+    public void setAmtSubjLpay(Float amtSubjLpay) {
+        this.amtSubjLpay = amtSubjLpay;
     }
 
-    public Character getPAYM_OPT_CD() {
-        return PAYM_OPT_CD;
+    public Character getPaymOptCd() {
+        return paymOptCd;
     }
 
-    public void setPAYM_OPT_CD(Character PAYM_OPT_CD) {
-        this.PAYM_OPT_CD = PAYM_OPT_CD;
+    public void setPaymOptCd(Character paymOptCd) {
+        this.paymOptCd = paymOptCd;
     }
 
-    public Float getPEND_LPAY_AMT() {
-        return PEND_LPAY_AMT;
+    public Float getPendLpayAmt() {
+        return pendLpayAmt;
     }
 
-    public void setPEND_LPAY_AMT(Float PEND_LPAY_AMT) {
-        this.PEND_LPAY_AMT = PEND_LPAY_AMT;
+    public void setPendLpayAmt(Float pendLpayAmt) {
+        this.pendLpayAmt = pendLpayAmt;
     }
 
-    public Float getTOLL_CAP_AMT() {
-        return TOLL_CAP_AMT;
+    public Float getTollCapAmt() {
+        return tollCapAmt;
     }
 
-    public void setTOLL_CAP_AMT(Float TOLL_CAP_AMT) {
-        this.TOLL_CAP_AMT = TOLL_CAP_AMT;
+    public void setTollCapAmt(Float tollCapAmt) {
+        this.tollCapAmt = tollCapAmt;
     }
 
-    public String getCUSTOMER_PIN() {
-        return CUSTOMER_PIN;
+    public String getCustomerPin() {
+        return customerPin;
     }
 
-    public void setCUSTOMER_PIN(String CUSTOMER_PIN) {
-        this.CUSTOMER_PIN = CUSTOMER_PIN;
+    public void setCustomerPin(String customerPin) {
+        this.customerPin = customerPin;
     }
 
-    public Float getTRANSFER_PAST_CHGS() {
-        return TRANSFER_PAST_CHGS;
+    public Float getTransferPastChgs() {
+        return transferPastChgs;
     }
 
-    public void setTRANSFER_PAST_CHGS(Float TRANSFER_PAST_CHGS) {
-        this.TRANSFER_PAST_CHGS = TRANSFER_PAST_CHGS;
+    public void setTransferPastChgs(Float transferPastChgs) {
+        this.transferPastChgs = transferPastChgs;
     }
 
-    public String getRAO() {
-        return RAO;
+    public String getRao() {
+        return rao;
     }
 
-    public void setRAO(String RAO) {
-        this.RAO = RAO;
+    public void setRao(String rao) {
+        this.rao = rao;
     }
 
-    public Character getCLASSIFICATION_CD() {
-        return CLASSIFICATION_CD;
+    public Character getClassificationCd() {
+        return classificationCd;
     }
 
-    public void setCLASSIFICATION_CD(Character CLASSIFICATION_CD) {
-        this.CLASSIFICATION_CD = CLASSIFICATION_CD;
+    public void setClassificationCd(Character classificationCd) {
+        this.classificationCd = classificationCd;
     }
 
-    public Character getNBBE_CODE() {
-        return NBBE_CODE;
+    public Character getNbbeCode() {
+        return nbbeCode;
     }
 
-    public void setNBBE_CODE(Character NBBE_CODE) {
-        this.NBBE_CODE = NBBE_CODE;
+    public void setNbbeCode(Character nbbeCode) {
+        this.nbbeCode = nbbeCode;
     }
 
-    public String getCOMPANY_CODE() {
-        return COMPANY_CODE;
+    public String getCompanyCode() {
+        return companyCode;
     }
 
-    public void setCOMPANY_CODE(String COMPANY_CODE) {
-        this.COMPANY_CODE = COMPANY_CODE;
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
     }
 
-    public Integer getEND_VZ450_SEQ_NBR() {
-        return END_VZ450_SEQ_NBR;
+    public Integer getEnd_vz450SeqNbr() {
+        return end_vz450SeqNbr;
     }
 
-    public void setEND_VZ450_SEQ_NBR(Integer END_VZ450_SEQ_NBR) {
-        this.END_VZ450_SEQ_NBR = END_VZ450_SEQ_NBR;
+    public void setEnd_vz450SeqNbr(Integer end_vz450SeqNbr) {
+        this.end_vz450SeqNbr = end_vz450SeqNbr;
     }
-
 
-    public Integer getCUST_ID_CD_ID() {
-        return CUST_ID_CD_ID;
+    public Integer getCustIdCdId() {
+        return custIdCdId;
     }
 
-    public void setCUST_ID_CD_ID(Integer CUST_ID_CD_ID) {
-        this.CUST_ID_CD_ID = CUST_ID_CD_ID;
+    public void setCustIdCdId(Integer custIdCdId) {
+        this.custIdCdId = custIdCdId;
     }
 
-    public Integer getCUST_ID_DEPT_CD_ID() {
-        return CUST_ID_DEPT_CD_ID;
+    public Integer getCustIdDeptCdId() {
+        return custIdDeptCdId;
     }
 
-    public void setCUST_ID_DEPT_CD_ID(Integer CUST_ID_DEPT_CD_ID) {
-        this.CUST_ID_DEPT_CD_ID = CUST_ID_DEPT_CD_ID;
+    public void setCustIdDeptCdId(Integer custIdDeptCdId) {
+        this.custIdDeptCdId = custIdDeptCdId;
     }
 
-    public Integer getPAYMADDT_SEQ_NBR() {
-        return PAYMADDT_SEQ_NBR;
+    public Integer getPaymaddtSeqNbr() {
+        return paymaddtSeqNbr;
     }
 
-    public void setPAYMADDT_SEQ_NBR(Integer PAYMADDT_SEQ_NBR) {
-        this.PAYMADDT_SEQ_NBR = PAYMADDT_SEQ_NBR;
+    public void setPaymaddtSeqNbr(Integer paymaddtSeqNbr) {
+        this.paymaddtSeqNbr = paymaddtSeqNbr;
     }
 
-    public Integer getTEXT1_SEQ_NBR() {
-        return TEXT1_SEQ_NBR;
+    public Integer getText1SeqNbr() {
+        return text1SeqNbr;
     }
 
-    public void setTEXT1_SEQ_NBR(Integer TEXT1_SEQ_NBR) {
-        this.TEXT1_SEQ_NBR = TEXT1_SEQ_NBR;
+    public void setText1SeqNbr(Integer text1SeqNbr) {
+        this.text1SeqNbr = text1SeqNbr;
     }
 
-    public Integer getTEXT2_SEQ_NBR() {
-        return TEXT2_SEQ_NBR;
+    public Integer getText2SeqNbr() {
+        return text2SeqNbr;
     }
 
-    public void setTEXT2_SEQ_NBR(Integer TEXT2_SEQ_NBR) {
-        this.TEXT2_SEQ_NBR = TEXT2_SEQ_NBR;
+    public void setText2SeqNbr(Integer text2SeqNbr) {
+        this.text2SeqNbr = text2SeqNbr;
     }
 
-    public Character getADDL_TEXT_IND() {
-        return ADDL_TEXT_IND;
+    public Character getAddlTextInd() {
+        return addlTextInd;
     }
 
-    public void setADDL_TEXT_IND(Character ADDL_TEXT_IND) {
-        this.ADDL_TEXT_IND = ADDL_TEXT_IND;
+    public void setAddlTextInd(Character addlTextInd) {
+        this.addlTextInd = addlTextInd;
     }
 
-    public Character getFIBER_ACCT_CD() {
-        return FIBER_ACCT_CD;
+    public Character getFiberAcctCd() {
+        return fiberAcctCd;
     }
 
-    public void setFIBER_ACCT_CD(Character FIBER_ACCT_CD) {
-        this.FIBER_ACCT_CD = FIBER_ACCT_CD;
+    public void setFiberAcctCd(Character fiberAcctCd) {
+        this.fiberAcctCd = fiberAcctCd;
     }
 
-    public String getSUB_CIC() {
-        return SUB_CIC;
+    public String getSubCic() {
+        return subCic;
     }
 
-    public void setSUB_CIC(String SUB_CIC) {
-        this.SUB_CIC = SUB_CIC;
+    public void setSubCic(String subCic) {
+        this.subCic = subCic;
     }
 
-    public Character getCOMP_SVC_TYPE() {
-        return COMP_SVC_TYPE;
+    public Character getCompSvcType() {
+        return compSvcType;
     }
 
-    public void setCOMP_SVC_TYPE(Character COMP_SVC_TYPE) {
-        this.COMP_SVC_TYPE = COMP_SVC_TYPE;
+    public void setCompSvcType(Character compSvcType) {
+        this.compSvcType = compSvcType;
     }
 
-    public String getISRT_CD() {
-        return ISRT_CD;
+    public String getIsrtCd() {
+        return isrtCd;
     }
 
-    public void setISRT_CD(String ISRT_CD) {
-        this.ISRT_CD = ISRT_CD;
+    public void setIsrtCd(String isrtCd) {
+        this.isrtCd = isrtCd;
     }
 
-    public Character getISRT_STATION() {
-        return ISRT_STATION;
+    public Character getIsrtStation() {
+        return isrtStation;
     }
 
-    public void setISRT_STATION(Character ISRT_STATION) {
-        this.ISRT_STATION = ISRT_STATION;
+    public void setIsrtStation(Character isrtStation) {
+        this.isrtStation = isrtStation;
     }
 
-    public Float getISRT_WEIGHT() {
-        return ISRT_WEIGHT;
+    public Float getIsrt_weight() {
+        return isrt_weight;
     }
 
-    public void setISRT_WEIGHT(Float ISRT_WEIGHT) {
-        this.ISRT_WEIGHT = ISRT_WEIGHT;
+    public void setIsrt_weight(Float isrt_weight) {
+        this.isrt_weight = isrt_weight;
     }
 
-    public String getCHK_DIGIT_NBR() {
-        return CHK_DIGIT_NBR;
+    public String getChkDigitNbr() {
+        return chkDigitNbr;
     }
 
-    public void setCHK_DIGIT_NBR(String CHK_DIGIT_NBR) {
-        this.CHK_DIGIT_NBR = CHK_DIGIT_NBR;
+    public void setChkDigitNbr(String chkDigitNbr) {
+        this.chkDigitNbr = chkDigitNbr;
     }
 
-    public Character getCHK_ACCEPT_IND() {
-        return CHK_ACCEPT_IND;
+    public Character getChkAcceptInd() {
+        return chkAcceptInd;
     }
 
-    public void setCHK_ACCEPT_IND(Character CHK_ACCEPT_IND) {
-        this.CHK_ACCEPT_IND = CHK_ACCEPT_IND;
+    public void setChkAcceptInd(Character chkAcceptInd) {
+        this.chkAcceptInd = chkAcceptInd;
     }
 
-    public String getBILL_LINE_ID() {
-        return BILL_LINE_ID;
+    public String getBillLineId() {
+        return billLineId;
     }
 
-    public void setBILL_LINE_ID(String BILL_LINE_ID) {
-        this.BILL_LINE_ID = BILL_LINE_ID;
+    public void setBillLineId(String billLineId) {
+        this.billLineId = billLineId;
     }
 
-    public Character getACCT_ASSOC_CD() {
-        return ACCT_ASSOC_CD;
+    public Character getAcctAssocCd() {
+        return acctAssocCd;
     }
 
-    public void setACCT_ASSOC_CD(Character ACCT_ASSOC_CD) {
-        this.ACCT_ASSOC_CD = ACCT_ASSOC_CD;
+    public void setAcctAssocCd(Character acctAssocCd) {
+        this.acctAssocCd = acctAssocCd;
     }
 
-    public Character getACCT_SYSTEM_ID() {
-        return ACCT_SYSTEM_ID;
+    public Character getAcctSystemId() {
+        return acctSystemId;
     }
 
-    public void setACCT_SYSTEM_ID(Character ACCT_SYSTEM_ID) {
-        this.ACCT_SYSTEM_ID = ACCT_SYSTEM_ID;
+    public void setAcctSystemId(Character acctSystemId) {
+        this.acctSystemId = acctSystemId;
     }
 
-    public String getCLSSVC_USOC() {
-        return CLSSVC_USOC;
+    public String getClssvcUsoc() {
+        return clssvcUsoc;
     }
 
-    public void setCLSSVC_USOC(String CLSSVC_USOC) {
-        this.CLSSVC_USOC = CLSSVC_USOC;
+    public void setClssvcUsoc(String clssvcUsoc) {
+        this.clssvcUsoc = clssvcUsoc;
     }
 
-    public String getREV_BOOK_CD() {
-        return REV_BOOK_CD;
+    public String getRevBookCd() {
+        return revBookCd;
     }
 
-    public void setREV_BOOK_CD(String REV_BOOK_CD) {
-        this.REV_BOOK_CD = REV_BOOK_CD;
+    public void setRevBookCd(String revBookCd) {
+        this.revBookCd = revBookCd;
     }
 
-    public Character getMERGE_FMT_IND() {
-        return MERGE_FMT_IND;
+    public Character getMergeFmtInd() {
+        return mergeFmtInd;
     }
 
-    public void setMERGE_FMT_IND(Character MERGE_FMT_IND) {
-        this.MERGE_FMT_IND = MERGE_FMT_IND;
+    public void setMergeFmtInd(Character mergeFmtInd) {
+        this.mergeFmtInd = mergeFmtInd;
     }
 
-    public Character getSPEC_REC_ORIG_CD() {
-        return SPEC_REC_ORIG_CD;
+    public Character getSpecRecOrigCd() {
+        return specRecOrigCd;
     }
 
-    public void setSPEC_REC_ORIG_CD(Character SPEC_REC_ORIG_CD) {
-        this.SPEC_REC_ORIG_CD = SPEC_REC_ORIG_CD;
+    public void setSpecRecOrigCd(Character specRecOrigCd) {
+        this.specRecOrigCd = specRecOrigCd;
     }
 
-    public String getENTITY_CD() {
-        return ENTITY_CD;
+    public String getEntityCd() {
+        return entityCd;
     }
 
-    public void setENTITY_CD(String ENTITY_CD) {
-        this.ENTITY_CD = ENTITY_CD;
+    public void setEntityCd(String entityCd) {
+        this.entityCd = entityCd;
     }
 
-    public String getCHANNEL_CD() {
-        return CHANNEL_CD;
+    public String getChannelCd() {
+        return channelCd;
     }
 
-    public void setCHANNEL_CD(String CHANNEL_CD) {
-        this.CHANNEL_CD = CHANNEL_CD;
+    public void setChannelCd(String channelCd) {
+        this.channelCd = channelCd;
     }
 
-    public String getNATL_ACCT_ID() {
-        return NATL_ACCT_ID;
+    public String getNatlAcctId() {
+        return natlAcctId;
     }
 
-    public void setNATL_ACCT_ID(String NATL_ACCT_ID) {
-        this.NATL_ACCT_ID = NATL_ACCT_ID;
+    public void setNatlAcctId(String natlAcctId) {
+        this.natlAcctId = natlAcctId;
     }
 
-    public String getLEGACY_ACCT_ID() {
-        return LEGACY_ACCT_ID;
+    public String getLegacyAcctId() {
+        return legacyAcctId;
     }
 
-    public void setLEGACY_ACCT_ID(String LEGACY_ACCT_ID) {
-        this.LEGACY_ACCT_ID = LEGACY_ACCT_ID;
+    public void setLegacyAcctId(String legacyAcctId) {
+        this.legacyAcctId = legacyAcctId;
     }
 
-    public Character getINV_BILL_IND() {
-        return INV_BILL_IND;
+    public Character getInvBillInd() {
+        return invBillInd;
     }
 
-    public void setINV_BILL_IND(Character INV_BILL_IND) {
-        this.INV_BILL_IND = INV_BILL_IND;
+    public void setInvBillInd(Character invBillInd) {
+        this.invBillInd = invBillInd;
     }
 
-    public String getINVOICE_NBR() {
-        return INVOICE_NBR;
+    public String getInvoiceNbr() {
+        return invoiceNbr;
     }
 
-    public void setINVOICE_NBR(String INVOICE_NBR) {
-        this.INVOICE_NBR = INVOICE_NBR;
+    public void setInvoiceNbr(String invoiceNbr) {
+        this.invoiceNbr = invoiceNbr;
     }
 
-    public Integer getTEXT_KEY_NBR1() {
-        return TEXT_KEY_NBR1;
+    public Integer getText_keyNbr1() {
+        return text_keyNbr1;
     }
 
-    public void setTEXT_KEY_NBR1(Integer TEXT_KEY_NBR1) {
-        this.TEXT_KEY_NBR1 = TEXT_KEY_NBR1;
+    public void setText_keyNbr1(Integer text_keyNbr1) {
+        this.text_keyNbr1 = text_keyNbr1;
     }
 
-    public Integer getTEXT_KEY_NBR2() {
-        return TEXT_KEY_NBR2;
+    public Integer getText_keyNbr2() {
+        return text_keyNbr2;
     }
 
-    public void setTEXT_KEY_NBR2(Integer TEXT_KEY_NBR2) {
-        this.TEXT_KEY_NBR2 = TEXT_KEY_NBR2;
+    public void setText_keyNbr2(Integer text_keyNbr2) {
+        this.text_keyNbr2 = text_keyNbr2;
     }
 
-    public Integer getTEXT_KEY_NBR3() {
-        return TEXT_KEY_NBR3;
+    public Integer getText_keyNbr3() {
+        return text_keyNbr3;
     }
 
-    public void setTEXT_KEY_NBR3(Integer TEXT_KEY_NBR3) {
-        this.TEXT_KEY_NBR3 = TEXT_KEY_NBR3;
+    public void setText_keyNbr3(Integer text_keyNbr3) {
+        this.text_keyNbr3 = text_keyNbr3;
     }
 
-    public String getIMMEDIATE_MAN() {
-        return IMMEDIATE_MAN;
+    public String getImmediateMan() {
+        return immediateMan;
     }
 
-    public void setIMMEDIATE_MAN(String IMMEDIATE_MAN) {
-        this.IMMEDIATE_MAN = IMMEDIATE_MAN;
+    public void setImmediateMan(String immediateMan) {
+        this.immediateMan = immediateMan;
     }
 
-    public Character getRECORD_LEVEL() {
-        return RECORD_LEVEL;
+    public Character getRecordLevel() {
+        return recordLevel;
     }
 
-    public void setRECORD_LEVEL(Character RECORD_LEVEL) {
-        this.RECORD_LEVEL = RECORD_LEVEL;
+    public void setRecordLevel(Character recordLevel) {
+        this.recordLevel = recordLevel;
     }
 
-    public Character getREMIT_ACCT_IND() {
-        return REMIT_ACCT_IND;
+    public Character getRemitAcctInd() {
+        return remitAcctInd;
     }
 
-    public void setREMIT_ACCT_IND(Character REMIT_ACCT_IND) {
-        this.REMIT_ACCT_IND = REMIT_ACCT_IND;
+    public void setRemitAcctInd(Character remitAcctInd) {
+        this.remitAcctInd = remitAcctInd;
     }
 
-    public Character getLDEP_IND() {
-        return LDEP_IND;
+    public Character getLdepInd() {
+        return ldepInd;
     }
 
-    public void setLDEP_IND(Character LDEP_IND) {
-        this.LDEP_IND = LDEP_IND;
+    public void setLdepInd(Character ldepInd) {
+        this.ldepInd = ldepInd;
     }
 
-    public String getORG_LEVEL1_CD() {
-        return ORG_LEVEL1_CD;
+    public String getOrgLevel1Cd() {
+        return orgLevel1Cd;
     }
 
-    public void setORG_LEVEL1_CD(String ORG_LEVEL1_CD) {
-        this.ORG_LEVEL1_CD = ORG_LEVEL1_CD;
+    public void setOrgLevel1Cd(String orgLevel1Cd) {
+        this.orgLevel1Cd = orgLevel1Cd;
     }
 
-    public String getORG_LEVEL2_CD() {
-        return ORG_LEVEL2_CD;
+    public String getOrgLevel2Cd() {
+        return orgLevel2Cd;
     }
 
-    public void setORG_LEVEL2_CD(String ORG_LEVEL2_CD) {
-        this.ORG_LEVEL2_CD = ORG_LEVEL2_CD;
+    public void setOrgLevel2Cd(String orgLevel2Cd) {
+        this.orgLevel2Cd = orgLevel2Cd;
     }
 
-    public Character getFREQUENCY() {
-        return FREQUENCY;
+    public Character getFrequency() {
+        return frequency;
     }
 
-    public void setFREQUENCY(Character FREQUENCY) {
-        this.FREQUENCY = FREQUENCY;
+    public void setFrequency(Character frequency) {
+        this.frequency = frequency;
     }
 
-    public String getBILL_CURR() {
-        return BILL_CURR;
+    public String getBillCurr() {
+        return billCurr;
     }
 
-    public void setBILL_CURR(String BILL_CURR) {
-        this.BILL_CURR = BILL_CURR;
+    public void setBillCurr(String billCurr) {
+        this.billCurr = billCurr;
     }
 
-    public String getCONV_CURR() {
-        return CONV_CURR;
+    public String getConvCurr() {
+        return convCurr;
     }
 
-    public void setCONV_CURR(String CONV_CURR) {
-        this.CONV_CURR = CONV_CURR;
+    public void setConvCurr(String convCurr) {
+        this.convCurr = convCurr;
     }
 
-    public String getREGION_CD() {
-        return REGION_CD;
+    public String getRegionCd() {
+        return regionCd;
     }
 
-    public void setREGION_CD(String REGION_CD) {
-        this.REGION_CD = REGION_CD;
+    public void setRegionCd(String regionCd) {
+        this.regionCd = regionCd;
     }
 
-    public String getINVOICE_SERIES_NBR() {
-        return INVOICE_SERIES_NBR;
+    public String getInvoiceSeriesNbr() {
+        return invoiceSeriesNbr;
     }
 
-    public void setINVOICE_SERIES_NBR(String INVOICE_SERIES_NBR) {
-        this.INVOICE_SERIES_NBR = INVOICE_SERIES_NBR;
+    public void setInvoiceSeriesNbr(String invoiceSeriesNbr) {
+        this.invoiceSeriesNbr = invoiceSeriesNbr;
     }
 
-    public Character getCOST_CNTR_IND() {
-        return COST_CNTR_IND;
+    public Character getCostCntrInd() {
+        return costCntrInd;
     }
 
-    public void setCOST_CNTR_IND(Character COST_CNTR_IND) {
-        this.COST_CNTR_IND = COST_CNTR_IND;
+    public void setCostCntrInd(Character costCntrInd) {
+        this.costCntrInd = costCntrInd;
     }
 
-    public String getWIRELESS_DAN() {
-        return WIRELESS_DAN;
+    public String getWirelessDan() {
+        return wirelessDan;
     }
 
-    public void setWIRELESS_DAN(String WIRELESS_DAN) {
-        this.WIRELESS_DAN = WIRELESS_DAN;
+    public void setWirelessDan(String wirelessDan) {
+        this.wirelessDan = wirelessDan;
     }
 
-    public String getMASTER_CHANNEL_CD() {
-        return MASTER_CHANNEL_CD;
+    public String getMasterChannelCd() {
+        return masterChannelCd;
     }
 
-    public void setMASTER_CHANNEL_CD(String MASTER_CHANNEL_CD) {
-        this.MASTER_CHANNEL_CD = MASTER_CHANNEL_CD;
+    public void setMasterChannelCd(String masterChannelCd) {
+        this.masterChannelCd = masterChannelCd;
     }
 
-    public String getMODULE_084() {
-        return MODULE_084;
+    public String getModule084() {
+        return module084;
     }
 
-    public void setMODULE_084(String MODULE_084) {
-        this.MODULE_084 = MODULE_084;
+    public void setModule084(String module084) {
+        this.module084 = module084;
     }
 
-    public String getOPCO() {
-        return OPCO;
+    public String getOpco() {
+        return opco;
     }
 
-    public void setOPCO(String OPCO) {
-        this.OPCO = OPCO;
+    public void setOpco(String opco) {
+        this.opco = opco;
     }
 
-    public String getMODULE_087() {
-        return MODULE_087;
+    public String getModule087() {
+        return module087;
     }
 
-    public void setMODULE_087(String MODULE_087) {
-        this.MODULE_087 = MODULE_087;
+    public void setModule087(String module087) {
+        this.module087 = module087;
     }
 
-    public Character getSPEC_PROC_CD() {
-        return SPEC_PROC_CD;
+    public Character getSpecProcCd() {
+        return specProcCd;
     }
 
-    public void setSPEC_PROC_CD(Character SPEC_PROC_CD) {
-        this.SPEC_PROC_CD = SPEC_PROC_CD;
+    public void setSpecProcCd(Character specProcCd) {
+        this.specProcCd = specProcCd;
     }
 
-    public String getWCAS_TAX_CAT() {
-        return WCAS_TAX_CAT;
+    public String getWcasTaxCat() {
+        return wcasTaxCat;
     }
 
-    public void setWCAS_TAX_CAT(String WCAS_TAX_CAT) {
-        this.WCAS_TAX_CAT = WCAS_TAX_CAT;
+    public void setWcasTaxCat(String wcasTaxCat) {
+        this.wcasTaxCat = wcasTaxCat;
     }
 
-    public String getMODULE_302() {
-        return MODULE_302;
+    public String getModule302() {
+        return module302;
     }
 
-    public void setMODULE_302(String MODULE_302) {
-        this.MODULE_302 = MODULE_302;
+    public void setModule302(String module302) {
+        this.module302 = module302;
     }
 
     @SpaceId
-    public CompositeId getCompositeId() {
-        return compositeId;
+    public AcctSumXCompositeId getAcctSumXCompositeId() {
+        return acctSumXCompositeId;
     }
 
-    public void setCompositeId(CompositeId compositeId) {
-        this.compositeId = compositeId;
+    public void setAcctSumXCompositeId(AcctSumXCompositeId acctSumXCompositeId) {
+        this.acctSumXCompositeId = acctSumXCompositeId;
     }
 
 
