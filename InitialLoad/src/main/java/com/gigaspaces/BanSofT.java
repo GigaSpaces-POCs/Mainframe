@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "BMGVZP.BAN_SOF_T")
 @SpaceClass
 public class BanSofT {
-@Column(name = "CUSTOMER_ACCT_NUM")
+    @Column(name = "CUSTOMER_ACCT_NUM")
     private String customerAcctNum;
     @Column(name = "BACKEND_SYSTEM")
     private String backendSystem;
