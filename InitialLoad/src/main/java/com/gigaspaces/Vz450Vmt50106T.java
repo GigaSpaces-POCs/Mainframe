@@ -6,8 +6,10 @@ package com.gigaspaces;
  */
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -17,18 +19,9 @@ import java.sql.Date;
 @SpaceClass
 public class Vz450Vmt50106T {
 
-    @Column(name = "MAN")
-    private String man;
-    @Column(name = "MAN_BILL_DATE")
-    private Date manBillDate;
-    @Column(name = "ORIG_SYSTEM_ID")
-    private String origSystemId;
-    @Column(name = "VZ450_BASE_REC_SEQ")
-    private Integer vz450BaseRecSeq;
-    @Column(name = "VZ450_SEQ_NBR")
-    private Integer vz450SeqNbr;
-    @Column(name = "DUP_NUM")
-    private Integer dupNum;
+    @EmbeddedId
+    private Vz450Vmt50106TCompositeId vz450Vmt50106TCompositeId;
+
     @Column(name = "CUST_ID_DEPT_CD")
     private String custIdDeptCd;
     @Column(name = "LOCATION_ID")
@@ -65,54 +58,6 @@ public class Vz450Vmt50106T {
     private Date vamloadDate;
 
     public Vz450Vmt50106T(){}
-
-    public String getMan() {
-        return man;
-    }
-
-    public void setMan(String man) {
-        this.man = man;
-    }
-
-    public Date getManBillDate() {
-        return manBillDate;
-    }
-
-    public void setManBillDate(Date manBillDate) {
-        this.manBillDate = manBillDate;
-    }
-
-    public String getOrigSystemId() {
-        return origSystemId;
-    }
-
-    public void setOrigSystemId(String origSystemId) {
-        this.origSystemId = origSystemId;
-    }
-
-    public Integer getVz450BaseRecSeq() {
-        return vz450BaseRecSeq;
-    }
-
-    public void setVz450BaseRecSeq(Integer vz450BaseRecSeq) {
-        this.vz450BaseRecSeq = vz450BaseRecSeq;
-    }
-
-    public Integer getVz450SeqNbr() {
-        return vz450SeqNbr;
-    }
-
-    public void setVz450SeqNbr(Integer vz450SeqNbr) {
-        this.vz450SeqNbr = vz450SeqNbr;
-    }
-
-    public Integer getDupNum() {
-        return dupNum;
-    }
-
-    public void setDupNum(Integer dupNum) {
-        this.dupNum = dupNum;
-    }
 
     public String getCustIdDeptCd() {
         return custIdDeptCd;
@@ -248,5 +193,14 @@ public class Vz450Vmt50106T {
 
     public void setVamloadDate(Date vamloadDate) {
         this.vamloadDate = vamloadDate;
+    }
+
+    @SpaceId
+    public Vz450Vmt50106TCompositeId getVz450Vmt50106TCompositeId() {
+        return vz450Vmt50106TCompositeId;
+    }
+
+    public void setVz450Vmt50106TCompositeId(Vz450Vmt50106TCompositeId vz450Vmt50106TCompositeId) {
+        this.vz450Vmt50106TCompositeId = vz450Vmt50106TCompositeId;
     }
 }

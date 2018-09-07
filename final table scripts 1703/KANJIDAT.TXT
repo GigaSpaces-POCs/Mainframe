@@ -6,7 +6,10 @@
        ,TEXT_POINTER_CD   CHAR(8) NOT NULL                                                                              
        ,TEXT_KEY   CHAR(100) NOT NULL                                                                                   
        ,TEXT_STRING   VARCHAR(2000) NOT NULL                                                                            
-       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT  
+       ,PRIMARY KEY (
+      TEXT_XREF_NBR,
+TEXT_LINE_NUM)                      
         );                                                                  
      CREATE UNIQUE                                                      
         INDEX APPLDBA.KANJIDAT1                                         

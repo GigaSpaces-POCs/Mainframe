@@ -1,10 +1,13 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 /**
  * @author Denys_Novikov
@@ -14,14 +17,10 @@ import javax.persistence.Table;
 @Table(name = "BMGVZP.BAN_SOF_T")
 @SpaceClass
 public class BanSofT {
-    @Column(name = "CUSTOMER_ACCT_NUM")
-    private String customerAcctNum;
-    @Column(name = "BACKEND_SYSTEM")
-    private String backendSystem;
-    @Column(name = "SERVICE_TYPE")
-    private String serviceType;
-    @Column(name = "ORIG_SYSTEM_ID")
-    private String origSystemId;
+
+    @EmbeddedId
+    private BanSofTCompositeId banSofTCompositeId;
+
     @Column(name = "VRD_FLAG")
     private String vrdFlag;
     @Column(name = "CLE_ID")
@@ -51,41 +50,9 @@ public class BanSofT {
     @Column(name = "GROUP_ACCT")
     private String groupAcct;
     @Column(name = "CREATED_TIMESTAMP")
-    private Long createdTimestamp;
+    private Timestamp createdTimestamp;
 
     public BanSofT(){}
-
-    public String getCustomerAcctNum() {
-        return customerAcctNum;
-    }
-
-    public void setCustomerAcctNum(String customerAcctNum) {
-        this.customerAcctNum = customerAcctNum;
-    }
-
-    public String getBackendSystem() {
-        return backendSystem;
-    }
-
-    public void setBackendSystem(String backendSystem) {
-        this.backendSystem = backendSystem;
-    }
-
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
-
-    public String getOrigSystemId() {
-        return origSystemId;
-    }
-
-    public void setOrigSystemId(String origSystemId) {
-        this.origSystemId = origSystemId;
-    }
 
     public String getVrdFlag() {
         return vrdFlag;
@@ -199,11 +166,20 @@ public class BanSofT {
         this.groupAcct = groupAcct;
     }
 
-    public Long getCreatedTimestamp() {
+    public Timestamp getCreatedTimestamp() {
         return createdTimestamp;
     }
 
-    public void setCreatedTimestamp(Long createdTimestamp) {
+    public void setCreatedTimestamp(Timestamp createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
+    }
+
+    @SpaceId
+    public BanSofTCompositeId getBanSofTCompositeId() {
+        return banSofTCompositeId;
+    }
+
+    public void setBanSofTCompositeId(BanSofTCompositeId banSofTCompositeId) {
+        this.banSofTCompositeId = banSofTCompositeId;
     }
 }

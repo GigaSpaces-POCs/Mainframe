@@ -189,8 +189,17 @@
                                                          
        ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
        ,MODULE_302   CHAR(4) NOT NULL WITH DEFAULT                      
+      ,PRIMARY KEY (
+      MAN,
+      MAN_BILL_DATE,
+      BAN,
+      ABAN,
+      BILL_DATE,
+      ORIG_SYSTEM_ID,
+      VZ450_SEQ_NBR)            
                                                          
-        )                                                                                                              
+        )                  
+                                                                                                                      
      ;                                                                  
      CREATE                                                             
         INDEX BMGVZP.ACCUDMX3                                           

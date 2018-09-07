@@ -10,7 +10,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver"/>
-        <property name="url" value="jdbc:db2://ec2-18-221-12-71.us-east-2.compute.amazonaws.com:50000/BMGVZS"/>
+        <property name="url" value="jdbc:db2://ec2-18-221-12-71.us-east-2.compute.amazonaws.com:50000/BMGVZP"/>
         <property name="username" value="db2inst1"/>
         <property name="password" value="db2inst1"/>
 
@@ -20,12 +20,24 @@
     <context:annotation-config/>
 
     <bean id="initialLoader" class="com.gigaspaces.InitialLoader" init-method="init"/>
-
+    <!--init-method="init"-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-                <value>com.gigaspaces.AcctSumX</value>
+                <value>com.gigaspaces.AcctSumT</value>
+                <value>com.gigaspaces.IntlNameAddress</value>
+                <value>com.gigaspaces.KanjiDataT</value>
+                <!--<value>com.gigaspaces.RefCodes95T</value>-->
+                <value>com.gigaspaces.ReferanceCodesT</value>
+                <value>com.gigaspaces.Vz4506200T</value>
+                <!--<value>com.gigaspaces.Vz450Mod048T</value>-->
+                <!--<value>com.gigaspaces.Vz450Mod077T</value>-->
+                <value>com.gigaspaces.Vz450Mod079T</value>
+                <value>com.gigaspaces.Vz450Vmt50106T</value>
+                <value>com.gigaspaces.BanSofT</value>
+                <value>com.gigaspaces.Subscription</value>
+                <value>com.gigaspaces.CurrentBanT</value>
             </list>
         </property>
         <property name="hibernateProperties">

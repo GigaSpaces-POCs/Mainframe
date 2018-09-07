@@ -15,7 +15,12 @@
                                                           
        ,COLUMN_DESC   VARCHAR(100) NOT NULL                             
                                                           
-       ,CODE_DESC_KEY_XREF   INTEGER NOT NULL WITH DEFAULT              
+       ,CODE_DESC_KEY_XREF   INTEGER NOT NULL WITH DEFAULT      
+       ,PRIMARY KEY(
+       TABLE_NAME,
+COLUMN_NAME,
+COLUMN_VALUE
+       )        
         )                                                                
      ;                                                                  
      CREATE UNIQUE                                                      

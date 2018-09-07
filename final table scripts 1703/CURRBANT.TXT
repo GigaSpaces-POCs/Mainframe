@@ -152,7 +152,10 @@
        ,CONF_IND   CHAR(1) NOT NULL WITH DEFAULT                        
                                                            
        ,SUB_CONTRACT_ID   CHAR(3) NOT NULL WITH DEFAULT                 
-                                                           
+         , PRIMARY KEY (BAN,
+ORIG_SYSTEM_ID,
+MAN,
+TIMESTAMP)                                                  
         )                                                               
      ;                                                                  
      CREATE UNIQUE                                                      

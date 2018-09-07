@@ -296,7 +296,12 @@
                                                           
        ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
        ,MODULE_301   VARCHAR(16) NOT NULL WITH DEFAULT                  
-                                                          
+       ,PRIMARY KEY(MAN,
+MAN_BILL_DATE,
+ORIG_SYSTEM_ID,
+VZ450_SEQ_NBR,
+DUP_NUM,
+GRP_ID_2)                          
         )                                                               
      ;                                                                  
      CREATE UNIQUE                                                      

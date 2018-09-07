@@ -1,8 +1,10 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -14,6 +16,9 @@ import javax.persistence.Table;
 @Table(name = "BMGVZP.REFERENCE_CODES_T")
 @SpaceClass
 public class ReferanceCodesT {
+
+    @EmbeddedId
+    private ReferanceCodesTCompositeId referanceCodesTCompositeId;
     
     @Column(name = "REC_NBR")
     private String recNbr;
@@ -21,12 +26,6 @@ public class ReferanceCodesT {
     private String subRecNbr;
     @Column(name = "TYPE_DATA")
     private String typeData;
-    @Column(name = "TABLE_NAME")
-    private String tableName;
-    @Column(name = "COLUMN_NAME")
-    private String columnName;
-    @Column(name = "COLUMN_VALUE")
-    private String columnValue;
     @Column(name = "COLUMN_DESC")
     private String columnDesc;
     @Column(name = "CODE_DESC_KEY_XREF")
@@ -58,30 +57,6 @@ public class ReferanceCodesT {
         this.typeData = typeData;
     }
 
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public String getColumnName() {
-        return columnName;
-    }
-
-    public void setColumnName(String columnName) {
-        this.columnName = columnName;
-    }
-
-    public String getColumnValue() {
-        return columnValue;
-    }
-
-    public void setColumnValue(String columnValue) {
-        this.columnValue = columnValue;
-    }
-
     public String getColumnDesc() {
         return columnDesc;
     }
@@ -96,5 +71,14 @@ public class ReferanceCodesT {
 
     public void setCodeDescKeyXref(Integer codeDescKeyXref) {
         this.codeDescKeyXref = codeDescKeyXref;
+    }
+
+    @SpaceId
+    public ReferanceCodesTCompositeId getReferanceCodesTCompositeId() {
+        return referanceCodesTCompositeId;
+    }
+
+    public void setReferanceCodesTCompositeId(ReferanceCodesTCompositeId referanceCodesTCompositeId) {
+        this.referanceCodesTCompositeId = referanceCodesTCompositeId;
     }
 }

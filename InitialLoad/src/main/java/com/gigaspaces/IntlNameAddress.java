@@ -1,8 +1,10 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -16,20 +18,15 @@ import java.sql.Date;
 @SpaceClass
 public class IntlNameAddress {
 
-    @Column(name = "MAN")
-    private String man;
-    @Column(name = "MAN_BILL_DATE")
-    private Date manBillDate;
+    @EmbeddedId
+    private IntlNameAddressCompositeId intlNameAddressCompositeId;
+
     @Column(name = "BAN")
     private String ban;
     @Column(name = "BILL_DATE")
     private Date billDate;
-    @Column(name = "ORIG_SYSTEM_ID")
-    private String origSystemId;
     @Column(name = "ABAN")
     private String aban;
-    @Column(name = "VZ450_SEQ_NBR")
-    private Integer vz450SeqNbr;
     @Column(name = "ADDRESS_CTGY_ID")
     private String addressCtgyId;
     @Column(name = "ACCT_NAME")
@@ -84,22 +81,6 @@ public class IntlNameAddress {
     public IntlNameAddress() {
     }
 
-    public String getMan() {
-        return man;
-    }
-
-    public void setMan(String man) {
-        this.man = man;
-    }
-
-    public Date getManBillDate() {
-        return manBillDate;
-    }
-
-    public void setManBillDate(Date manBillDate) {
-        this.manBillDate = manBillDate;
-    }
-
     public String getBan() {
         return ban;
     }
@@ -116,28 +97,12 @@ public class IntlNameAddress {
         this.billDate = billDate;
     }
 
-    public String getOrigSystemId() {
-        return origSystemId;
-    }
-
-    public void setOrigSystemId(String origSystemId) {
-        this.origSystemId = origSystemId;
-    }
-
     public String getAban() {
         return aban;
     }
 
     public void setAban(String aban) {
         this.aban = aban;
-    }
-
-    public Integer getVz450SeqNbr() {
-        return vz450SeqNbr;
-    }
-
-    public void setVz450SeqNbr(Integer vz450SeqNbr) {
-        this.vz450SeqNbr = vz450SeqNbr;
     }
 
     public String getAddressCtgyId() {
@@ -338,5 +303,14 @@ public class IntlNameAddress {
 
     public void setVamloadDate(Date vamloadDate) {
         this.vamloadDate = vamloadDate;
+    }
+
+    @SpaceId
+    public IntlNameAddressCompositeId getIntlNameAddressCompositeId() {
+        return intlNameAddressCompositeId;
+    }
+
+    public void setIntlNameAddressCompositeId(IntlNameAddressCompositeId intlNameAddressCompositeId) {
+        this.intlNameAddressCompositeId = intlNameAddressCompositeId;
     }
 }

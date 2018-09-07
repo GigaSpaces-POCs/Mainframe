@@ -31,6 +31,13 @@ sudo server_t/db2setup
 
 connection: db2inst1 50000
 
+set EXT_JAVA_OPTIONS = -Ddb2.jcc.charsetDecoderEncoder=3 
+
+increase log transaction file
+ - db2 get db cfg for your_Database_Name
+ - db2 update db cfg for your_Database_Name using logfilsiz nnnn logprimary nn logsecond nn
+
+
 
 MQ setup:
 download - 

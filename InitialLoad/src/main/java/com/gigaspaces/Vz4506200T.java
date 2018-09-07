@@ -1,8 +1,10 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -16,16 +18,9 @@ import java.sql.Date;
 @SpaceClass
 public class Vz4506200T {
 
-    @Column(name = "MAN")
-    private String man;
-    @Column(name = "MAN_BILL_DATE")
-    private Date manBillDate;
-    @Column(name = "ORIG_SYSTEM_ID")
-    private String origSystemId;
-    @Column(name = "VZ450_SEQ_NBR")
-    private Integer vz450SeqNbr;
-    @Column(name = "DUP_NUM")
-    private Integer dupNum;
+    @EmbeddedId
+    private Vz4506200TCompositeId vz4506200TCompositeId;
+
     @Column(name = "BAN")
     private String ban;
     @Column(name = "ABAN")
@@ -102,8 +97,6 @@ public class Vz4506200T {
     private String locationId;
     @Column(name = "GRP_ID_1")
     private String grpId1;
-    @Column(name = "GRP_ID_2")
-    private String grpId2;
     @Column(name = "GRP_ID_3")
     private String grpId3;
     @Column(name = "ID_OR_ACCTG_CD")
@@ -370,46 +363,6 @@ public class Vz4506200T {
     private String module301;
 
     public Vz4506200T(){}
-
-    public String getMan() {
-        return man;
-    }
-
-    public void setMan(String man) {
-        this.man = man;
-    }
-
-    public Date getManBillDate() {
-        return manBillDate;
-    }
-
-    public void setManBillDate(Date manBillDate) {
-        this.manBillDate = manBillDate;
-    }
-
-    public String getOrigSystemId() {
-        return origSystemId;
-    }
-
-    public void setOrigSystemId(String origSystemId) {
-        this.origSystemId = origSystemId;
-    }
-
-    public Integer getVz450SeqNbr() {
-        return vz450SeqNbr;
-    }
-
-    public void setVz450SeqNbr(Integer vz450SeqNbr) {
-        this.vz450SeqNbr = vz450SeqNbr;
-    }
-
-    public Integer getDupNum() {
-        return dupNum;
-    }
-
-    public void setDupNum(Integer dupNum) {
-        this.dupNum = dupNum;
-    }
 
     public String getBan() {
         return ban;
@@ -713,14 +666,6 @@ public class Vz4506200T {
 
     public void setGrpId1(String grpId1) {
         this.grpId1 = grpId1;
-    }
-
-    public String getGrpId2() {
-        return grpId2;
-    }
-
-    public void setGrpId2(String grpId2) {
-        this.grpId2 = grpId2;
     }
 
     public String getGrpId3() {
@@ -1777,5 +1722,14 @@ public class Vz4506200T {
 
     public void setModule301(String module301) {
         this.module301 = module301;
+    }
+
+    @SpaceId
+    public Vz4506200TCompositeId getVz4506200TCompositeId() {
+        return vz4506200TCompositeId;
+    }
+
+    public void setVz4506200TCompositeId(Vz4506200TCompositeId vz4506200TCompositeId) {
+        this.vz4506200TCompositeId = vz4506200TCompositeId;
     }
 }

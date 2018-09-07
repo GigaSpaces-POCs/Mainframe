@@ -13,15 +13,13 @@ import javax.persistence.Table;
  * Date: 15.08.2018
  */
 @Entity
-@Table(name="BMGVZS.ACCT_SUM_X2")
+@Table(name = "BMGVZP.ACCT_SUM_T")
 @SpaceClass
-public class AcctSumX {
+public class AcctSumT {
 
     @EmbeddedId
-    private AcctSumXCompositeId acctSumXCompositeId;
+    private AcctSumTCompositeId acctSumTCompositeId;
 
-    @Column(name = "MAN")
-    private String man;
     @Column(name = "STATE_CODE")
     private String stateCode;
     @Column(name = "DEPT_CD")
@@ -235,15 +233,8 @@ public class AcctSumX {
     @Column(name = "MODULE_302")
     private String module302;
 
-    public AcctSumX(){}
+    public AcctSumT(){}
 
-    public String getMan() {
-        return man;
-    }
-
-    public void setMan(String man) {
-        this.man = man;
-    }
 
     public String getStateCode() {
         return stateCode;
@@ -1094,12 +1085,12 @@ public class AcctSumX {
     }
 
     @SpaceId
-    public AcctSumXCompositeId getAcctSumXCompositeId() {
-        return acctSumXCompositeId;
+    public AcctSumTCompositeId getAcctSumTCompositeId() {
+        return acctSumTCompositeId;
     }
 
-    public void setAcctSumXCompositeId(AcctSumXCompositeId acctSumXCompositeId) {
-        this.acctSumXCompositeId = acctSumXCompositeId;
+    public void setAcctSumTCompositeId(AcctSumTCompositeId acctSumTCompositeId) {
+        this.acctSumTCompositeId = acctSumTCompositeId;
     }
 
 

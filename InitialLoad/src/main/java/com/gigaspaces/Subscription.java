@@ -1,11 +1,14 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author Denys_Novikov
@@ -16,6 +19,7 @@ import java.sql.Date;
 @SpaceClass
 public class Subscription {
 
+    @Id
     @Column(name = "SUBSCRIPTION_OID")
     private Double subscriptionOid;
     @Column(name = "SERVICE_ID")
@@ -25,7 +29,7 @@ public class Subscription {
     @Column(name = "SERVICE_ORDER_NUM")
     private String serviceOrderNum;
     @Column(name = "STATUS")
-    private Character status = 'A';
+    private Character status;
     @Column(name = "STATUS_DATE")
     private Date statusDate;
     @Column(name = "CUSTOMER_CODE")
@@ -55,7 +59,7 @@ public class Subscription {
     @Column(name = "USER_ID")
     private Double userId;
     @Column(name = "TIMESTAMP")
-    private Long timestamp;
+    private Timestamp timestamp;
     @Column(name = "INTERNAL_LABEL")
     private String internalLabel;
     @Column(name = "EXTERNAL_LABEL")
@@ -95,7 +99,7 @@ public class Subscription {
     @Column(name = "SENSITIVITY_LVL")
     private String sensitivityLvl;
     @Column(name = "ROOT_ACCOUNT")
-    private Character rootAccount = 'N';
+    private Character rootAccount;
     @Column(name = "CREDIT_CARD_IND")
     private Character creditCardInd;
     @Column(name = "MIXED_SVC_IND")
@@ -141,6 +145,7 @@ public class Subscription {
 
     public Subscription(){}
 
+    @SpaceId
     public Double getSubscriptionOid() {
         return subscriptionOid;
     }
@@ -293,11 +298,11 @@ public class Subscription {
         this.userId = userId;
     }
 
-    public Long getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 

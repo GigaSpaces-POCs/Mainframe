@@ -44,7 +44,14 @@
                                                           
        ,CHARGE_CODE   CHAR(4) NOT NULL WITH DEFAULT                     
                                                           
-       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT                       
+       ,VAMLOAD_DATE   DATE NOT NULL WITH DEFAULT     
+       ,PRIMARY KEY(
+       MAN,
+MAN_BILL_DATE,
+ORIG_SYSTEM_ID,
+VZ450_SEQ_NBR,
+DUP_NUM
+       )                  
         )                                                              
      ;                                                                  
      CREATE UNIQUE                                                      

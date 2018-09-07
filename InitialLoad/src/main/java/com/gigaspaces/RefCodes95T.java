@@ -1,9 +1,11 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 @Table(name = "BMGVZP.REF_CODES_95_T")
 @SpaceClass
 public class RefCodes95T {
+    @Id
     @Column(name = "CODE_DESC_KEY")
     private Integer codeDescKey;
     @Column(name = "CODE")
@@ -39,6 +42,7 @@ public class RefCodes95T {
 
     public RefCodes95T(){}
 
+    @SpaceId
     public Integer getCodeDescKey() {
         return codeDescKey;
     }

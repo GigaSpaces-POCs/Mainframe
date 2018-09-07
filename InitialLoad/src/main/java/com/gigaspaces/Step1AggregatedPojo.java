@@ -1,9 +1,13 @@
 package com.gigaspaces;
 
+import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
+
 /**
  * @author Denys_Novikov
  * Date: 22.08.2018
  */
+@SpaceClass
 public class Step1AggregatedPojo {
 
     private String cleId;
@@ -22,6 +26,7 @@ public class Step1AggregatedPojo {
         this.origSystemId = origSystemId;
     }
 
+    @SpaceId
     public String getCleId() {
         return cleId;
     }

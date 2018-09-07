@@ -1,8 +1,10 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -16,12 +18,9 @@ import java.sql.Date;
 @SpaceClass
 public class CurrentBanT {
 
-    @Column(name = "BAN")
-    private String ban;
-    @Column(name = "ORIG_SYSTEM_ID")
-    private String origSystemId;
-    @Column(name = "MAN")
-    private String man;
+    @EmbeddedId
+    private CurrentBanTCompositeId currentBanTCompositeId;
+
     @Column(name = "FIRST_DATE")
     private Date firstDate;
     @Column(name = "LAST_DATE")
@@ -32,8 +31,6 @@ public class CurrentBanT {
     private Double totCurrChgs;
     @Column(name = "NET_PAST_DUE")
     private Double netPastDue;
-    @Column(name = "TIMESTAMP")
-    private Long timestamp;
     @Column(name = "ENTITY_CD")
     private String entityCd;
     @Column(name = "PREV_BILL_AMT")
@@ -192,30 +189,6 @@ public class CurrentBanT {
     public CurrentBanT() {
     }
 
-    public String getBan() {
-        return ban;
-    }
-
-    public void setBan(String ban) {
-        this.ban = ban;
-    }
-
-    public String getOrigSystemId() {
-        return origSystemId;
-    }
-
-    public void setOrigSystemId(String origSystemId) {
-        this.origSystemId = origSystemId;
-    }
-
-    public String getMan() {
-        return man;
-    }
-
-    public void setMan(String man) {
-        this.man = man;
-    }
-
     public Date getFirstDate() {
         return firstDate;
     }
@@ -254,14 +227,6 @@ public class CurrentBanT {
 
     public void setNetPastDue(Double netPastDue) {
         this.netPastDue = netPastDue;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public String getEntityCd() {
@@ -878,5 +843,14 @@ public class CurrentBanT {
 
     public void setSubContractId(String subContractId) {
         this.subContractId = subContractId;
+    }
+
+    @SpaceId
+    public CurrentBanTCompositeId getCurrentBanTCompositeId() {
+        return currentBanTCompositeId;
+    }
+
+    public void setCurrentBanTCompositeId(CurrentBanTCompositeId currentBanTCompositeId) {
+        this.currentBanTCompositeId = currentBanTCompositeId;
     }
 }

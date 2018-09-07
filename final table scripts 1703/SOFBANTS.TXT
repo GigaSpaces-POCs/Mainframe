@@ -37,7 +37,11 @@
        ,BAN   CHAR(13) NOT NULL WITH DEFAULT                            
                                                           
        ,GROUP_ACCT   CHAR(13) NOT NULL WITH DEFAULT                     
-                                                          
+                     
+                     ,PRIMARY KEY(CUSTOMER_ACCT_NUM,
+BACKEND_SYSTEM,
+SERVICE_TYPE,
+ORIG_SYSTEM_ID)                                     
         )                                                                
      ;                                                                  
      CREATE                                                             

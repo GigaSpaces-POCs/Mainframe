@@ -1,8 +1,10 @@
 package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
+import com.gigaspaces.annotation.pojo.SpaceId;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -15,10 +17,10 @@ import java.sql.Date;
 @Table(name="BMGVZP.KANJI_DATA_T")
 @SpaceClass
 public class KanjiDataT {
-    @Column(name = "TEXT_XREF_NBR")
-    private Integer textXrefNbr;
-    @Column(name = "TEXT_LINE_NUM")
-    private Integer textLineNum;
+
+    @EmbeddedId
+    private KanjiDataTCompositeId kanjiDataTCompositeId;
+
     @Column(name = "TEXT_POINTER_CD")
     private String textPointerCd;
     @Column(name = "TEXT_KEY")
@@ -29,22 +31,6 @@ public class KanjiDataT {
     private Date vamloadDate;
 
     public KanjiDataT(){}
-
-    public Integer getTextXrefNbr() {
-        return textXrefNbr;
-    }
-
-    public void setTextXrefNbr(Integer textXrefNbr) {
-        this.textXrefNbr = textXrefNbr;
-    }
-
-    public Integer getTextLineNum() {
-        return textLineNum;
-    }
-
-    public void setTextLineNum(Integer textLineNum) {
-        this.textLineNum = textLineNum;
-    }
 
     public String getTextPointerCd() {
         return textPointerCd;
@@ -76,5 +62,14 @@ public class KanjiDataT {
 
     public void setVamloadDate(Date vamloadDate) {
         this.vamloadDate = vamloadDate;
+    }
+
+    @SpaceId
+    public KanjiDataTCompositeId getKanjiDataTCompositeId() {
+        return kanjiDataTCompositeId;
+    }
+
+    public void setKanjiDataTCompositeId(KanjiDataTCompositeId kanjiDataTCompositeId) {
+        this.kanjiDataTCompositeId = kanjiDataTCompositeId;
     }
 }

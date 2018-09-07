@@ -24,7 +24,7 @@
        ,STATUS_DATE   DATE NOT NULL WITH DEFAULT                        
        ,CUSTOMER_CODE   CHAR(3)                                         
                                                            
-       ,CUSTOMER_ACCT_NUM   CHAR(50)                                    
+       ,CUSTOMER_ACCT_NUM   VARCHAR(50)                                    
                                                            
        ,ACCOUNT_TYPE   CHAR(10)                                         
                                                            
@@ -124,9 +124,7 @@
        ,BILL_DAY   DECIMAL(2)                                           
        ,GCH_SENSITIVITY_LEVEL   CHAR(1)                                 
                                                            
-        ,                                                               
-         CONSTRAINT SUBSCRIPTION_OID                                    
-         PRIMARY KEY                                                    
+        ,PRIMARY KEY                                                    
          (                                                              
           SUBSCRIPTION_OID                                              
          )                                                              

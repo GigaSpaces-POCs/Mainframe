@@ -21,7 +21,9 @@
        ,DESCRIPTION_2   VARCHAR(150) NOT NULL WITH DEFAULT              
                                                           
        ,DESCRIPTION_1   VARCHAR(150) NOT NULL WITH DEFAULT              
-                                                          
+                                            ,PRIMARY KEY (
+      CODE_DESC_KEY
+)                
         )                                                               
      ;                                                                  
      CREATE UNIQUE                                                      
