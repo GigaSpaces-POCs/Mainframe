@@ -10,6 +10,7 @@ import com.gigaspaces.annotation.pojo.SpaceId;
 @SpaceClass
 public class Step1AggregatedPojo {
 
+    private String id;
     private String cleId;
     private String cleName;
     private String man;
@@ -26,7 +27,7 @@ public class Step1AggregatedPojo {
         this.origSystemId = origSystemId;
     }
 
-    @SpaceId
+
     public String getCleId() {
         return cleId;
     }
@@ -65,5 +66,14 @@ public class Step1AggregatedPojo {
 
     public void setOrigSystemId(String origSystemId) {
         this.origSystemId = origSystemId;
+    }
+
+    @SpaceId(autoGenerate = true)
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

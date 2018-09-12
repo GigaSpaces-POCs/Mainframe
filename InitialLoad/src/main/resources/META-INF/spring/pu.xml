@@ -30,7 +30,7 @@
                 <value>com.gigaspaces.KanjiDataT</value>
                 <!--<value>com.gigaspaces.RefCodes95T</value>-->
                 <value>com.gigaspaces.ReferanceCodesT</value>
-                <value>com.gigaspaces.Vz4506200T</value>
+                <!--<value>com.gigaspaces.Vz4506200T</value>-->
                 <!--<value>com.gigaspaces.Vz450Mod048T</value>-->
                 <!--<value>com.gigaspaces.Vz450Mod077T</value>-->
                 <value>com.gigaspaces.Vz450Mod079T</value>
