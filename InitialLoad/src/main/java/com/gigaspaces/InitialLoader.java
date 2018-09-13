@@ -24,30 +24,33 @@ public class InitialLoader {
 
     public void init() throws Exception {
 
-        List<Step1AggregatedPojo> result = getStep1AggregatedPojos();
-        logger.info("Result size -> " + result.size());
-        // write final aggregated result to space
-        gigaspace.writeMultiple(result.toArray());
+        List<Step1AggregatedPojo> step1AggregatedPojos = getStep1AggregatedPojos();
+        logger.info("Result size -> " + step1AggregatedPojos.size());
+        // step 1 join
+        gigaspace.writeMultiple(step1AggregatedPojos.toArray());
 
 
         // step 2 join
-        Set<String> mans = getMans(result);
-        Set<String> bans = getBans(result);
-        Set<String> origSystemIds = getOrigSystemIds(result);
+        List<Step2AggregatedPojo> step2AggregatedPojos = getStep2AggregatedPojos(step1AggregatedPojos);
+        gigaspace.writeMultiple(step2AggregatedPojos.toArray());
+
+
+    }
+
+    private List<Step2AggregatedPojo> getStep2AggregatedPojos(List<Step1AggregatedPojo> step1AggregatedPojos) {
+        Set<String> mans = getMans(step1AggregatedPojos);
+        Set<String> bans = getBans(step1AggregatedPojos);
+        Set<String> origSystemIds = getOrigSystemIds(step1AggregatedPojos);
 
         AcctSumT[] acctSumTs = gigaspace.readMultiple(createAcctSumTQuery(mans, bans, origSystemIds));
-
-        Set<Date> manBillDates = getManBillDates(acctSumTs);
-        Set<Date> billDates = getBillDates(acctSumTs);
-        Set<String> abans = getAbans(acctSumTs);
 
         IntlNameAddress[] intlNameAddresses = gigaspace.readMultiple(createIntlNameAddressQuery());
 
         // map intNameAddress by man
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByMan = mapIntlNameAddressesByMan(intlNameAddresses);
+        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByMan = mapIntlNameAddressesByMan(Arrays.asList(intlNameAddresses));
 
         // map acctSumTs by man
-        Map<String, List<AcctSumT>> mappedAcctSumTsByMan = mapAcctSumTByMan(acctSumTs);
+        Map<String, List<AcctSumT>> mappedAcctSumTsByMan = mapAcctSumTByMan(Arrays.asList(acctSumTs));
 
         Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByMan = new HashMap<>();
 
@@ -223,7 +226,6 @@ public class InitialLoader {
         List<Step2AggregatedPojo> step2joinResult = new ArrayList<>();
 
 
-
         for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> entry : mappedByAban.entrySet()) {
 
             Step2AggregatedPojo currentPojo = entry.getKey();
@@ -244,198 +246,60 @@ public class InitialLoader {
         }
 
         logger.info("---> Step 2 join result  " + step2joinResult.size());
-        gigaspace.writeMultiple(step2joinResult.toArray());
+        return step2joinResult;
     }
 
     private Map<String, List<AcctSumT>> mapAcctSumTByAban(List<AcctSumT> acctSumTs) {
-        Map<String, List<AcctSumT>> mappedAcctSumTsByAban = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByAban = mappedAcctSumTsByAban.get(acctSumT.getAcctSumTCompositeId().getAban());
-            if (acctSumTByAban == null) {
-                acctSumTByAban = new ArrayList<>();
-            }
-            acctSumTByAban.add(acctSumT);
-            mappedAcctSumTsByAban.put(acctSumT.getAcctSumTCompositeId().getAban(), acctSumTByAban);
-        }
-        return mappedAcctSumTsByAban;
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getAban()));
     }
 
     private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByAban(List<IntlNameAddress> intlNameAddresses) {
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByAban = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByAban = mappedIntlNameAddressesByAban.get(intlNameAddress.getAban());
-            if (intlNameAddressByAban == null) {
-                intlNameAddressByAban = new ArrayList<>();
-            }
-            intlNameAddressByAban.add(intlNameAddress);
-            mappedIntlNameAddressesByAban.put(intlNameAddress.getAban(), intlNameAddressByAban);
-        }
-        return mappedIntlNameAddressesByAban;
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getAban));
     }
 
     private Map<Date, List<IntlNameAddress>> mapIntlNameAddressesByBillDate(List<IntlNameAddress> intlNameAddresses) {
-        Map<Date, List<IntlNameAddress>> mappedIntlNameAddressesByBillDate = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByBillDate = mappedIntlNameAddressesByBillDate.get(intlNameAddress.getBillDate());
-            if (intlNameAddressByBillDate == null) {
-                intlNameAddressByBillDate = new ArrayList<>();
-            }
-            intlNameAddressByBillDate.add(intlNameAddress);
-            mappedIntlNameAddressesByBillDate.put(intlNameAddress.getBillDate(), intlNameAddressByBillDate);
-        }
-        return mappedIntlNameAddressesByBillDate;
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getBillDate));
     }
 
     private Map<Date, List<AcctSumT>> mapAcctSumTByBillDate(List<AcctSumT> acctSumTs) {
-        Map<Date, List<AcctSumT>> mappedAcctSumTsByBillDate = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByBillDate = mappedAcctSumTsByBillDate.get(acctSumT.getAcctSumTCompositeId().getBillDate());
-            if (acctSumTByBillDate == null) {
-                acctSumTByBillDate = new ArrayList<>();
-            }
-            acctSumTByBillDate.add(acctSumT);
-            mappedAcctSumTsByBillDate.put(acctSumT.getAcctSumTCompositeId().getBillDate(), acctSumTByBillDate);
-        }
-        return mappedAcctSumTsByBillDate;
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getBillDate()));
     }
 
     private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByBan(List<IntlNameAddress> intlNameAddresses) {
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByBan = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByBan = mappedIntlNameAddressesByBan.get(intlNameAddress.getBan());
-            if (intlNameAddressByBan == null) {
-                intlNameAddressByBan = new ArrayList<>();
-            }
-            intlNameAddressByBan.add(intlNameAddress);
-            mappedIntlNameAddressesByBan.put(intlNameAddress.getBan(), intlNameAddressByBan);
-        }
-        return mappedIntlNameAddressesByBan;
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getBan));
     }
 
     private Map<String, List<AcctSumT>> mapAcctSumTByBan(List<AcctSumT> acctSumTs) {
-        Map<String, List<AcctSumT>> mappedAcctSumTsByBan = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByBan = mappedAcctSumTsByBan.get(acctSumT.getAcctSumTCompositeId().getBan());
-            if (acctSumTByBan == null) {
-                acctSumTByBan = new ArrayList<>();
-            }
-            acctSumTByBan.add(acctSumT);
-            mappedAcctSumTsByBan.put(acctSumT.getAcctSumTCompositeId().getBan(), acctSumTByBan);
-        }
-        return mappedAcctSumTsByBan;
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getBan()));
     }
 
     private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByOrigSystemId(List<IntlNameAddress> intlNameAddresses) {
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByOrigSystemId = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByOrigSystemId = mappedIntlNameAddressesByOrigSystemId.get(intlNameAddress.getIntlNameAddressCompositeId().getOrigSystemId());
-            if (intlNameAddressByOrigSystemId == null) {
-                intlNameAddressByOrigSystemId = new ArrayList<>();
-            }
-            intlNameAddressByOrigSystemId.add(intlNameAddress);
-            mappedIntlNameAddressesByOrigSystemId.put(intlNameAddress.getIntlNameAddressCompositeId().getOrigSystemId(), intlNameAddressByOrigSystemId);
-        }
-        return mappedIntlNameAddressesByOrigSystemId;
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getOrigSystemId()));
     }
 
     private Map<String, List<AcctSumT>> mapAcctSumTByOrigSystemId(List<AcctSumT> acctSumTs) {
-        Map<String, List<AcctSumT>> mappedAcctSumTsByOrigSystemId = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByOrigSystemId = mappedAcctSumTsByOrigSystemId.get(acctSumT.getAcctSumTCompositeId().getOrigSystemId());
-            if (acctSumTByOrigSystemId == null) {
-                acctSumTByOrigSystemId = new ArrayList<>();
-            }
-            acctSumTByOrigSystemId.add(acctSumT);
-            mappedAcctSumTsByOrigSystemId.put(acctSumT.getAcctSumTCompositeId().getOrigSystemId(), acctSumTByOrigSystemId);
-        }
-        return mappedAcctSumTsByOrigSystemId;
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getOrigSystemId()));
     }
 
     private Map<Date, List<AcctSumT>> mapAcctSumTByManBillDate(List<AcctSumT> acctSumTs) {
-        Map<Date, List<AcctSumT>> mappedAcctSumTsByManBillDate = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByManBillDate = mappedAcctSumTsByManBillDate.get(acctSumT.getAcctSumTCompositeId().getManBillDate());
-            if (acctSumTByManBillDate == null) {
-                acctSumTByManBillDate = new ArrayList<>();
-            }
-            acctSumTByManBillDate.add(acctSumT);
-            mappedAcctSumTsByManBillDate.put(acctSumT.getAcctSumTCompositeId().getManBillDate(), acctSumTByManBillDate);
-        }
-        return mappedAcctSumTsByManBillDate;
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getManBillDate()));
     }
 
     private Map<Date, List<IntlNameAddress>> mapIntlNameAddressesByManBillDate(List<IntlNameAddress> intlNameAddresses) {
-        Map<Date, List<IntlNameAddress>> mappedIntlNameAddressesByManBillDate = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByManBillDate = mappedIntlNameAddressesByManBillDate.get(intlNameAddress.getIntlNameAddressCompositeId().getManBillDate());
-            if (intlNameAddressByManBillDate == null) {
-                intlNameAddressByManBillDate = new ArrayList<>();
-            }
-            intlNameAddressByManBillDate.add(intlNameAddress);
-            mappedIntlNameAddressesByManBillDate.put(intlNameAddress.getIntlNameAddressCompositeId().getManBillDate(), intlNameAddressByManBillDate);
-        }
-        return mappedIntlNameAddressesByManBillDate;
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getManBillDate()));
     }
 
-    private Map<String, List<AcctSumT>> mapAcctSumTByMan(AcctSumT[] acctSumTs) {
-        Map<String, List<AcctSumT>> mappedAcctSumTsByMan = new HashMap<>();
-
-        for (AcctSumT acctSumT : acctSumTs) {
-            List<AcctSumT> acctSumTByMan = mappedAcctSumTsByMan.get(acctSumT.getAcctSumTCompositeId().getMan());
-            if (acctSumTByMan == null) {
-                acctSumTByMan = new ArrayList<>();
-            }
-            acctSumTByMan.add(acctSumT);
-            mappedAcctSumTsByMan.put(acctSumT.getAcctSumTCompositeId().getMan(), acctSumTByMan);
-        }
-        return mappedAcctSumTsByMan;
+    private Map<String, List<AcctSumT>> mapAcctSumTByMan(List<AcctSumT> acctSumTs) {
+        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getMan()));
     }
 
-    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByMan(IntlNameAddress[] intlNameAddresses) {
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByMan = new HashMap<>();
-
-        for (IntlNameAddress intlNameAddress : intlNameAddresses) {
-            List<IntlNameAddress> intlNameAddressByMan = mappedIntlNameAddressesByMan.get(intlNameAddress.getIntlNameAddressCompositeId().getMan());
-            if (intlNameAddressByMan == null) {
-                intlNameAddressByMan = new ArrayList<>();
-            }
-            intlNameAddressByMan.add(intlNameAddress);
-            mappedIntlNameAddressesByMan.put(intlNameAddress.getIntlNameAddressCompositeId().getMan(), intlNameAddressByMan);
-        }
-        return mappedIntlNameAddressesByMan;
+    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByMan(List<IntlNameAddress> intlNameAddresses) {
+        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getMan()));
     }
 
     private SQLQuery<IntlNameAddress> createIntlNameAddressQuery() {
         return new SQLQuery<>(IntlNameAddress.class, "addressCtgyId = '1' AND subRecNbr = '12'")
-//                .setParameter(1, mans)
-//                .setParameter(2, manBillDates)
-//                .setParameter(3, origSystemIds)
-//                .setParameter(4, bans)
-//                .setParameter(5, billDates)
-//                .setParameter(6, abans)
                 .setProjections("intlNameAddressCompositeId", "ban", "billDate", "aban", "cgiName");
-    }
-
-    private Set<Date> getManBillDates(AcctSumT[] acctSumTS) {
-        return Arrays.stream(acctSumTS).map(acctSumT -> acctSumT.getAcctSumTCompositeId().getManBillDate()).collect(Collectors.toSet());
-    }
-
-    private Set<Date> getBillDates(AcctSumT[] acctSumTS) {
-        return Arrays.stream(acctSumTS).map(acctSumT -> acctSumT.getAcctSumTCompositeId().getBillDate()).collect(Collectors.toSet());
-    }
-
-    private Set<String> getAbans(AcctSumT[] acctSumTS) {
-        return Arrays.stream(acctSumTS).map(acctSumT -> acctSumT.getAcctSumTCompositeId().getAban()).collect(Collectors.toSet());
     }
 
     private List<Step1AggregatedPojo> getStep1AggregatedPojos() {
@@ -448,25 +312,12 @@ public class InitialLoader {
         Subscription[] subscriptions = gigaspace.readMultiple(createSubscriptionQuery(customerAcctNums, origSystemIds));
 
         // get current ban t
-        Double[] subscriptionOids = getSubscriptionOids(subscriptions);
+        Set<Double> subscriptionOids = getSubscriptionOids(subscriptions);
 
         CurrentBanT[] currentBanTs = gigaspace.readMultiple(createCurrentBanTQuery(subscriptionOids));
 
         //do second join (CURRENT_BAT_T with SUBSCRIPTION) on SUBSCRIPTION_OID
-
-        Map<Double, List<CurrentBanT>> mappedCurrentBanTs = new HashMap<>();
-
-        for (CurrentBanT currentBanT : currentBanTs) {
-            List<CurrentBanT> currentBanTsById = mappedCurrentBanTs.get(currentBanT.getSpOid());
-            if (currentBanTsById == null) {
-                currentBanTsById = new ArrayList<>();
-            }
-            currentBanTsById.add(currentBanT);
-            mappedCurrentBanTs.put(currentBanT.getSpOid(), currentBanTsById);
-        }
-
-//        Map<Double, List<CurrentBanT>> mappedCurrentBanTs = Arrays.stream(currentBanTs)
-//                .collect(Collectors.toMap(CurrentBanT::getSpOid, Arrays::asList, (value1, value2) -> Arrays.asList(value1, value2)));
+        Map<Double, List<CurrentBanT>> mappedCurrentBanTs = Arrays.stream(currentBanTs).collect(Collectors.groupingBy(CurrentBanT::getSpOid));
 
         List<CurrentBanTSubscriptionJoinResult> secondInnerJoinResult = new ArrayList<>();
 
@@ -485,21 +336,8 @@ public class InitialLoader {
             }
         }
 //         do first join (BAN_SOF_T with SUBSCRIPTION) ON CUSTOMER_ACCT_NUM, ORIG_SYSTEM_ID
-
-        Map<String, List<CurrentBanTSubscriptionJoinResult>> mappedSecondInnerJoinResult = new HashMap<>();
-        for (CurrentBanTSubscriptionJoinResult singleResult : secondInnerJoinResult) {
-            List<CurrentBanTSubscriptionJoinResult> list = mappedSecondInnerJoinResult.get(singleResult.getCustomerAcctNum());
-            if (list == null) {
-                list = new ArrayList<>();
-            }
-            list.add(singleResult);
-            mappedSecondInnerJoinResult.put(singleResult.getCustomerAcctNum(), list);
-        }
-
-
-//        code for relation 1-1
-//        Map<String, CurrentBanTSubscriptionJoinResult> mappedSecondInnerJoinResult = secondInnerJoinResult.stream()
-//                .collect(Collectors.toMap(CurrentBanTSubscriptionJoinResult::getCustomerAcctNum, singleResult -> singleResult));
+        Map<String, List<CurrentBanTSubscriptionJoinResult>> mappedSecondInnerJoinResult = secondInnerJoinResult.stream()
+                .collect(Collectors.groupingBy(CurrentBanTSubscriptionJoinResult::getCustomerAcctNum));
 
         List<Step1AggregatedPojo> result = new ArrayList<>();
         for (BanSofT banSofT : banSofTS) {
@@ -525,8 +363,8 @@ public class InitialLoader {
         return result;
     }
 
-    private Double[] getSubscriptionOids(Subscription[] subscriptions) {
-        return Arrays.stream(subscriptions).map(Subscription::getSubscriptionOid).toArray(Double[]::new);
+    private Set<Double> getSubscriptionOids(Subscription[] subscriptions) {
+        return Arrays.stream(subscriptions).map(Subscription::getSubscriptionOid).collect(Collectors.toSet());
     }
 
     private Set<String> getCustomerAcctNums(BanSofT[] banSofTs) {
@@ -562,34 +400,15 @@ public class InitialLoader {
     }
 
     private SQLQuery<Subscription> createSubscriptionQuery(Set<String> customerAccNum, Set<String> origSystemId) {
-
-//        Collection<String> customerAccNumCollection = Arrays.stream(customerAccNum).collect(Collectors.toSet());
-//        Collection<String> origSystemIdCollection = Arrays.stream(origSystemId).collect(Collectors.toSet());
-
         return new SQLQuery<>(Subscription.class, "customerAcctNum IN (?) OR origSystemId IN (?)")
                 .setParameter(1, customerAccNum)
                 .setParameter(2, origSystemId)
                 .setProjections("customerAcctNum", "origSystemId", "subscriptionOid");
-
-
     }
 
-    private SQLQuery<CurrentBanT> createCurrentBanTQuery(Double[] subscriptionOids) {
+    private SQLQuery<CurrentBanT> createCurrentBanTQuery(Set<Double> subscriptionOids) {
         return new SQLQuery<>(CurrentBanT.class, "spOid IN (?)")
                 .setParameter(1, subscriptionOids)
                 .setProjections("spOid", "currentBanTCompositeId");
-
-
-    }
-
-    private SQLQuery<AcctSumT> createAcctSumXQuery() {
-        return new SQLQuery<>(AcctSumT.class, "").setProjections("acctSumXCompositeId.manBillDate", "acctSumXCompositeId.ban", "man");
-    }
-
-
-    private String printAcctSumX(AcctSumT acctSumT) {
-        return "manBillDate " + acctSumT.getAcctSumTCompositeId().getManBillDate() +
-                ", ban " + acctSumT.getAcctSumTCompositeId().getBan() +
-                ", man " + acctSumT.getAcctSumTCompositeId().getMan();
     }
 }
