@@ -2,6 +2,7 @@ package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.*;
 
 import java.sql.Date;
 import java.util.Objects;
@@ -11,7 +12,7 @@ import java.util.Objects;
  * Date: 10.09.2018
  */
 @SpaceClass
-public class Step2AggregatedPojo {
+public class Step2AggregatedPojo implements HasMan, HasBan, HasOrigSystemId, HasManBillDate, HasAban, HasBillDate {
 
     private String id;
     private String man;
@@ -22,9 +23,10 @@ public class Step2AggregatedPojo {
     private String origSystemId;
     private Integer vz450SeqNbr;
     private String invoiceNbr;
-    private String billCurr;
+    private String currencyCode;
     private String regionCd;
     private String cgiName;
+    private String cleId;
 
     public Step2AggregatedPojo() {
     }
@@ -38,13 +40,14 @@ public class Step2AggregatedPojo {
         this.origSystemId = source.getOrigSystemId();
         this.vz450SeqNbr = source.getVz450SeqNbr();
         this.invoiceNbr = source.getInvoiceNbr();
-        this.billCurr = source.getBillCurr();
+        this.currencyCode = source.getCurrencyCode();
         this.regionCd = source.getRegionCd();
         this.cgiName = source.getCgiName();
+        this.cleId = source.getCleId();
     }
 
 
-    public Step2AggregatedPojo(String man, Date manBillDate, String ban, String aban, Date billDate, String origSystemId, Integer vz450SeqNbr, String invoiceNbr, String billCurr, String regionCd, String cgiName) {
+    public Step2AggregatedPojo(String man, Date manBillDate, String ban, String aban, Date billDate, String origSystemId, Integer vz450SeqNbr, String invoiceNbr, String currencyCode, String regionCd, String cgiName, String cleId) {
         this.man = man;
         this.manBillDate = manBillDate;
         this.ban = ban;
@@ -53,9 +56,10 @@ public class Step2AggregatedPojo {
         this.origSystemId = origSystemId;
         this.vz450SeqNbr = vz450SeqNbr;
         this.invoiceNbr = invoiceNbr;
-        this.billCurr = billCurr;
+        this.currencyCode = currencyCode;
         this.regionCd = regionCd;
         this.cgiName = cgiName;
+        this.cleId = cleId;
     }
 
     public String getMan() {
@@ -122,12 +126,12 @@ public class Step2AggregatedPojo {
         this.invoiceNbr = invoiceNbr;
     }
 
-    public String getBillCurr() {
-        return billCurr;
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setBillCurr(String billCurr) {
-        this.billCurr = billCurr;
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 
     public String getRegionCd() {
@@ -146,6 +150,14 @@ public class Step2AggregatedPojo {
         this.cgiName = cgiName;
     }
 
+    public String getCleId() {
+        return cleId;
+    }
+
+    public void setCleId(String cleId) {
+        this.cleId = cleId;
+    }
+
     @SpaceId(autoGenerate = true)
     public String getId() {
         return id;
@@ -154,7 +166,6 @@ public class Step2AggregatedPojo {
     public void setId(String id) {
         this.id = id;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -170,15 +181,16 @@ public class Step2AggregatedPojo {
                 Objects.equals(origSystemId, that.origSystemId) &&
                 Objects.equals(vz450SeqNbr, that.vz450SeqNbr) &&
                 Objects.equals(invoiceNbr, that.invoiceNbr) &&
-                Objects.equals(billCurr, that.billCurr) &&
+                Objects.equals(currencyCode, that.currencyCode) &&
                 Objects.equals(regionCd, that.regionCd) &&
-                Objects.equals(cgiName, that.cgiName);
+                Objects.equals(cgiName, that.cgiName) &&
+                Objects.equals(cleId, that.cleId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, man, manBillDate, ban, aban, billDate, origSystemId, vz450SeqNbr, invoiceNbr, billCurr, regionCd, cgiName);
+        return Objects.hash(id, man, manBillDate, ban, aban, billDate, origSystemId, vz450SeqNbr, invoiceNbr, currencyCode, regionCd, cgiName, cleId);
     }
 
     @Override
@@ -193,9 +205,10 @@ public class Step2AggregatedPojo {
                 ", origSystemId='" + origSystemId + '\'' +
                 ", vz450SeqNbr=" + vz450SeqNbr +
                 ", invoiceNbr='" + invoiceNbr + '\'' +
-                ", billCurr='" + billCurr + '\'' +
+                ", currencyCode='" + currencyCode + '\'' +
                 ", regionCd='" + regionCd + '\'' +
                 ", cgiName='" + cgiName + '\'' +
+                ", cleId='" + cleId + '\'' +
                 '}';
     }
 }

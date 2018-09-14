@@ -1,12 +1,14 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.*;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * @author Denys_Novikov
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "BMGVZP.ACCT_SUM_T")
 @SpaceClass
-public class AcctSumT {
+public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasAban {
 
     @EmbeddedId
     private AcctSumTCompositeId acctSumTCompositeId;
@@ -1094,4 +1096,33 @@ public class AcctSumT {
     }
 
 
+    @Override
+    public String getMan() {
+        return acctSumTCompositeId.getMan();
+    }
+
+    @Override
+    public String getAban() {
+        return acctSumTCompositeId.getAban();
+    }
+
+    @Override
+    public String getBan() {
+        return acctSumTCompositeId.getBan();
+    }
+
+    @Override
+    public Date getBillDate() {
+        return acctSumTCompositeId.getBillDate();
+    }
+
+    @Override
+    public Date getManBillDate() {
+        return acctSumTCompositeId.getManBillDate();
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return acctSumTCompositeId.getOrigSystemId();
+    }
 }

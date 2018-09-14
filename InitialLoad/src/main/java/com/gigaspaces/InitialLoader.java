@@ -1,7 +1,6 @@
 package com.gigaspaces;
 
-import com.gigaspaces.utils.Pair;
-import com.j_spaces.core.client.SQLQuery;
+import com.gigaspaces.pojos.*;
 import org.openspaces.core.GigaSpace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +10,8 @@ import java.sql.Date;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.gigaspaces.utils.Extractors.*;
+import static com.gigaspaces.utils.QueryCreator.*;
 /**
  * @author Denys_Novikov
  * Date: 22.08.2018
@@ -35,6 +36,100 @@ public class InitialLoader {
         gigaspace.writeMultiple(step2AggregatedPojos.toArray());
 
 
+        // step 3 join
+        List<Step3AggregatedPojo> step3AggregatedPojos = getStep3AggregatedPojos(step2AggregatedPojos);
+        gigaspace.writeMultiple(step3AggregatedPojos.toArray());
+
+    }
+
+    private List<Step3AggregatedPojo> getStep3AggregatedPojos(List<Step2AggregatedPojo> step2AggregatedPojos) {
+        Set<String> mans = getMans(step2AggregatedPojos);
+        Set<Date> manBillDates = getManBillDates(step2AggregatedPojos);
+        Set<String> origSystemIds = getOrigSystemIds(step2AggregatedPojos);
+        Set<String> bans = getBans(step2AggregatedPojos);
+        Set<Date> billDates = getBillDates(step2AggregatedPojos);
+        Set<String> abans = getAbans(step2AggregatedPojos);
+
+        IntlNameAddress[] intlNameAddresses = gigaspace.readMultiple(createIntlNameAddressQueryStep3Join(mans, manBillDates, origSystemIds, bans, billDates, abans));
+
+        List<IntlNameAddress> addresses = Arrays.asList(intlNameAddresses);
+
+        Set<String> intlNameAddrMans = getMans(addresses);
+        Set<Date> intlNameAddrManBillDates = getManBillDates(addresses);
+        Set<String> intlNameAddrOrigSystemIds = getOrigSystemIds(addresses);
+        Set<String> intlNameAddrBans = getBans(addresses);
+        Set<Date> intlNameAddrBillDates = getBillDates(addresses);
+        Set<String> intlNameAddrAbans = getAbans(addresses);
+        Set<Integer> intlNameAddrVz450SeqNbrs = getVz450SeqNbrs(addresses);
+
+        Vz450Mod079T[] vz450Mod079Ts = gigaspace.readMultiple(createVz450Mod079TQuery(intlNameAddrMans, intlNameAddrManBillDates, intlNameAddrOrigSystemIds, intlNameAddrBans, intlNameAddrBillDates, intlNameAddrAbans, intlNameAddrVz450SeqNbrs));
+
+        Map<String, List<IntlNameAddress>> mappedIntlNameAddresses = addresses.stream().collect(Collectors.groupingBy(
+                intlNameAddress -> intlNameAddress.getMan() + intlNameAddress.getManBillDate() + intlNameAddress.getOrigSystemId() +
+                         intlNameAddress.getBan() + intlNameAddress.getAban() + intlNameAddress.getBillDate() + intlNameAddress.getVz450SeqNbr()));
+
+        Map<String, Vz450Mod079T> mappedVz450Mod079Ts = Arrays.stream(vz450Mod079Ts).collect(Collectors.toMap(
+                vz450Mod079T -> vz450Mod079T.getMan() + vz450Mod079T.getManBillDate() + vz450Mod079T.getOrigSystemId() +
+                        vz450Mod079T.getBan() + vz450Mod079T.getAban() + vz450Mod079T.getBillDate() + vz450Mod079T.getVz450SeqNbr(),
+                vz450Mod079T -> vz450Mod079T));
+
+
+
+        List<Step3AggregatedPojo> step3AggregatedPojos = new ArrayList<>();
+
+        for (Map.Entry<String, List<IntlNameAddress>> intlNameAddressEntry : mappedIntlNameAddresses.entrySet()) {
+
+            for (IntlNameAddress intlNameAddress : intlNameAddressEntry.getValue()) {
+
+                Step3AggregatedPojo step3AggregatedPojo = new Step3AggregatedPojo();
+                step3AggregatedPojo.setMan(intlNameAddress.getMan());
+                step3AggregatedPojo.setManBillDate(intlNameAddress.getManBillDate());
+                step3AggregatedPojo.setOrigSystemId(intlNameAddress.getOrigSystemId());
+                step3AggregatedPojo.setBan(intlNameAddress.getBan());
+                step3AggregatedPojo.setBillDate(intlNameAddress.getBillDate());
+                step3AggregatedPojo.setAban(intlNameAddress.getAban());
+                step3AggregatedPojo.setLocationId(intlNameAddress.getLocationId());
+                step3AggregatedPojo.setAcctName(intlNameAddress.getAcctName());
+                step3AggregatedPojo.setAddress1(intlNameAddress.getAddress1());
+                step3AggregatedPojo.setAddress2(intlNameAddress.getAddress2());
+                step3AggregatedPojo.setAddress3(intlNameAddress.getAddress3());
+                step3AggregatedPojo.setCity(intlNameAddress.getCity());
+                step3AggregatedPojo.setState(intlNameAddress.getState());
+                step3AggregatedPojo.setCountry(intlNameAddress.getCountry());
+                step3AggregatedPojo.setPostalCd(intlNameAddress.getPostalCd());
+                step3AggregatedPojo.setCountryName(intlNameAddress.getCountryName());
+
+
+                if (mappedVz450Mod079Ts.containsKey(intlNameAddressEntry.getKey())) {
+                    step3AggregatedPojo.setLocationInstanceId(mappedVz450Mod079Ts.get(intlNameAddressEntry.getKey()).getSuppDataId());
+                }
+
+                step3AggregatedPojos.add(step3AggregatedPojo);
+            }
+        }
+
+        Map<String, List<Step2AggregatedPojo>> mappedPojo2 = step2AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step2AggregatedPojo -> step2AggregatedPojo.getMan() + step2AggregatedPojo.getManBillDate() + step2AggregatedPojo.getOrigSystemId()
+                                + step2AggregatedPojo.getBan() + step2AggregatedPojo.getBillDate() + step2AggregatedPojo.getAban()));
+
+        Map<String, List<Step3AggregatedPojo>> mappedPojo3 = step3AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step3AggregatedPojo -> step3AggregatedPojo.getMan() + step3AggregatedPojo.getManBillDate() + step3AggregatedPojo.getOrigSystemId()
+                        + step3AggregatedPojo.getBan() + step3AggregatedPojo.getBillDate() + step3AggregatedPojo.getAban()));
+
+        for (Map.Entry<String, List<Step3AggregatedPojo>> step3pojoEntry : mappedPojo3.entrySet()) {
+
+            if (mappedPojo2.containsKey(step3pojoEntry.getKey())) {
+                for (Step3AggregatedPojo step3AggregatedPojo : step3pojoEntry.getValue()) {
+                    for (Step2AggregatedPojo step2AggregatedPojo : mappedPojo2.get(step3pojoEntry.getKey())) {
+                        step3AggregatedPojo.setCleId(step2AggregatedPojo.getCleId());
+                    }
+                }
+            }
+        }
+
+        logger.info("Step3 step3AggregatedPojos1 size -> " + step3AggregatedPojos.size());
+        return step3AggregatedPojos;
+
     }
 
     private List<Step2AggregatedPojo> getStep2AggregatedPojos(List<Step1AggregatedPojo> step1AggregatedPojos) {
@@ -44,262 +139,65 @@ public class InitialLoader {
 
         AcctSumT[] acctSumTs = gigaspace.readMultiple(createAcctSumTQuery(mans, bans, origSystemIds));
 
-        IntlNameAddress[] intlNameAddresses = gigaspace.readMultiple(createIntlNameAddressQuery());
+        IntlNameAddress[] intlNameAddresses = gigaspace.readMultiple(createIntlNameAddressQueryStep2Join());
 
-        // map intNameAddress by man
-        Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByMan = mapIntlNameAddressesByMan(Arrays.asList(intlNameAddresses));
-
-        // map acctSumTs by man
-        Map<String, List<AcctSumT>> mappedAcctSumTsByMan = mapAcctSumTByMan(Arrays.asList(acctSumTs));
-
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByMan = new HashMap<>();
-
-        // match acctSumTs to intlNameAddresses by man
-        for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByMan.entrySet()) {
-            List<IntlNameAddress> intlNameAddressesPerMan = new ArrayList<>();
-            if (mappedIntlNameAddressesByMan.containsKey(acctSumTEntry.getKey())) {
-                intlNameAddressesPerMan = mappedIntlNameAddressesByMan.get(acctSumTEntry.getKey());
-            }
-            List<AcctSumT> acctSumTPerMan  = acctSumTEntry.getValue();
-
-            Step2AggregatedPojo step2AggregatedPojo = new Step2AggregatedPojo();
-            step2AggregatedPojo.setMan(acctSumTEntry.getKey());
-            Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerMan, intlNameAddressesPerMan));
-            if (oldValue != null) {
-                acctSumTPerMan.addAll(oldValue.getFirst());
-                intlNameAddressesPerMan.addAll(oldValue.getSecond());
-
-                mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerMan, intlNameAddressesPerMan));
-            }
-        }
+        Map<String, List<AcctSumT>> mappedAcctSumTs = Arrays.stream(acctSumTs).collect(Collectors.groupingBy(
+                acctSumT -> acctSumT.getMan() + acctSumT.getManBillDate() + acctSumT.getOrigSystemId()
+                        + acctSumT.getBan() + acctSumT.getBillDate() + acctSumT.getAban()));
 
 
-        // match acctSumTs to intlNameAddresses by manBillDate
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByManBillDate = new HashMap<>();
+        Map<String, List<IntlNameAddress>> mappedIntlNameAddresses = Arrays.stream(intlNameAddresses).collect(Collectors.groupingBy(
+                intlNameAddress -> intlNameAddress.getMan() + intlNameAddress.getManBillDate() + intlNameAddress.getOrigSystemId()
+                        + intlNameAddress.getBan() + intlNameAddress.getBillDate() + intlNameAddress.getAban()));
 
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> step2PojoEntry : mappedByMan.entrySet()) {
 
-            Pair<List<AcctSumT>, List<IntlNameAddress>> mapped = step2PojoEntry.getValue();
+        List<Step2AggregatedPojo> step2AggregatedPojos = new ArrayList<>();
+        for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTs.entrySet()) {
 
-            Map<Date, List<AcctSumT>> mappedAcctSumTsByManBillDate = mapAcctSumTByManBillDate(mapped.getFirst());
+            for (AcctSumT acctSumT : acctSumTEntry.getValue()) {
 
-            Map<Date, List<IntlNameAddress>> mappedIntlNameAddressesByManBillDate = mapIntlNameAddressesByManBillDate(mapped.getSecond());
+                Step2AggregatedPojo step2AggregatedPojo = new Step2AggregatedPojo();
+                step2AggregatedPojo.setMan(acctSumT.getMan());
+                step2AggregatedPojo.setManBillDate(acctSumT.getManBillDate());
+                step2AggregatedPojo.setOrigSystemId(acctSumT.getOrigSystemId());
+                step2AggregatedPojo.setBan(acctSumT.getBan());
+                step2AggregatedPojo.setBillDate(acctSumT.getBillDate());
+                step2AggregatedPojo.setAban(acctSumT.getAban());
+                step2AggregatedPojo.setInvoiceNbr(acctSumT.getInvoiceNbr());
+                step2AggregatedPojo.setRegionCd(acctSumT.getRegionCd());
+                step2AggregatedPojo.setCurrencyCode(acctSumT.getBillCurr());
 
-            for (Map.Entry<Date, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByManBillDate.entrySet()) {
-                List<IntlNameAddress> intlNameAddressesPerManBillDate = new ArrayList<>();
-                if (mappedIntlNameAddressesByManBillDate.containsKey(acctSumTEntry.getKey())) {
-                    intlNameAddressesPerManBillDate = mappedIntlNameAddressesByManBillDate.get(acctSumTEntry.getKey());
+                if (mappedIntlNameAddresses.containsKey(acctSumTEntry.getKey())) {
+                    for (IntlNameAddress intlNameAddress : mappedIntlNameAddresses.get(acctSumTEntry.getKey())) {
+                        step2AggregatedPojo.setCgiName(intlNameAddress.getCgiName());
+                        step2AggregatedPojos.add(step2AggregatedPojo);
+                    }
+                    continue;
                 }
-                List<AcctSumT> acctSumTPerManBillDate = acctSumTEntry.getValue();
-
-                Step2AggregatedPojo step2AggregatedPojo = step2PojoEntry.getKey();
-                step2AggregatedPojo.setManBillDate(acctSumTEntry.getKey());
-                Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByManBillDate.put(step2AggregatedPojo, new Pair<>(acctSumTPerManBillDate, intlNameAddressesPerManBillDate));
-                if (oldValue != null) {
-                    acctSumTPerManBillDate.addAll(oldValue.getFirst());
-                    intlNameAddressesPerManBillDate.addAll(oldValue.getSecond());
-
-                    mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerManBillDate, intlNameAddressesPerManBillDate));
-                }
+                step2AggregatedPojos.add(step2AggregatedPojo);
             }
         }
 
-        // match acctSumTs to intlNameAddresses by origSystemId
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByOrigSystemId = new HashMap<>();
+        // move cleId from step1pojo to step2pojo
 
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> step2PojoEntry : mappedByManBillDate.entrySet()) {
+        Map<String, Step1AggregatedPojo> mappedPojo1 = step1AggregatedPojos.stream().collect(
+                Collectors.toMap(step1AggregatedPojo -> step1AggregatedPojo.getMan() + step1AggregatedPojo.getBan() + step1AggregatedPojo.getOrigSystemId(),
+                        step1AggregatedPojo -> step1AggregatedPojo));
 
-            Pair<List<AcctSumT>, List<IntlNameAddress>> mapped = step2PojoEntry.getValue();
+        Map<String, List<Step2AggregatedPojo>> mappedPojo2 = step2AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step2AggregatedPojo -> step2AggregatedPojo.getMan() + step2AggregatedPojo.getBan() + step2AggregatedPojo.getOrigSystemId()));
 
-            Map<String, List<AcctSumT>> mappedAcctSumTsByOrigSystemId = mapAcctSumTByOrigSystemId(mapped.getFirst());
-
-            Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByOrigSystemId = mapIntlNameAddressesByOrigSystemId(mapped.getSecond());
-
-            for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByOrigSystemId.entrySet()) {
-                List<IntlNameAddress> intlNameAddressesPerOrigSystemId = new ArrayList<>();
-                if (mappedIntlNameAddressesByOrigSystemId.containsKey(acctSumTEntry.getKey())) {
-                    intlNameAddressesPerOrigSystemId = mappedIntlNameAddressesByOrigSystemId.get(acctSumTEntry.getKey());
-                }
-                List<AcctSumT> acctSumTPerOrigSystemId = acctSumTEntry.getValue();
-
-                Step2AggregatedPojo step2AggregatedPojo = step2PojoEntry.getKey();
-                step2AggregatedPojo.setOrigSystemId(acctSumTEntry.getKey());
-                Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByOrigSystemId.put(step2AggregatedPojo, new Pair<>(acctSumTPerOrigSystemId, intlNameAddressesPerOrigSystemId));
-                if (oldValue != null) {
-                    acctSumTPerOrigSystemId.addAll(oldValue.getFirst());
-                    intlNameAddressesPerOrigSystemId.addAll(oldValue.getSecond());
-
-                    mappedByOrigSystemId.put(step2AggregatedPojo, new Pair<>(acctSumTPerOrigSystemId, intlNameAddressesPerOrigSystemId));
-                }
+        List<Step2AggregatedPojo> step2result = new ArrayList<>();
+        for (Map.Entry<String, List<Step2AggregatedPojo>> step2entry : mappedPojo2.entrySet()) {
+            if (mappedPojo1.containsKey(step2entry.getKey())) {
+                List<Step2AggregatedPojo> values = step2entry.getValue();
+                values.forEach(value -> value.setCleId(mappedPojo1.get(step2entry.getKey()).getCleId()));
+                step2result.addAll(values);
             }
         }
 
-        // match acctSumTs to intlNameAddresses by ban
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByBan = new HashMap<>();
-
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> step2PojoEntry : mappedByOrigSystemId.entrySet()) {
-
-            Pair<List<AcctSumT>, List<IntlNameAddress>> mapped = step2PojoEntry.getValue();
-
-            Map<String, List<AcctSumT>> mappedAcctSumTsByBan = mapAcctSumTByBan(mapped.getFirst());
-
-            Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByBan = mapIntlNameAddressesByBan(mapped.getSecond());
-
-            for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByBan.entrySet()) {
-                List<IntlNameAddress> intlNameAddressesPerBan = new ArrayList<>();
-                if (mappedIntlNameAddressesByBan.containsKey(acctSumTEntry.getKey())) {
-                    intlNameAddressesPerBan  = mappedIntlNameAddressesByBan.get(acctSumTEntry.getKey());
-                }
-                List<AcctSumT> acctSumTPerBan = acctSumTEntry.getValue();
-                Step2AggregatedPojo step2AggregatedPojo = step2PojoEntry.getKey();
-                step2AggregatedPojo.setBan(acctSumTEntry.getKey());
-                Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByBan.put(step2AggregatedPojo, new Pair<>(acctSumTPerBan, intlNameAddressesPerBan));
-                if (oldValue != null) {
-                    acctSumTPerBan.addAll(oldValue.getFirst());
-                    intlNameAddressesPerBan.addAll(oldValue.getSecond());
-
-                    mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerBan, intlNameAddressesPerBan));
-                }
-            }
-        }
-
-        // match acctSumTs to intlNameAddresses by billDate
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByBillDate = new HashMap<>();
-
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> step2PojoEntry : mappedByBan.entrySet()) {
-
-            Pair<List<AcctSumT>, List<IntlNameAddress>> mapped = step2PojoEntry.getValue();
-
-            Map<Date, List<AcctSumT>> mappedAcctSumTsByBillDate = mapAcctSumTByBillDate(mapped.getFirst());
-
-            Map<Date, List<IntlNameAddress>> mappedIntlNameAddressesByBillDate = mapIntlNameAddressesByBillDate(mapped.getSecond());
-
-            for (Map.Entry<Date, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByBillDate.entrySet()) {
-                List<IntlNameAddress> intlNameAddressesPerBillDate = new ArrayList<>();
-                if (mappedIntlNameAddressesByBillDate.containsKey(acctSumTEntry.getKey())) {
-                    intlNameAddressesPerBillDate = mappedIntlNameAddressesByBillDate.get(acctSumTEntry.getKey());
-                }
-                List<AcctSumT> acctSumTPerBillDate = acctSumTEntry.getValue();
-                Step2AggregatedPojo step2AggregatedPojo = step2PojoEntry.getKey();
-                step2AggregatedPojo.setBillDate(acctSumTEntry.getKey());
-                Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByBillDate.put(step2AggregatedPojo, new Pair<>(acctSumTPerBillDate, intlNameAddressesPerBillDate));
-                if (oldValue != null) {
-                    acctSumTPerBillDate.addAll(oldValue.getFirst());
-                    intlNameAddressesPerBillDate.addAll(oldValue.getSecond());
-
-                    mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerBillDate, intlNameAddressesPerBillDate));
-                }
-            }
-        }
-
-        // match acctSumTs to intlNameAddresses by aban
-        Map<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> mappedByAban = new HashMap<>();
-
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> step2PojoEntry : mappedByBillDate.entrySet()) {
-
-            Pair<List<AcctSumT>, List<IntlNameAddress>> mapped = step2PojoEntry.getValue();
-
-            Map<String, List<AcctSumT>> mappedAcctSumTsByAban = mapAcctSumTByAban(mapped.getFirst());
-
-            Map<String, List<IntlNameAddress>> mappedIntlNameAddressesByAban = mapIntlNameAddressesByAban(mapped.getSecond());
-
-            for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTsByAban.entrySet()) {
-                List<IntlNameAddress> intlNameAddressesPerAban = new ArrayList<>();
-                if (mappedIntlNameAddressesByAban.containsKey(acctSumTEntry.getKey())) {
-                    intlNameAddressesPerAban = mappedIntlNameAddressesByAban.get(acctSumTEntry.getKey());
-                }
-                List<AcctSumT> acctSumTPerAban = acctSumTEntry.getValue();
-
-                Step2AggregatedPojo step2AggregatedPojo = step2PojoEntry.getKey();
-                step2AggregatedPojo.setAban(acctSumTEntry.getKey());
-                Pair<List<AcctSumT>, List<IntlNameAddress>> oldValue = mappedByAban.put(step2AggregatedPojo, new Pair<>(acctSumTPerAban, intlNameAddressesPerAban));
-                if (oldValue != null) {
-                    acctSumTPerAban.addAll(oldValue.getFirst());
-                    intlNameAddressesPerAban.addAll(oldValue.getSecond());
-
-                    mappedByMan.put(step2AggregatedPojo, new Pair<>(acctSumTPerAban, intlNameAddressesPerAban));
-                }
-            }
-        }
-
-        // fulfill step2pojo
-        List<Step2AggregatedPojo> step2joinResult = new ArrayList<>();
-
-
-        for (Map.Entry<Step2AggregatedPojo, Pair<List<AcctSumT>, List<IntlNameAddress>>> entry : mappedByAban.entrySet()) {
-
-            Step2AggregatedPojo currentPojo = entry.getKey();
-
-            for (AcctSumT acctSumT : entry.getValue().getFirst()) {
-
-                Step2AggregatedPojo resultPojo = new Step2AggregatedPojo(currentPojo);
-
-                resultPojo.setBillCurr(acctSumT.getBillCurr());
-                resultPojo.setInvoiceNbr(acctSumT.getInvoiceNbr());
-                resultPojo.setRegionCd(acctSumT.getRegionCd());
-
-                for (IntlNameAddress intlNameAddress : entry.getValue().getSecond()) {
-                    resultPojo.setCgiName(intlNameAddress.getCgiName());
-                }
-                step2joinResult.add(resultPojo);
-            }
-        }
-
-        logger.info("---> Step 2 join result  " + step2joinResult.size());
-        return step2joinResult;
-    }
-
-    private Map<String, List<AcctSumT>> mapAcctSumTByAban(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getAban()));
-    }
-
-    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByAban(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getAban));
-    }
-
-    private Map<Date, List<IntlNameAddress>> mapIntlNameAddressesByBillDate(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getBillDate));
-    }
-
-    private Map<Date, List<AcctSumT>> mapAcctSumTByBillDate(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getBillDate()));
-    }
-
-    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByBan(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(IntlNameAddress::getBan));
-    }
-
-    private Map<String, List<AcctSumT>> mapAcctSumTByBan(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getBan()));
-    }
-
-    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByOrigSystemId(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getOrigSystemId()));
-    }
-
-    private Map<String, List<AcctSumT>> mapAcctSumTByOrigSystemId(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getOrigSystemId()));
-    }
-
-    private Map<Date, List<AcctSumT>> mapAcctSumTByManBillDate(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getManBillDate()));
-    }
-
-    private Map<Date, List<IntlNameAddress>> mapIntlNameAddressesByManBillDate(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getManBillDate()));
-    }
-
-    private Map<String, List<AcctSumT>> mapAcctSumTByMan(List<AcctSumT> acctSumTs) {
-        return acctSumTs.stream().collect(Collectors.groupingBy(acctSumT -> acctSumT.getAcctSumTCompositeId().getMan()));
-    }
-
-    private Map<String, List<IntlNameAddress>> mapIntlNameAddressesByMan(List<IntlNameAddress> intlNameAddresses) {
-        return intlNameAddresses.stream().collect(Collectors.groupingBy(intlNameAddress -> intlNameAddress.getIntlNameAddressCompositeId().getMan()));
-    }
-
-    private SQLQuery<IntlNameAddress> createIntlNameAddressQuery() {
-        return new SQLQuery<>(IntlNameAddress.class, "addressCtgyId = '1' AND subRecNbr = '12'")
-                .setProjections("intlNameAddressCompositeId", "ban", "billDate", "aban", "cgiName");
+        logger.info("---> Step 2 join result  " + step2result.size());
+        return step2result;
     }
 
     private List<Step1AggregatedPojo> getStep1AggregatedPojos() {
@@ -307,7 +205,7 @@ public class InitialLoader {
 
         // get subscriptions
         Set<String> customerAcctNums = getCustomerAcctNums(banSofTS);
-        Set<String> origSystemIds = getOrigSystemIds(banSofTS);
+        Set<String> origSystemIds = getOrigSystemIds(Arrays.asList(banSofTS));
 
         Subscription[] subscriptions = gigaspace.readMultiple(createSubscriptionQuery(customerAcctNums, origSystemIds));
 
@@ -327,7 +225,6 @@ public class InitialLoader {
                 List<CurrentBanT> currentBanT = mappedCurrentBanTs.get(subscription.getSubscriptionOid());
 
                 currentBanT.forEach(singleValue -> secondInnerJoinResult.add(new CurrentBanTSubscriptionJoinResult(
-                        subscription.getSubscriptionOid(),
                         subscription.getCustomerAcctNum(),
                         singleValue.getCurrentBanTCompositeId().getOrigSystemId(),
                         singleValue.getCurrentBanTCompositeId().getMan(),
@@ -367,48 +264,4 @@ public class InitialLoader {
         return Arrays.stream(subscriptions).map(Subscription::getSubscriptionOid).collect(Collectors.toSet());
     }
 
-    private Set<String> getCustomerAcctNums(BanSofT[] banSofTs) {
-        return Arrays.stream(banSofTs).map(banSofT -> banSofT.getBanSofTCompositeId().getCustomerAcctNum()).collect(Collectors.toSet());
-    }
-
-    private Set<String> getOrigSystemIds(BanSofT[] banSofTS) {
-        return Arrays.stream(banSofTS).map(banSofT -> banSofT.getBanSofTCompositeId().getOrigSystemId()).collect(Collectors.toSet());
-    }
-
-    private Set<String> getMans(List<Step1AggregatedPojo> step1AggregatedPojos) {
-        return step1AggregatedPojos.stream().map(Step1AggregatedPojo::getMan).collect(Collectors.toSet());
-    }
-
-    private Set<String> getBans(List<Step1AggregatedPojo> step1AggregatedPojos) {
-        return step1AggregatedPojos.stream().map(Step1AggregatedPojo::getBan).collect(Collectors.toSet());
-    }
-
-    private Set<String> getOrigSystemIds(List<Step1AggregatedPojo> step1AggregatedPojos) {
-        return step1AggregatedPojos.stream().map(Step1AggregatedPojo::getOrigSystemId).collect(Collectors.toSet());
-    }
-
-    private SQLQuery<BanSofT> createBanSofTQuery() {
-        return new SQLQuery<>(BanSofT.class, "").setProjections("banSofTCompositeId", "cleId", "cleName");
-    }
-
-    private SQLQuery<AcctSumT> createAcctSumTQuery(Set<String> mans, Set<String> bans, Set<String> origSystemIds) {
-        return new SQLQuery<>(AcctSumT.class, "acctSumTCompositeId.man IN (?) AND acctSumTCompositeId.ban IN (?) AND acctSumTCompositeId.origSystemId IN (?)")
-                .setParameter(1, mans)
-                .setParameter(2, bans)
-                .setParameter(3, origSystemIds)
-                .setProjections("acctSumTCompositeId", "invoiceNbr", "billCurr", "regionCd");
-    }
-
-    private SQLQuery<Subscription> createSubscriptionQuery(Set<String> customerAccNum, Set<String> origSystemId) {
-        return new SQLQuery<>(Subscription.class, "customerAcctNum IN (?) OR origSystemId IN (?)")
-                .setParameter(1, customerAccNum)
-                .setParameter(2, origSystemId)
-                .setProjections("customerAcctNum", "origSystemId", "subscriptionOid");
-    }
-
-    private SQLQuery<CurrentBanT> createCurrentBanTQuery(Set<Double> subscriptionOids) {
-        return new SQLQuery<>(CurrentBanT.class, "spOid IN (?)")
-                .setParameter(1, subscriptionOids)
-                .setProjections("spOid", "currentBanTCompositeId");
-    }
 }

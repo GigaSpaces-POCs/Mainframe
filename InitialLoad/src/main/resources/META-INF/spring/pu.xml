@@ -25,19 +25,19 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-                <value>com.gigaspaces.AcctSumT</value>
-                <value>com.gigaspaces.IntlNameAddress</value>
-                <value>com.gigaspaces.KanjiDataT</value>
-                <!--<value>com.gigaspaces.RefCodes95T</value>-->
-                <value>com.gigaspaces.ReferanceCodesT</value>
-                <!--<value>com.gigaspaces.Vz4506200T</value>-->
-                <!--<value>com.gigaspaces.Vz450Mod048T</value>-->
-                <!--<value>com.gigaspaces.Vz450Mod077T</value>-->
-                <value>com.gigaspaces.Vz450Mod079T</value>
-                <value>com.gigaspaces.Vz450Vmt50106T</value>
-                <value>com.gigaspaces.BanSofT</value>
-                <value>com.gigaspaces.Subscription</value>
-                <value>com.gigaspaces.CurrentBanT</value>
+                <value>com.gigaspaces.pojos.AcctSumT</value>
+                <value>com.gigaspaces.pojos.IntlNameAddress</value>
+                <value>com.gigaspaces.pojos.KanjiDataT</value>
+                <!--<value>com.gigaspaces.pojos.RefCodes95T</value>-->
+                <value>com.gigaspaces.pojos.ReferanceCodesT</value>
+                <!--<value>com.gigaspaces.pojos.Vz4506200T</value>-->
+                <!--<value>com.gigaspaces.pojos.Vz450Mod048T</value>-->
+                <!--<value>com.gigaspaces.pojos.Vz450Mod077T</value>-->
+                <value>com.gigaspaces.pojos.Vz450Mod079T</value>
+                <value>com.gigaspaces.pojos.Vz450Vmt50106T</value>
+                <value>com.gigaspaces.pojos.BanSofT</value>
+                <value>com.gigaspaces.pojos.Subscription</value>
+                <value>com.gigaspaces.pojos.CurrentBanT</value>
             </list>
         </property>
         <property name="hibernateProperties">

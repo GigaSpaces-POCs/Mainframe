@@ -1,4 +1,4 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 /**
  * @author Denys_Novikov

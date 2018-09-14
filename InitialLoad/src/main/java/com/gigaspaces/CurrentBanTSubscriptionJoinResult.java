@@ -6,26 +6,16 @@ package com.gigaspaces;
  */
 public class CurrentBanTSubscriptionJoinResult {
 
-    private Double subscriptionOid;
     private String customerAcctNum;
     private String origSystemId;
     private String man;
     private String ban;
 
-    public CurrentBanTSubscriptionJoinResult(Double subscriptionOid, String customerAcctNum, String origSystemId, String man, String ban) {
-        this.subscriptionOid = subscriptionOid;
+    public CurrentBanTSubscriptionJoinResult(String customerAcctNum, String origSystemId, String man, String ban) {
         this.customerAcctNum = customerAcctNum;
         this.origSystemId = origSystemId;
         this.man = man;
         this.ban = ban;
-    }
-
-    public Double getSubscriptionOid() {
-        return subscriptionOid;
-    }
-
-    public void setSubscriptionOid(Double subscriptionOid) {
-        this.subscriptionOid = subscriptionOid;
     }
 
     public String getCustomerAcctNum() {

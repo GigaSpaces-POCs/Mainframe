@@ -1,4 +1,4 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,28 +8,24 @@ import java.util.Objects;
 
 /**
  * @author Denys_Novikov
- * Date: 17.08.2018
+ * Date: 05.09.2018
  */
 @Embeddable
-public class AcctSumTCompositeId implements Serializable {
-
+public class Vz450Mod077TCompositeId implements Serializable {
 
     @Column(name = "MAN")
     private String man;
     @Column(name = "MAN_BILL_DATE")
     private Date manBillDate;
-    @Column(name = "BAN")
-    private String ban;
-    @Column(name = "ABAN")
-    private String aban;
-    @Column(name = "BILL_DATE")
-    private Date billDate;
     @Column(name = "ORIG_SYSTEM_ID")
     private String origSystemId;
     @Column(name = "VZ450_SEQ_NBR")
     private Integer vz450SeqNbr;
+    @Column(name = "DUP_NUM")
+    private Integer dupNum;
 
-    public AcctSumTCompositeId(){}
+    public Vz450Mod077TCompositeId() {
+    }
 
     public String getMan() {
         return man;
@@ -39,36 +35,12 @@ public class AcctSumTCompositeId implements Serializable {
         this.man = man;
     }
 
-    public String getBan() {
-        return ban;
-    }
-
-    public void setBan(String ban) {
-        this.ban = ban;
-    }
-
     public Date getManBillDate() {
         return manBillDate;
     }
 
     public void setManBillDate(Date manBillDate) {
         this.manBillDate = manBillDate;
-    }
-
-    public String getAban() {
-        return aban;
-    }
-
-    public void setAban(String aban) {
-        this.aban = aban;
-    }
-
-    public Date getBillDate() {
-        return billDate;
-    }
-
-    public void setBillDate(Date billDate) {
-        this.billDate = billDate;
     }
 
     public String getOrigSystemId() {
@@ -87,38 +59,41 @@ public class AcctSumTCompositeId implements Serializable {
         this.vz450SeqNbr = vz450SeqNbr;
     }
 
+    public Integer getDupNum() {
+        return dupNum;
+    }
+
+    public void setDupNum(Integer dupNum) {
+        this.dupNum = dupNum;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AcctSumTCompositeId that = (AcctSumTCompositeId) o;
+        Vz450Mod077TCompositeId that = (Vz450Mod077TCompositeId) o;
         return Objects.equals(man, that.man) &&
                 Objects.equals(manBillDate, that.manBillDate) &&
-                Objects.equals(ban, that.ban) &&
-                Objects.equals(aban, that.aban) &&
-                Objects.equals(billDate, that.billDate) &&
                 Objects.equals(origSystemId, that.origSystemId) &&
-                Objects.equals(vz450SeqNbr, that.vz450SeqNbr);
+                Objects.equals(vz450SeqNbr, that.vz450SeqNbr) &&
+                Objects.equals(dupNum, that.dupNum);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(man, manBillDate, ban, aban, billDate, origSystemId, vz450SeqNbr);
+        return Objects.hash(man, manBillDate, origSystemId, vz450SeqNbr, dupNum);
     }
 
     @Override
     public String toString() {
-        return "AcctSumTCompositeId{" +
+        return "Vz4506200TCompositeId{" +
                 "man='" + man + '\'' +
                 ", manBillDate=" + manBillDate +
-                ", ban='" + ban + '\'' +
-                ", aban='" + aban + '\'' +
-                ", billDate=" + billDate +
                 ", origSystemId='" + origSystemId + '\'' +
                 ", vz450SeqNbr=" + vz450SeqNbr +
+                ", dupNum=" + dupNum +
                 '}';
     }
 }
-
-

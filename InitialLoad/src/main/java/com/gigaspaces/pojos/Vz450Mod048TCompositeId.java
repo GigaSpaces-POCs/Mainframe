@@ -1,4 +1,4 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,7 +11,7 @@ import java.util.Objects;
  * Date: 05.09.2018
  */
 @Embeddable
-public class Vz4506200TCompositeId implements Serializable {
+public class Vz450Mod048TCompositeId implements Serializable {
 
     @Column(name = "MAN")
     private String man;
@@ -23,10 +23,8 @@ public class Vz4506200TCompositeId implements Serializable {
     private Integer vz450SeqNbr;
     @Column(name = "DUP_NUM")
     private Integer dupNum;
-    @Column(name = "GRP_ID_2")
-    private String grpId2;
 
-    public Vz4506200TCompositeId() {
+    public Vz450Mod048TCompositeId() {
     }
 
     public String getMan() {
@@ -69,31 +67,23 @@ public class Vz4506200TCompositeId implements Serializable {
         this.dupNum = dupNum;
     }
 
-    public String getGrpId2() {
-        return grpId2;
-    }
-
-    public void setGrpId2(String grpId2) {
-        this.grpId2 = grpId2;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vz4506200TCompositeId that = (Vz4506200TCompositeId) o;
+        Vz450Mod048TCompositeId that = (Vz450Mod048TCompositeId) o;
         return Objects.equals(man, that.man) &&
                 Objects.equals(manBillDate, that.manBillDate) &&
                 Objects.equals(origSystemId, that.origSystemId) &&
                 Objects.equals(vz450SeqNbr, that.vz450SeqNbr) &&
-                Objects.equals(dupNum, that.dupNum) &&
-                Objects.equals(grpId2, that.grpId2);
+                Objects.equals(dupNum, that.dupNum);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(man, manBillDate, origSystemId, vz450SeqNbr, dupNum, grpId2);
+        return Objects.hash(man, manBillDate, origSystemId, vz450SeqNbr, dupNum);
     }
 
     @Override
@@ -104,7 +94,6 @@ public class Vz4506200TCompositeId implements Serializable {
                 ", origSystemId='" + origSystemId + '\'' +
                 ", vz450SeqNbr=" + vz450SeqNbr +
                 ", dupNum=" + dupNum +
-                ", grpId2='" + grpId2 + '\'' +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

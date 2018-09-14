@@ -2,13 +2,16 @@ package com.gigaspaces;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.HasBan;
+import com.gigaspaces.interfaces.HasMan;
+import com.gigaspaces.interfaces.HasOrigSystemId;
 
 /**
  * @author Denys_Novikov
  * Date: 22.08.2018
  */
 @SpaceClass
-public class Step1AggregatedPojo {
+public class Step1AggregatedPojo implements HasMan, HasBan, HasOrigSystemId {
 
     private String id;
     private String cleId;

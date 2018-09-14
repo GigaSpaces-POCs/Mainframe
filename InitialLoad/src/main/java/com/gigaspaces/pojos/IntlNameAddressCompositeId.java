@@ -1,4 +1,4 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,10 +8,10 @@ import java.util.Objects;
 
 /**
  * @author Denys_Novikov
- * Date: 05.09.2018
+ * Date: 17.08.2018
  */
 @Embeddable
-public class Vz450Mod077TCompositeId implements Serializable {
+public class IntlNameAddressCompositeId implements Serializable {
 
     @Column(name = "MAN")
     private String man;
@@ -21,11 +21,8 @@ public class Vz450Mod077TCompositeId implements Serializable {
     private String origSystemId;
     @Column(name = "VZ450_SEQ_NBR")
     private Integer vz450SeqNbr;
-    @Column(name = "DUP_NUM")
-    private Integer dupNum;
 
-    public Vz450Mod077TCompositeId() {
-    }
+    public IntlNameAddressCompositeId(){}
 
     public String getMan() {
         return man;
@@ -59,41 +56,32 @@ public class Vz450Mod077TCompositeId implements Serializable {
         this.vz450SeqNbr = vz450SeqNbr;
     }
 
-    public Integer getDupNum() {
-        return dupNum;
-    }
-
-    public void setDupNum(Integer dupNum) {
-        this.dupNum = dupNum;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vz450Mod077TCompositeId that = (Vz450Mod077TCompositeId) o;
+        IntlNameAddressCompositeId that = (IntlNameAddressCompositeId) o;
         return Objects.equals(man, that.man) &&
                 Objects.equals(manBillDate, that.manBillDate) &&
                 Objects.equals(origSystemId, that.origSystemId) &&
-                Objects.equals(vz450SeqNbr, that.vz450SeqNbr) &&
-                Objects.equals(dupNum, that.dupNum);
+                Objects.equals(vz450SeqNbr, that.vz450SeqNbr);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(man, manBillDate, origSystemId, vz450SeqNbr, dupNum);
+        return Objects.hash(man, manBillDate, origSystemId, vz450SeqNbr);
     }
 
     @Override
     public String toString() {
-        return "Vz4506200TCompositeId{" +
+        return "IntlNameAddressCompositeId{" +
                 "man='" + man + '\'' +
                 ", manBillDate=" + manBillDate +
                 ", origSystemId='" + origSystemId + '\'' +
                 ", vz450SeqNbr=" + vz450SeqNbr +
-                ", dupNum=" + dupNum +
                 '}';
     }
 }
+
+

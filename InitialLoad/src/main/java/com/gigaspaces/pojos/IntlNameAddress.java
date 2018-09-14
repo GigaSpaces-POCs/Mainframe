@@ -1,7 +1,8 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.*;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -16,7 +17,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "BMGVZP.INTL_NAME_ADDRESS")
 @SpaceClass
-public class IntlNameAddress {
+public class IntlNameAddress implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasAban, HasVz450SeqNbr {
 
     @EmbeddedId
     private IntlNameAddressCompositeId intlNameAddressCompositeId;
@@ -28,7 +29,7 @@ public class IntlNameAddress {
     @Column(name = "ABAN")
     private String aban;
     @Column(name = "ADDRESS_CTGY_ID")
-    private String addressCtgyId;
+    private Character addressCtgyId;
     @Column(name = "ACCT_NAME")
     private String acctName;
     @Column(name = "CONTACT_NAME")
@@ -105,11 +106,11 @@ public class IntlNameAddress {
         this.aban = aban;
     }
 
-    public String getAddressCtgyId() {
+    public Character getAddressCtgyId() {
         return addressCtgyId;
     }
 
-    public void setAddressCtgyId(String addressCtgyId) {
+    public void setAddressCtgyId(Character addressCtgyId) {
         this.addressCtgyId = addressCtgyId;
     }
 
@@ -312,5 +313,25 @@ public class IntlNameAddress {
 
     public void setIntlNameAddressCompositeId(IntlNameAddressCompositeId intlNameAddressCompositeId) {
         this.intlNameAddressCompositeId = intlNameAddressCompositeId;
+    }
+
+    @Override
+    public String getMan() {
+        return intlNameAddressCompositeId.getMan();
+    }
+
+    @Override
+    public Date getManBillDate() {
+        return intlNameAddressCompositeId.getManBillDate();
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return intlNameAddressCompositeId.getOrigSystemId();
+    }
+
+    @Override
+    public Integer getVz450SeqNbr() {
+        return intlNameAddressCompositeId.getVz450SeqNbr();
     }
 }

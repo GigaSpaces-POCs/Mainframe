@@ -1,5 +1,7 @@
-package com.gigaspaces;
+package com.gigaspaces.pojos;
 
+import com.gigaspaces.interfaces.HasBan;
+import com.gigaspaces.interfaces.HasOrigSystemId;
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
@@ -16,7 +18,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "BMGVZP.BAN_SOF_T")
 @SpaceClass
-public class BanSofT {
+public class BanSofT implements HasOrigSystemId, HasBan {
 
     @EmbeddedId
     private BanSofTCompositeId banSofTCompositeId;
@@ -181,5 +183,10 @@ public class BanSofT {
 
     public void setBanSofTCompositeId(BanSofTCompositeId banSofTCompositeId) {
         this.banSofTCompositeId = banSofTCompositeId;
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return banSofTCompositeId.getOrigSystemId();
     }
 }
