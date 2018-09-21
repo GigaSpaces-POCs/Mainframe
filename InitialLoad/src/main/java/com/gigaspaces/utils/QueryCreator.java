@@ -29,6 +29,26 @@ public class QueryCreator {
                 .setProjections("acctSumTCompositeId", "invoiceNbr", "billCurr", "regionCd");
     }
 
+    public static SQLQuery<AcctSumT> createAcctSumTQuery(Set<String> mans, Set<Date> manBillDates, Set<String> origSystemIds, Set<String> bans, Set<Date> billDates, Set<String> abans) {
+        return new SQLQuery<>(AcctSumT.class, "acctSumTCompositeId.man IN (?) AND acctSumTCompositeId.manBillDate IN (?) AND acctSumTCompositeId.origSystemId IN (?)" +
+                "AND acctSumTCompositeId.ban IN (?) AND acctSumTCompositeId.billDate IN (?) AND acctSumTCompositeId.aban IN (?)")
+                .setParameter(1, mans)
+                .setParameter(2, manBillDates)
+                .setParameter(3, origSystemIds)
+                .setParameter(4, bans)
+                .setParameter(5, billDates)
+                .setParameter(6, abans)
+                .setProjections("acctSumTCompositeId", "endVz450SeqNbr");
+    }
+
+    public static SQLQuery<Vz450Vmt50106T> createVz450Vmt50106TQuery(Set<String> mans, Set<Date> manBillDates, Set<String> origSystemIds) {
+        return new SQLQuery<>(Vz450Vmt50106T.class, "vz450Vmt50106TCompositeId.man IN (?) AND vz450Vmt50106TCompositeId.manBillDate IN (?) AND vz450Vmt50106TCompositeId.origSystemId IN (?)")
+                .setParameter(1, mans)
+                .setParameter(2, manBillDates)
+                .setParameter(3, origSystemIds)
+                .setProjections("vz450Vmt50106TCompositeId", "custIdDeptCd", "locationId");
+    }
+
     public static SQLQuery<Subscription> createSubscriptionQuery(Set<String> customerAccNum, Set<String> origSystemId) {
         return new SQLQuery<>(Subscription.class, "customerAcctNum IN (?) OR origSystemId IN (?)")
                 .setParameter(1, customerAccNum)

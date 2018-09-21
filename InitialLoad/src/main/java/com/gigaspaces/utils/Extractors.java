@@ -2,6 +2,7 @@ package com.gigaspaces.utils;
 
 import com.gigaspaces.interfaces.*;
 import com.gigaspaces.pojos.BanSofT;
+import org.apache.commons.lang.StringUtils;
 
 import java.sql.Date;
 import java.util.Arrays;
@@ -40,7 +41,7 @@ public class Extractors {
     }
 
     public static Set<String> getAbans(List<? extends HasAban> inputList) {
-        return inputList.stream().map(HasAban::getAban).collect(Collectors.toSet());
+        return inputList.stream().filter(obj -> StringUtils.isNotEmpty(obj.getAban().trim()) ).map(HasAban::getAban).collect(Collectors.toSet());
     }
 
     public static Set<Integer> getVz450SeqNbrs(List<? extends HasVz450SeqNbr> inputList) {

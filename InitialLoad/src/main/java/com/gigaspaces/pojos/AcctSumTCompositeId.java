@@ -29,7 +29,8 @@ public class AcctSumTCompositeId implements Serializable {
     @Column(name = "VZ450_SEQ_NBR")
     private Integer vz450SeqNbr;
 
-    public AcctSumTCompositeId(){}
+    public AcctSumTCompositeId() {
+    }
 
     public String getMan() {
         return man;

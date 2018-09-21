@@ -7,6 +7,10 @@ package com.gigaspaces.pojos;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.HasMan;
+import com.gigaspaces.interfaces.HasManBillDate;
+import com.gigaspaces.interfaces.HasOrigSystemId;
+import com.gigaspaces.interfaces.HasVz450SeqNbr;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -17,7 +21,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "BMGVZP.VZ450_VMT50106_T")
 @SpaceClass
-public class Vz450Vmt50106T {
+public class Vz450Vmt50106T implements HasMan, HasManBillDate, HasOrigSystemId, HasVz450SeqNbr {
 
     @EmbeddedId
     private Vz450Vmt50106TCompositeId vz450Vmt50106TCompositeId;
@@ -202,5 +206,25 @@ public class Vz450Vmt50106T {
 
     public void setVz450Vmt50106TCompositeId(Vz450Vmt50106TCompositeId vz450Vmt50106TCompositeId) {
         this.vz450Vmt50106TCompositeId = vz450Vmt50106TCompositeId;
+    }
+
+    @Override
+    public String getMan() {
+        return vz450Vmt50106TCompositeId.getMan();
+    }
+
+    @Override
+    public Date getManBillDate() {
+        return vz450Vmt50106TCompositeId.getManBillDate();
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return vz450Vmt50106TCompositeId.getOrigSystemId();
+    }
+
+    @Override
+    public Integer getVz450SeqNbr() {
+        return vz450Vmt50106TCompositeId.getVz450SeqNbr();
     }
 }

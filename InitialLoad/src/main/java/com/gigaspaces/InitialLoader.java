@@ -26,19 +26,106 @@ public class InitialLoader {
     public void init() throws Exception {
 
         List<Step1AggregatedPojo> step1AggregatedPojos = getStep1AggregatedPojos();
-        logger.info("Result size -> " + step1AggregatedPojos.size());
+        logger.info("Step1 step1AggregatedPojos -> " + step1AggregatedPojos.size());
         // step 1 join
         gigaspace.writeMultiple(step1AggregatedPojos.toArray());
 
 
         // step 2 join
         List<Step2AggregatedPojo> step2AggregatedPojos = getStep2AggregatedPojos(step1AggregatedPojos);
+        logger.info("Step2 step2AggregatedPojos -> " + step2AggregatedPojos.size());
         gigaspace.writeMultiple(step2AggregatedPojos.toArray());
 
 
         // step 3 join
         List<Step3AggregatedPojo> step3AggregatedPojos = getStep3AggregatedPojos(step2AggregatedPojos);
+        logger.info("Step3 step3AggregatedPojos -> " + step3AggregatedPojos.size());
         gigaspace.writeMultiple(step3AggregatedPojos.toArray());
+
+
+        // step 4 join
+        List<Step4AggregatedPojo> step4AggregatedPojos = getStep4AggregatedPojos(step2AggregatedPojos);
+        logger.info("Step4 step4AggregatedPojos -> " + step4AggregatedPojos.size());
+        gigaspace.writeMultiple(step4AggregatedPojos.toArray());
+
+    }
+
+    private List<Step4AggregatedPojo> getStep4AggregatedPojos(List<Step2AggregatedPojo> step2AggregatedPojos) {
+
+        Set<String> mans = getMans(step2AggregatedPojos);
+        Set<Date> manBillDates = getManBillDates(step2AggregatedPojos);
+        Set<String> origSystemIds = getOrigSystemIds(step2AggregatedPojos);
+        Set<String> bans = getBans(step2AggregatedPojos);
+        Set<Date> billDates = getBillDates(step2AggregatedPojos);
+        Set<String> abans = getAbans(step2AggregatedPojos);
+
+        AcctSumT[] acctSumTs = gigaspace.readMultiple(createAcctSumTQuery(mans, manBillDates, origSystemIds, bans, billDates, abans));
+        Vz450Vmt50106T[] vz450Vmt50106Ts = gigaspace.readMultiple(createVz450Vmt50106TQuery(mans, manBillDates, origSystemIds));
+
+        Map<String, List<AcctSumT>> mappedAcctSumTs = Arrays.stream(acctSumTs).collect(Collectors.groupingBy(
+                acctSumT -> acctSumT.getMan() + acctSumT.getManBillDate() + acctSumT.getOrigSystemId()));
+
+        Map<String, List<Vz450Vmt50106T>> mappedVz450Vmt50106Ts = Arrays.stream(vz450Vmt50106Ts).collect(Collectors.groupingBy(
+                vz450Vmt50106T -> vz450Vmt50106T.getMan() + vz450Vmt50106T.getManBillDate() + vz450Vmt50106T.getOrigSystemId()));
+
+        Set<Step4AggregatedPojo> step4AggregatedPojos = new HashSet<>();
+
+        for (Map.Entry<String, List<AcctSumT>> acctSumTEntry : mappedAcctSumTs.entrySet()) {
+
+            for (AcctSumT acctSumT : acctSumTEntry.getValue()) {
+
+                Step4AggregatedPojo step4AggregatedPojo = new Step4AggregatedPojo();
+                step4AggregatedPojo.setMan(acctSumT.getMan());
+                step4AggregatedPojo.setManBillDate(acctSumT.getManBillDate());
+                step4AggregatedPojo.setOrigSystemId(acctSumT.getOrigSystemId());
+                step4AggregatedPojo.setBan(acctSumT.getBan());
+                step4AggregatedPojo.setBillDate(acctSumT.getBillDate());
+                step4AggregatedPojo.setAban(acctSumT.getAban());
+
+                if (mappedVz450Vmt50106Ts.containsKey(acctSumTEntry.getKey())) {
+                    boolean added = false;
+
+                    for (Vz450Vmt50106T vz450Vmt50106T : mappedVz450Vmt50106Ts.get(acctSumTEntry.getKey())) {
+                        if (vz450Vmt50106T.getVz450SeqNbr() >= acctSumT.getVz450SeqNbr() &&
+                                vz450Vmt50106T.getVz450SeqNbr() <= acctSumT.getEndVz450SeqNbr()) {
+
+                            Step4AggregatedPojo updatedPojo = new Step4AggregatedPojo(step4AggregatedPojo);
+                            updatedPojo.setLocationId(vz450Vmt50106T.getCustIdDeptCd());
+                            updatedPojo.setLocationInstanceId(vz450Vmt50106T.getLocationId());
+                            step4AggregatedPojos.add(updatedPojo);
+                            added = true;
+                        }
+                    }
+                    if (!added) {
+                        // to support left join, object will be added even w/o match
+                        step4AggregatedPojos.add(step4AggregatedPojo);
+                    }
+                    continue;
+                }
+                step4AggregatedPojos.add(step4AggregatedPojo);
+
+            }
+        }
+
+        Map<String, List<Step2AggregatedPojo>> mappedPojo2 = step2AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step2AggregatedPojo -> step2AggregatedPojo.getMan() + step2AggregatedPojo.getManBillDate() + step2AggregatedPojo.getOrigSystemId()
+                        + step2AggregatedPojo.getBan() + step2AggregatedPojo.getBillDate() + step2AggregatedPojo.getAban()));
+
+        Map<String, List<Step4AggregatedPojo>> mappedPojo3 = step4AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step3AggregatedPojo -> step3AggregatedPojo.getMan() + step3AggregatedPojo.getManBillDate() + step3AggregatedPojo.getOrigSystemId()
+                        + step3AggregatedPojo.getBan() + step3AggregatedPojo.getBillDate() + step3AggregatedPojo.getAban()));
+
+        for (Map.Entry<String, List<Step4AggregatedPojo>> step4pojoEntry : mappedPojo3.entrySet()) {
+
+            if (mappedPojo2.containsKey(step4pojoEntry.getKey())) {
+                for (Step4AggregatedPojo step4AggregatedPojo : step4pojoEntry.getValue()) {
+                    for (Step2AggregatedPojo step2AggregatedPojo : mappedPojo2.get(step4pojoEntry.getKey())) {
+                        step4AggregatedPojo.setCleId(step2AggregatedPojo.getCleId());
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(step4AggregatedPojos);
 
     }
 
@@ -127,7 +214,6 @@ public class InitialLoader {
             }
         }
 
-        logger.info("Step3 step3AggregatedPojos1 size -> " + step3AggregatedPojos.size());
         return step3AggregatedPojos;
 
     }
@@ -196,7 +282,6 @@ public class InitialLoader {
             }
         }
 
-        logger.info("---> Step 2 join result  " + step2result.size());
         return step2result;
     }
 

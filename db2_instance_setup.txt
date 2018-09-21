@@ -1,4 +1,4 @@
-ssh -i wan-gateway-example.pem ubuntu@ec2-18-191-240-252.us-east-2.compute.amazonaws.com
+ssh -i wan-gateway-example.pem ubuntu@ec2-18-221-12-71.us-east-2.compute.amazonaws.com
 
 DB2 utils:
 sudo apt-get update 
@@ -31,11 +31,22 @@ sudo server_t/db2setup
 
 connection: db2inst1 50000
 
+
 set EXT_JAVA_OPTIONS = -Ddb2.jcc.charsetDecoderEncoder=3 
 
 increase log transaction file
- - db2 get db cfg for your_Database_Name
- - db2 update db cfg for your_Database_Name using logfilsiz nnnn logprimary nn logsecond nn
+ - db2 get db cfg for BMGVZP
+ - db2 update db cfg for BMGVZP using logfilsiz 8192 logprimary 52 logsecond 48
+
+ - db2 update db cfg for BMGVZP using logprimary 128 logsecond 128
+
+
+increase volume
+ - lsblk
+ - df -h
+ - sudo growpart /dev/xvda 1
+ - sudo resize2fs /dev/xvda1
+
 
 
 

@@ -13,6 +13,8 @@
         <property name="url" value="jdbc:db2://ec2-18-221-12-71.us-east-2.compute.amazonaws.com:50000/BMGVZP"/>
         <property name="username" value="db2inst1"/>
         <property name="password" value="db2inst1"/>
+        <property name="initialSize" value="48"/>
+        <property name="maxActive" value="48"/>
 
     </bean>
 
@@ -28,11 +30,11 @@
                 <value>com.gigaspaces.pojos.AcctSumT</value>
                 <value>com.gigaspaces.pojos.IntlNameAddress</value>
                 <value>com.gigaspaces.pojos.KanjiDataT</value>
-                <!--<value>com.gigaspaces.pojos.RefCodes95T</value>-->
+                <value>com.gigaspaces.pojos.RefCodes95T</value>
                 <value>com.gigaspaces.pojos.ReferanceCodesT</value>
-                <!--<value>com.gigaspaces.pojos.Vz4506200T</value>-->
-                <!--<value>com.gigaspaces.pojos.Vz450Mod048T</value>-->
-                <!--<value>com.gigaspaces.pojos.Vz450Mod077T</value>-->
+                <value>com.gigaspaces.pojos.Vz4506200T</value>
+                <value>com.gigaspaces.pojos.Vz450Mod048T</value>
+                <value>com.gigaspaces.pojos.Vz450Mod077T</value>
                 <value>com.gigaspaces.pojos.Vz450Mod079T</value>
                 <value>com.gigaspaces.pojos.Vz450Vmt50106T</value>
                 <value>com.gigaspaces.pojos.BanSofT</value>
@@ -45,12 +47,39 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>
                 <prop key="hibernate.show_sql">false</prop>
 
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+                <prop key="hibernate.jdbc.batch_size">1000</prop>
             </props>
         </property>
     </bean>
 
     <bean id="hibernateSpaceDataSource" class="org.openspaces.persistency.hibernate.DefaultHibernateSpaceDataSourceFactoryBean">
         <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="fetchSize" value="1000"/>
+        <property name="performOrderById" value="true"/>
+        <property name="initialLoadThreadPoolSize" value="48"/>
+        <property name="initialLoadChunkSize" value="1000000"/>
+        <property name="useScrollableResultSet" value="false"/>
+        <property name="augmentInitialLoadEntries" value="false"/>
+        <property name="initialLoadEntries">
+            <list>
+                <value>com.gigaspaces.pojos.AcctSumT</value>
+                <value>com.gigaspaces.pojos.IntlNameAddress</value>
+                <value>com.gigaspaces.pojos.KanjiDataT</value>
+                <!--<value>com.gigaspaces.pojos.RefCodes95T</value>-->
+                <value>com.gigaspaces.pojos.ReferanceCodesT</value>
+                <!--<value>com.gigaspaces.pojos.Vz4506200T</value>-->
+                        <!--<value>com.gigaspaces.pojos.Vz450Mod048T</value>-->
+                <!--<value>com.gigaspaces.pojos.Vz450Mod077T</value>-->
+                <value>com.gigaspaces.pojos.Vz450Mod079T</value>
+                <value>com.gigaspaces.pojos.Vz450Vmt50106T</value>
+                <value>com.gigaspaces.pojos.BanSofT</value>
+                <value>com.gigaspaces.pojos.Subscription</value>
+                <value>com.gigaspaces.pojos.CurrentBanT</value>
+            </list>
+        </property>
     </bean>
 
     <os-core:embedded-space id="space" space-name="space" schema="persistent" space-data-source="hibernateSpaceDataSource">
@@ -58,6 +87,7 @@
             <props>
                 <!-- Use ALL IN CACHE -->
                 <prop key="space-config.engine.cache_policy">1</prop>
+                <prop key="space-config.lease_manager.expiration_time_interval">10000</prop>
                 <prop key="cluster-config.cache-loader.external-data-source">true</prop>
                 <prop key="cluster-config.cache-loader.central-data-source">true</prop>
             </props>

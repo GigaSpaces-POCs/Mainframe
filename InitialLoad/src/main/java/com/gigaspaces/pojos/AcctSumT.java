@@ -17,7 +17,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "BMGVZP.ACCT_SUM_T")
 @SpaceClass
-public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasAban {
+public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasAban, HasVz450SeqNbr{
 
     @EmbeddedId
     private AcctSumTCompositeId acctSumTCompositeId;
@@ -133,7 +133,7 @@ public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, Ha
     @Column(name = "COMPANY_CODE")
     private String companyCode;
     @Column(name = "END_VZ450_SEQ_NBR")
-    private Integer end_vz450SeqNbr;
+    private Integer endVz450SeqNbr;
     @Column(name = "CUST_ID_CD_ID")
     private Integer custIdCdId;
     @Column(name = "CUST_ID_DEPT_CD_ID")
@@ -678,12 +678,12 @@ public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, Ha
         this.companyCode = companyCode;
     }
 
-    public Integer getEnd_vz450SeqNbr() {
-        return end_vz450SeqNbr;
+    public Integer getEndVz450SeqNbr() {
+        return endVz450SeqNbr;
     }
 
-    public void setEnd_vz450SeqNbr(Integer end_vz450SeqNbr) {
-        this.end_vz450SeqNbr = end_vz450SeqNbr;
+    public void setEndVz450SeqNbr(Integer endVz450SeqNbr) {
+        this.endVz450SeqNbr = endVz450SeqNbr;
     }
 
     public Integer getCustIdCdId() {
@@ -1125,4 +1125,10 @@ public class AcctSumT implements HasMan, HasManBillDate, HasBan, HasBillDate, Ha
     public String getOrigSystemId() {
         return acctSumTCompositeId.getOrigSystemId();
     }
+
+    @Override
+    public Integer getVz450SeqNbr() {
+        return acctSumTCompositeId.getVz450SeqNbr();
+    }
+
 }
