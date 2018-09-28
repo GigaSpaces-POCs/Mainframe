@@ -60,7 +60,7 @@
         <property name="fetchSize" value="1000"/>
         <property name="performOrderById" value="true"/>
         <property name="initialLoadThreadPoolSize" value="48"/>
-        <property name="initialLoadChunkSize" value="1000000"/>
+        <property name="initialLoadChunkSize" value="2000000"/>
         <property name="useScrollableResultSet" value="false"/>
         <property name="augmentInitialLoadEntries" value="false"/>
         <property name="initialLoadEntries">
@@ -68,11 +68,11 @@
                 <value>com.gigaspaces.pojos.AcctSumT</value>
                 <value>com.gigaspaces.pojos.IntlNameAddress</value>
                 <value>com.gigaspaces.pojos.KanjiDataT</value>
-                <!--<value>com.gigaspaces.pojos.RefCodes95T</value>-->
+                <value>com.gigaspaces.pojos.RefCodes95T</value>
                 <value>com.gigaspaces.pojos.ReferanceCodesT</value>
-                <!--<value>com.gigaspaces.pojos.Vz4506200T</value>-->
+                <value>com.gigaspaces.pojos.Vz4506200T</value>
                         <!--<value>com.gigaspaces.pojos.Vz450Mod048T</value>-->
-                <!--<value>com.gigaspaces.pojos.Vz450Mod077T</value>-->
+                <value>com.gigaspaces.pojos.Vz450Mod077T</value>
                 <value>com.gigaspaces.pojos.Vz450Mod079T</value>
                 <value>com.gigaspaces.pojos.Vz450Vmt50106T</value>
                 <value>com.gigaspaces.pojos.BanSofT</value>

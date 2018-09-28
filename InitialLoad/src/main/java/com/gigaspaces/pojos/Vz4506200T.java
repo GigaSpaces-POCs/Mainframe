@@ -1,7 +1,8 @@
 package com.gigaspaces.pojos;
 
-import com.gigaspaces.annotation.pojo.SpaceClass;
-import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.annotation.pojo.*;
+import com.gigaspaces.interfaces.*;
+import com.gigaspaces.metadata.index.SpaceIndexType;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -16,7 +17,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "BMGVZP.VZ450_6200_T")
 @SpaceClass
-public class Vz4506200T {
+public class Vz4506200T implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasVz450SeqNbr, HasAban {
 
     @EmbeddedId
     private Vz4506200TCompositeId vz4506200TCompositeId;
@@ -364,6 +365,7 @@ public class Vz4506200T {
 
     public Vz4506200T(){}
 
+    @SpaceIndex(type = SpaceIndexType.EQUAL)
     public String getBan() {
         return ban;
     }
@@ -372,6 +374,7 @@ public class Vz4506200T {
         this.ban = ban;
     }
 
+    @SpaceIndex(type = SpaceIndexType.EQUAL)
     public String getAban() {
         return aban;
     }
@@ -380,6 +383,7 @@ public class Vz4506200T {
         this.aban = aban;
     }
 
+    @SpaceIndex(type = SpaceIndexType.EQUAL)
     public Date getBillDate() {
         return billDate;
     }
@@ -860,6 +864,7 @@ public class Vz4506200T {
         this.tollfreeInd = tollfreeInd;
     }
 
+    @SpaceIndex(type = SpaceIndexType.EQUAL)
     public Character getBalancingInd() {
         return balancingInd;
     }
@@ -1725,11 +1730,35 @@ public class Vz4506200T {
     }
 
     @SpaceId
+    @SpaceIndexes({@SpaceIndex(path = "man", type = SpaceIndexType.EQUAL),
+            @SpaceIndex(path = "manBillDate", type = SpaceIndexType.EQUAL),
+            @SpaceIndex(path = "origSystemId", type = SpaceIndexType.EQUAL),
+            @SpaceIndex(path = "grpId2", type = SpaceIndexType.EQUAL)})
     public Vz4506200TCompositeId getVz4506200TCompositeId() {
         return vz4506200TCompositeId;
     }
 
     public void setVz4506200TCompositeId(Vz4506200TCompositeId vz4506200TCompositeId) {
         this.vz4506200TCompositeId = vz4506200TCompositeId;
+    }
+
+    @Override
+    public String getMan() {
+        return vz4506200TCompositeId.getMan();
+    }
+
+    @Override
+    public Date getManBillDate() {
+        return vz4506200TCompositeId.getManBillDate();
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return vz4506200TCompositeId.getOrigSystemId();
+    }
+
+    @Override
+    public Integer getVz450SeqNbr() {
+        return vz4506200TCompositeId.getVz450SeqNbr();
     }
 }

@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.sql.Date;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.gigaspaces.utils.Extractors.*;
 import static com.gigaspaces.utils.QueryCreator.*;
+
 /**
  * @author Denys_Novikov
  * Date: 22.08.2018
@@ -27,27 +30,193 @@ public class InitialLoader {
 
         List<Step1AggregatedPojo> step1AggregatedPojos = getStep1AggregatedPojos();
         logger.info("Step1 step1AggregatedPojos -> " + step1AggregatedPojos.size());
-        // step 1 join
         gigaspace.writeMultiple(step1AggregatedPojos.toArray());
 
-
-        // step 2 join
         List<Step2AggregatedPojo> step2AggregatedPojos = getStep2AggregatedPojos(step1AggregatedPojos);
         logger.info("Step2 step2AggregatedPojos -> " + step2AggregatedPojos.size());
         gigaspace.writeMultiple(step2AggregatedPojos.toArray());
 
-
-        // step 3 join
         List<Step3AggregatedPojo> step3AggregatedPojos = getStep3AggregatedPojos(step2AggregatedPojos);
         logger.info("Step3 step3AggregatedPojos -> " + step3AggregatedPojos.size());
         gigaspace.writeMultiple(step3AggregatedPojos.toArray());
 
 
-        // step 4 join
         List<Step4AggregatedPojo> step4AggregatedPojos = getStep4AggregatedPojos(step2AggregatedPojos);
         logger.info("Step4 step4AggregatedPojos -> " + step4AggregatedPojos.size());
         gigaspace.writeMultiple(step4AggregatedPojos.toArray());
 
+        List<Step5AggregatedPojo> step5AggregatedPojos = getStep5AggregatedPojos(step2AggregatedPojos);
+        logger.info("Step5 step5AggregatedPojos -> " + step5AggregatedPojos.size());
+        gigaspace.writeMultiple(step5AggregatedPojos.toArray());
+
+    }
+
+    private List<Step5AggregatedPojo> getStep5AggregatedPojos(List<Step2AggregatedPojo> step2AggregatedPojos) {
+
+        Set<String> mans = getMans(step2AggregatedPojos);
+        Set<Date> manBillDates = getManBillDates(step2AggregatedPojos);
+        Set<String> origSystemIds = getOrigSystemIds(step2AggregatedPojos);
+        Set<String> bans = getBans(step2AggregatedPojos);
+        Set<Date> billDates = getBillDates(step2AggregatedPojos);
+        Set<String> abans = getAbans(step2AggregatedPojos);
+
+        Vz4506200T[] vz4506200Ts = gigaspace.readMultiple(createVz4506200TQuery());
+
+        List<Vz4506200T> vz4506200TsList = Arrays.stream(vz4506200Ts).filter(vz -> mans.contains(vz.getMan())).filter(vz -> manBillDates.contains(vz.getManBillDate()))
+                .filter(vz -> origSystemIds.contains(vz.getOrigSystemId())).filter(vz -> bans.contains(vz.getBan()))
+                .filter(vz -> billDates.contains(vz.getBillDate())).filter(vz -> abans.contains(vz.getAban()))
+                .filter(vz -> vz.getBalancingInd().equals('0')).filter(vz -> vz.getVz4506200TCompositeId().getGrpId2().equals("205260                   "))
+                .collect(Collectors.toList());
+
+
+        Set<Integer> vz450SeqNbrs = getVz450SeqNbrs(vz4506200TsList);
+
+        Vz450Mod077T[] vz450Mod077Ts = gigaspace.readMultiple(createVz450Mod077TQuery(mans, manBillDates, origSystemIds, bans, billDates, abans, vz450SeqNbrs));
+
+        List<Vz450Mod077T> vz450Mod077TsList = Arrays.stream(vz450Mod077Ts).filter(vz -> mans.contains(vz.getMan())).filter(vz -> manBillDates.contains(vz.getManBillDate()))
+                .filter(vz -> origSystemIds.contains(vz.getOrigSystemId())).filter(vz -> bans.contains(vz.getBan()))
+                .filter(vz -> billDates.contains(vz.getBillDate())).filter(vz -> abans.contains(vz.getAban()))
+                .filter(vz -> vz450SeqNbrs.contains(vz.getVz450SeqNbr()))
+                .collect(Collectors.toList());
+
+        List<Vz450Mod077T> filteredS225 = vz450Mod077TsList.stream().filter(item -> item.getSuppDataIdCd() == 225).collect(Collectors.toList());
+        List<Vz450Mod077T> filteredS259 = vz450Mod077TsList.stream().filter(item -> item.getSuppDataIdCd() == 259).collect(Collectors.toList());
+        List<Vz450Mod077T> filteredS222 = vz450Mod077TsList.stream().filter(item -> item.getSuppDataIdCd() == 222).collect(Collectors.toList());
+
+        Set<Integer> termCntryCdIds = Arrays.stream(vz4506200Ts).map(Vz4506200T::getTermCntryCdId).collect(Collectors.toSet());
+        RefCodes95T[] refCodes95Ts = gigaspace.readMultiple(createRefCodes95TQuery(termCntryCdIds));
+
+        Map<Integer, RefCodes95T> mappedRefCodes95T = Arrays.stream(refCodes95Ts).collect(Collectors.toMap(RefCodes95T::getCodeDescKey, refCode -> refCode));
+
+
+        Map<String, Vz4506200T> mappedVz4506200Ts = Arrays.stream(vz4506200Ts).collect(Collectors.toMap(
+                vz4506200T -> vz4506200T.getMan() + vz4506200T.getManBillDate() + vz4506200T.getOrigSystemId()
+                        + vz4506200T.getBan() + vz4506200T.getAban() + vz4506200T.getBillDate() + vz4506200T.getVz450SeqNbr(), vz4506200T -> vz4506200T));
+
+        Map<String, Vz450Mod077T> mappedFilteredS225 = filteredS225.stream().collect(Collectors.toMap(
+                vz450Mod077T -> vz450Mod077T.getMan() + vz450Mod077T.getManBillDate() + vz450Mod077T.getOrigSystemId()
+                        + vz450Mod077T.getBan() + vz450Mod077T.getAban() + vz450Mod077T.getBillDate() + vz450Mod077T.getVz450SeqNbr(), vz450Mod077T -> vz450Mod077T));
+
+        Map<String, Vz450Mod077T> mappedFilteredS259 = filteredS259.stream().collect(Collectors.toMap(
+                vz450Mod077T -> vz450Mod077T.getMan() + vz450Mod077T.getManBillDate() + vz450Mod077T.getOrigSystemId()
+                        + vz450Mod077T.getBan() + vz450Mod077T.getAban() + vz450Mod077T.getBillDate() + vz450Mod077T.getVz450SeqNbr(), vz450Mod077T -> vz450Mod077T));
+
+        Map<String, Vz450Mod077T> mappedFilteredS222 = filteredS222.stream().collect(Collectors.toMap(
+                vz450Mod077T -> vz450Mod077T.getMan() + vz450Mod077T.getManBillDate() + vz450Mod077T.getOrigSystemId()
+                        + vz450Mod077T.getBan() + vz450Mod077T.getAban() + vz450Mod077T.getBillDate() + vz450Mod077T.getVz450SeqNbr(), vz450Mod077T -> vz450Mod077T));
+
+        List<Step5AggregatedPojo> step5AggregatedPojos = new ArrayList<>();
+
+        for (Map.Entry<String, Vz4506200T> entry : mappedVz4506200Ts.entrySet()) {
+            Vz4506200T vz4506200T = entry.getValue();
+            Step5AggregatedPojo step5AggregatedPojo = new Step5AggregatedPojo();
+
+            step5AggregatedPojo.setMan(vz4506200T.getMan());
+            step5AggregatedPojo.setManBillDate(vz4506200T.getManBillDate());
+            step5AggregatedPojo.setOrigSystemId(vz4506200T.getOrigSystemId());
+            step5AggregatedPojo.setBan(vz4506200T.getBan());
+            step5AggregatedPojo.setBillDate(vz4506200T.getBillDate());
+            step5AggregatedPojo.setAban(vz4506200T.getAban());
+            step5AggregatedPojo.setLocationId(vz4506200T.getLocationId());
+
+            step5AggregatedPojo.setAmount(vz4506200T.getChargeAmt() == null ? BigDecimal.ZERO :
+                    new BigDecimal(vz4506200T.getChargeAmt(), new MathContext(15)).setScale(5));
+            step5AggregatedPojo.setAmount(vz4506200T.getDiscountAmt() == null ? BigDecimal.ZERO :
+                    new BigDecimal(vz4506200T.getDiscountAmt(), new MathContext(15)).setScale(5));
+            step5AggregatedPojo.setAmount(vz4506200T.getTaxAmt() == null ? BigDecimal.ZERO :
+                    new BigDecimal(vz4506200T.getTaxAmt(), new MathContext(15)).setScale(5));
+
+            String mins;
+
+            switch (vz4506200T.getBillableUnitsFmt()) {
+                case '1':
+                    mins = vz4506200T.getBillableUnits().substring(0, 9) + "." + vz4506200T.getBillableUnits().substring(9, 10);
+                    break;
+                case '2':
+                    mins = vz4506200T.getBillableUnits().substring(0, 8) + "." + vz4506200T.getBillableUnits().substring(8, 10);
+                    break;
+                case '3':
+                    mins = vz4506200T.getBillableUnits().substring(0, 6);
+                    break;
+                case '4':
+                    mins = vz4506200T.getBillableUnits().substring(0, 9);
+                    break;
+                default:
+                    mins = "0";
+            }
+
+            step5AggregatedPojo.setMins(mins);
+            step5AggregatedPojo.setDestination1(vz4506200T.getTermState());
+
+            if (mappedRefCodes95T.containsKey(vz4506200T.getTermCntryCdId())) {
+                step5AggregatedPojo.setDestination2(mappedRefCodes95T.get(vz4506200T.getTermCntryCdId()).getDescription());
+            }
+
+            boolean serviceIdAdded = false;
+            String joinFieldsAsString = entry.getKey();
+
+            if (mappedFilteredS225.containsKey(joinFieldsAsString)) {
+
+                Vz450Mod077T singleS225 = mappedFilteredS225.get(joinFieldsAsString);
+
+                Step5AggregatedPojo pojoWithS225 = new Step5AggregatedPojo(step5AggregatedPojo);
+                pojoWithS225.setServiceId(singleS225.getSuppDataId() != null ? singleS225.getSuppDataId() : "");
+
+                boolean contactSofAdded = false;
+                if (mappedFilteredS259.containsKey(joinFieldsAsString)) {
+                    Vz450Mod077T singleS259 = mappedFilteredS259.get(joinFieldsAsString);
+                    if (singleS259 != null) {
+                        Step5AggregatedPojo pojoWithS259 = new Step5AggregatedPojo(pojoWithS225);
+                        pojoWithS259.setContractSof(singleS259.getSuppDataId());
+                        step5AggregatedPojos.add(pojoWithS259);
+                        contactSofAdded = true;
+                    }
+                } else if (mappedFilteredS222.containsKey(joinFieldsAsString)) {
+                    Vz450Mod077T singleS222 = mappedFilteredS259.get(joinFieldsAsString);
+
+                    if (singleS222 != null) {
+                        Step5AggregatedPojo pojoWithS222 = new Step5AggregatedPojo(pojoWithS225);
+                        pojoWithS222.setContractSof(singleS222.getSuppDataId());
+                        step5AggregatedPojos.add(pojoWithS222);
+                        contactSofAdded = true;
+                    }
+
+                } else {
+                    pojoWithS225.setContractSof("");
+                }
+
+                if (!contactSofAdded) {
+                    step5AggregatedPojos.add(pojoWithS225);
+                }
+
+                serviceIdAdded = true;
+            }
+            if (!serviceIdAdded) {
+                step5AggregatedPojos.add(step5AggregatedPojo);
+            }
+
+        }
+
+
+        Map<String, List<Step2AggregatedPojo>> mappedPojo2 = step2AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step2AggregatedPojo -> step2AggregatedPojo.getMan() + step2AggregatedPojo.getManBillDate() + step2AggregatedPojo.getOrigSystemId()
+                        + step2AggregatedPojo.getBan() + step2AggregatedPojo.getBillDate() + step2AggregatedPojo.getAban()));
+
+        Map<String, List<Step5AggregatedPojo>> mappedPojo5 = step5AggregatedPojos.stream().collect(Collectors.groupingBy(
+                step3AggregatedPojo -> step3AggregatedPojo.getMan() + step3AggregatedPojo.getManBillDate() + step3AggregatedPojo.getOrigSystemId()
+                        + step3AggregatedPojo.getBan() + step3AggregatedPojo.getBillDate() + step3AggregatedPojo.getAban()));
+
+        for (Map.Entry<String, List<Step5AggregatedPojo>> step5pojoEntry : mappedPojo5.entrySet()) {
+
+            if (mappedPojo2.containsKey(step5pojoEntry.getKey())) {
+                for (Step5AggregatedPojo step5AggregatedPojo : step5pojoEntry.getValue()) {
+                    for (Step2AggregatedPojo step2AggregatedPojo : mappedPojo2.get(step5pojoEntry.getKey())) {
+                        step5AggregatedPojo.setCleId(step2AggregatedPojo.getCleId());
+                    }
+                }
+            }
+        }
+        return step5AggregatedPojos;
     }
 
     private List<Step4AggregatedPojo> getStep4AggregatedPojos(List<Step2AggregatedPojo> step2AggregatedPojos) {
@@ -111,11 +280,11 @@ public class InitialLoader {
                 step2AggregatedPojo -> step2AggregatedPojo.getMan() + step2AggregatedPojo.getManBillDate() + step2AggregatedPojo.getOrigSystemId()
                         + step2AggregatedPojo.getBan() + step2AggregatedPojo.getBillDate() + step2AggregatedPojo.getAban()));
 
-        Map<String, List<Step4AggregatedPojo>> mappedPojo3 = step4AggregatedPojos.stream().collect(Collectors.groupingBy(
+        Map<String, List<Step4AggregatedPojo>> mappedPojo4 = step4AggregatedPojos.stream().collect(Collectors.groupingBy(
                 step3AggregatedPojo -> step3AggregatedPojo.getMan() + step3AggregatedPojo.getManBillDate() + step3AggregatedPojo.getOrigSystemId()
                         + step3AggregatedPojo.getBan() + step3AggregatedPojo.getBillDate() + step3AggregatedPojo.getAban()));
 
-        for (Map.Entry<String, List<Step4AggregatedPojo>> step4pojoEntry : mappedPojo3.entrySet()) {
+        for (Map.Entry<String, List<Step4AggregatedPojo>> step4pojoEntry : mappedPojo4.entrySet()) {
 
             if (mappedPojo2.containsKey(step4pojoEntry.getKey())) {
                 for (Step4AggregatedPojo step4AggregatedPojo : step4pojoEntry.getValue()) {

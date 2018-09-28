@@ -2,6 +2,8 @@ package com.gigaspaces.pojos;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.annotation.pojo.SpaceIndex;
+import com.gigaspaces.metadata.index.SpaceIndexType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +45,7 @@ public class RefCodes95T {
     public RefCodes95T(){}
 
     @SpaceId
+    @SpaceIndex(type = SpaceIndexType.EQUAL)
     public Integer getCodeDescKey() {
         return codeDescKey;
     }

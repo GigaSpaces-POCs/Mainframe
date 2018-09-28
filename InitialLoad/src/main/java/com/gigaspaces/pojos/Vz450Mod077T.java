@@ -7,6 +7,7 @@ package com.gigaspaces.pojos;
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
+import com.gigaspaces.interfaces.*;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -17,7 +18,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "BMGVZP.VZ450_MOD_077_T")
 @SpaceClass
-public class Vz450Mod077T {
+public class Vz450Mod077T implements HasMan, HasManBillDate, HasBan, HasBillDate, HasOrigSystemId, HasVz450SeqNbr, HasAban {
 
     @EmbeddedId
     private Vz450Mod077TCompositeId vz450Mod077TCompositeId;
@@ -122,5 +123,25 @@ public class Vz450Mod077T {
 
     public void setVz450Mod077TCompositeId(Vz450Mod077TCompositeId vz450Mod077TCompositeId) {
         this.vz450Mod077TCompositeId = vz450Mod077TCompositeId;
+    }
+
+    @Override
+    public String getMan() {
+        return vz450Mod077TCompositeId.getMan();
+    }
+
+    @Override
+    public Date getManBillDate() {
+        return vz450Mod077TCompositeId.getManBillDate();
+    }
+
+    @Override
+    public String getOrigSystemId() {
+        return vz450Mod077TCompositeId.getOrigSystemId();
+    }
+
+    @Override
+    public Integer getVz450SeqNbr() {
+        return vz450Mod077TCompositeId.getVz450SeqNbr();
     }
 }

@@ -87,7 +87,32 @@ public class QueryCreator {
                 .setParameter(6, abans)
                 .setParameter(7, vz450SeqNbrs)
                 .setProjections("vz450Mod079TCompositeId", "ban", "billDate", "aban", "suppDataId");
+    }
+
+    public static SQLQuery<Vz450Mod077T> createVz450Mod077TQuery(Set<String> mans, Set<Date> manBillDates, Set<String> origSystemIds, Set<String> bans, Set<Date> billDates, Set<String> abans, Set<Integer> vz450SeqNbrs) {
+        return new SQLQuery<>(Vz450Mod077T.class, "")//"vz450Mod077TCompositeId.vz450SeqNbr IN (?)")
+//                .setParameter(1, mans)
+//                .setParameter(2, manBillDates)
+//                .setParameter(3, origSystemIds)
+//                .setParameter(4, bans)
+//                .setParameter(5, billDates)
+//                .setParameter(6, abans)
+//                .setParameter(1, vz450SeqNbrs)
+                .setProjections("vz450Mod077TCompositeId", "ban", "billDate", "aban", "suppDataId", "suppDataIdCd");
+    }
 
 
+
+    public static SQLQuery<Vz4506200T> createVz4506200TQuery() {
+        return new SQLQuery<>(Vz4506200T.class, "vz4506200TCompositeId.grpId2 = '205260                   '");
+//                .setProjections("vz4506200TCompositeId", "locationId", "chargeAmt", "discountAmt", "taxAmt",
+//                        "billableUnitsFmt", "billableUnits", "termState", "termCntryCdId");
+
+    }
+
+    public static SQLQuery<RefCodes95T> createRefCodes95TQuery(Set<Integer> termCntryCdIds) {
+        return new SQLQuery<>(RefCodes95T.class, "codeDescKey IN (?)")
+                .setParameter(1, termCntryCdIds)
+                .setProjections("codeDescKey", "description");
     }
 }
